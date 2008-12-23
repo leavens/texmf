@@ -14,7 +14,7 @@
 
 %% ----------------------------------------
 %% *** Numerical reference style for elsart ***
-%% $Id: elsart-num.bst,v 1.1 2004/03/26 18:50:47 cheon Exp $
+%% $Id$
 %% 
 %% Copyright 1994-1999 Patrick W Daly
  % ===============================================================

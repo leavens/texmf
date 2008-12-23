@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.20 2007/08/20 19:05:33 leavens Exp $
+# $Id$
 
 REALBIBS = datatypes.bib old-datatypes.bib distrib.bib \
 	languages.bib se.bib etc.bib
