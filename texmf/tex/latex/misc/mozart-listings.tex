@@ -1,0 +1,18 @@
+% @(#)$Id: mozart-listings.tex,v 1.1 2006/09/11 00:10:27 leavens Exp $
+%
+% A listings environment for oz that understand ``for'' loops.
+%
+% AUTHOR: Gary T. Leavens
+%
+% requires listings i.e., do \usepackage{listings} first
+%
+% This file is set up to be used via \input{mozart-listings}.
+% If you want, you could make a version that is a style file,
+% but then change \lstdefinelanguage to \lst@definelanguage below.
+%
+\lstdefinelanguage[Mozart]{Oz}[]{Oz}%
+       {% Add for and do as a level 1 keywords, so can typeset differently
+        classoffset=1,
+        morekeywords={for,do},
+        classoffset=0 % restore default class for keywords
+}

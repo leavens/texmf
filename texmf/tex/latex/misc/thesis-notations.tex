@@ -1,0 +1,38 @@
+\newcommand{\AC}{\bigtriangledown}	% angelic choice operator \/
+\newcommand{\AFUNS}{{\it TFUNS}}	% trait functions
+
+\newcommand{\CONS}{\mbox{\tt \&}}	% infix prepend operator for streams
+
+\newcommand{\DENOTES}{{\cal M}}		% denotation function
+\newcommand{\DENOTATIONINALG}[2]{\DENOTES\synbracket{#2}(#1)}
+\newcommand{\DENOTATION}[1]{\DENOTES\synbracket{#1}}	% denotation of #1
+
+\newcommand{\ENV}{{\it ENV}}		% set of environments
+\newcommand{\ERRATIC}{\framebox[0.45em]{\rule{0em}{0.5em}}}
+					% erratic choice operator []
+\newcommand{\FUNMEANING}[2]{{\cal F}(#1)\synbracket{#2}}
+
+\newcommand{\GETS}{\leftarrow}		% assignment operator
+\newcommand{\GOP}{{\it GOP}}		% generic operation symbols
+\newcommand{\GI}{{\it Generic\/}}	% generic invocation map
+
+\newcommand{\MODELSWRT}[1]{\stackrel{#1}{\models}} % models wrt #1
+\newcommand{\MODELS}{\models}		% models
+
+\newcommand{\NOMSIG}{{\it NomSig\/}}	% nominal signature map
+
+\newcommand{\OBS}{{\it OBS}}		% set of observations
+\newcommand{\IOBS}{{\it IOBS}}		% set of internal observations
+
+\newcommand{\R}{{\cal R}}		% a family of relations
+
+\newcommand{\STREAM}{{\it Stream}}	% domain of streams
+
+\newcommand{\TYPES}{{\it TYPES}}	% types in a polymoprhic signature
+
+% environment for programs, indented and set in typewriter font
+\newenvironment{program}{%
+\samepage\tt%
+\begin{list}{}{}\item\begin{tabbing}%
+}{%
+\end{tabbing}\end{list}}

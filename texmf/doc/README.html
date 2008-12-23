@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>README for tex-include LaTeX/BibTeX tree</title>
+</head>
+<body>
+
+<h1>README for tex-include LaTeX/BibTeX tree</h1>
+
+<h2>Contents</h2>
+<p>
+This directory tree contains bibliography files, bibliography styles,
+latex macros and styles designed by our research group (with some input from collaborators, especially for bibliography items).
+</p>
+
+<h3>Bibliography Support</h3>
+
+<h4>Bibliography Databases</h4>
+
+<p>In the directory <kbd>bibtex/bib/misc/</kbd>
+there are several bibliography databases (<kbd>.bib</kbd> files).
+The main ones are the following:
+</p>
+
+<ul>
+<li>
+ <code>Makefile</code>, which has as its default target the production
+ of a file, <code>all.bib</code> (the concatenation of the .bib files
+ below), which is useful in Framemaker and other such tools.
+</li>
+<li>
+ <code>journal-abbrevs.bib</code>, which contains abbreviations for
+ journal names; this is needed to use the other files.
+</li>
+<li>
+ <code>datatypes.bib</code>, which has references on type theory,
+ abstract data types, subtyping, types in programming languages
+</li>
+<li>
+ <code>old-datatypes.bib</code>, which has 1970s and
+ older references on datatypes, type theory, etc.
+</li>
+<li>
+ <code>distrib.bib</code>, which has references on distributed and
+ parallel processing, except language definitions.
+</li>
+<li>
+ <code>languages.bib</code>, which has references on programming
+ language issues, semantics, implementation, except types,
+ distributed/parallel stuff, and aspect-oriented software development.
+ All language definitions go here.
+</li>
+<li>
+ <code>se.bib</code>, which has references on software engineering,
+ specification, verification.
+</li>
+<li>
+ <code>etc.bib</code>, which has references on math and general stuff
+ that doesn't go elsewhere.
+</li>
+<li>
+ <code>proceedings.bib</code>, which has various proceedings used by cross-reference in the other bib files.
+</li>
+</ul>
+
+<h4>Bibliography Usage</h4>
+<p>
+To use the bibliography and macro files in latex, put the location of
+this directory in your TEXINPUTS environment variable.
+</p>
+
+<H3>Bibtex Database Conventions</H3>
+<P>
+If you change the bibtex database files, don't change <code>all.bib</code> as
+that is automatically generated.  Please instead change one of the
+other files that is used to create it (see the Makefile).
+<P>
+If you change add or change these bibliography files, please also
+follow our conventions.  The main ones are as follows. 
+<ul>
+<li>Categorize the contribution into the appropriate bibliography file
+as best you can.
+<li>For citation keys, use the full names of up to 3 authors,
+separated by hyphens, followed by the last two digits of the year.
+For example, <code>Leavens-Baker-Ruby02</code>.  For more authors, use
+<code>-etal</code> after the first author's name, followed by the last
+two digits of the year.
+<li>If you have physically laid hands on the paper, then put in an
+<code>Annote</code> key the number of references, e.g.,
+<code>Annote="23 references."</code>.  You can have more text in the
+annote entry, but put the number of references last.  If there are
+hundreds of references, then just say something like
+<code>Annote="Hundreds of references."</code> instead of counting
+them.
+<li>
+Use single letters after the year if the same group of authors has more
+than one paper in the given year.  For example, 
+<code>Clifton-Leavens02a</code>.
+<li>
+Keep the bibliography files sorted.
+<li>
+Use 3 letter abbreviations of months, without quotes or brackets, for example
+<code>nov</code> or <code>may</code>.  These are
+bibtex macros which are expanded or contracted by the style sheet; if
+you quote or bracket them they aren't macros anymore.
+<li>
+Don't put quote marks or brackets around numbers for years, and only
+put in quote marks or brackets around other numbers if needed.
+</ul>
+
+<P>If a paper's entry gets replaced by a better version, it's probably safest
+to make a new entry.  However, for one of our own papers, it would be
+more usual to replace the entry with an entry for the published
+version, and to rename the technical report version.  For example,
+change the technical report entry of 
+<code>Clifton-Leavens02</code>
+to have the key <code>Clifton-Leavens02a</code>
+when the publication appears, and put the publication under the key
+<code>Clifton-Leavens02</code>.
+
+<p>
+If you make an entry for a paper with Leavens as a coauthor, please
+also place a copy of the entry in the file <code>leavens.bib</code>.
+You are welcome to make your own personal bibliography file also.
+
+
+<h3>LaTeX Styles</h3>
+<p>
+There are also many latex macro and style files in the directory <kbd>tex/latex/misc/</kbd>.
+All are unsupported, so use at your own risk.
+</p>
+
+<h4>Conventions for the Latex Macro Files</h4>
+<p>
+If you channge the latex macro files, please make any changes upward
+compatible, so that old papers still can be formatted.  The easiest
+way is to always use new names.  Usually we use upper case for macro names.
+</p>
+</body>
+</html>

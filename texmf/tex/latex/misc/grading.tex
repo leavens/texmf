@@ -1,0 +1,9 @@
+% $Id: grading.tex,v 1.1 2004/11/08 23:04:53 leavens Exp $
+\newcommand{\IGNOREGRADINGTEXT}[1]{\relax}
+\newcommand{\PRINTGRADINGTEXT}{\relax}
+
+% the following asks whether you want answers when you run latex...
+\typein[\USEGRADING]{Do you want grading directions included (y/n)?}
+\if n\USEGRADING \newcommand{\GRADING}[1]{\IGNOREGRADINGTEXT{#1}}
+\else \newcommand{\GRADING}{Grading: ~~ \PRINTGRADINGTEXT}
+\fi

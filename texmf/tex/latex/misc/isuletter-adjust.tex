@@ -1,0 +1,12 @@
+\medskipamount=\parskip
+\long\def\closing#1{\par\nobreak\vspace{\parskip}
+  \stopbreaks
+  \noindent
+  \ifx\@empty\fromaddress\else
+  \hspace*{\longindentation}\fi
+  \parbox{\indentedwidth}{\raggedright
+       \ignorespaces #1\\[6\medskipamount]%% changed 20 Jan 88
+       \ifx\@empty\fromsig
+           \fromname
+       \else \fromsig \fi\strut}
+   \par}

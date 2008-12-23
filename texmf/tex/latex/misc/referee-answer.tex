@@ -1,0 +1,13 @@
+%{referee-answer}
+ 
+\newenvironment{GENERALCOM}{%
+\begin{trivlist}\item[\dag]\em%
+}{%
+\end{trivlist}}
+
+\newenvironment{SPECIFICCOM}[1]{%
+\begin{trivlist}\item[\dag]%
+{\footnotesize #1}\\%
+\em%
+}{%
+\end{trivlist}}

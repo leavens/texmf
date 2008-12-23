@@ -1,0 +1,23 @@
+\newcounter{tempenumi}
+\setcounter{tempenumi}{0}
+\newenvironment{CONTINUEDENUM}{
+ \begin{enumerate}
+ \setcounter{enumi}{\value{tempenumi}}
+ \setcounter{tempenumii}{0}
+}{
+ \setcounter{tempenumi}{\value{enumi}}
+ \end{enumerate}
+}
+
+%% the following is for enumerated lists within enumerated lists
+%% the tempenumii counter is set to 0 by the outer CONTINUEDENUM
+%% WARNING: if you are not using CONTINUEDSUBENUM within CONTINUEDENUM
+%% you have to set it yourself the first time.
+\newcounter{tempenumii}
+\newenvironment{CONTINUEDSUBENUM}{
+ \begin{enumerate}
+ \setcounter{enumii}{\value{tempenumii}}
+}{
+ \setcounter{tempenumii}{\value{enumii}}
+ \end{enumerate}
+}

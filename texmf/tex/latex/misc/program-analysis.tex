@@ -1,0 +1,275 @@
+% $Id: program-analysis.tex,v 1.29 2006/04/27 18:18:00 leavens Exp $
+%
+% Program analysis notations, as in the book Principles of Program
+% Analysis, by Flemming Nielson, Hanne Riis Nielson, and Chris Hankin
+% (Springer-Verlag, 1999).
+
+% Chapter 1
+
+% Section 1.2
+\newcommand{\AExp}{\textbf{AExp}}
+\newcommand{\BExp}{\textbf{BExp}}
+\newcommand{\Stmt}{\textbf{Stmt}}
+\newcommand{\Var}{\textbf{Var}}
+\newcommand{\Lab}{\textbf{Lab}}
+\newcommand{\Num}{\textbf{Num}}
+\newcommand{\Opa}{\ensuremath{\textbf{Op}_a}}
+\newcommand{\Opb}{\ensuremath{\textbf{Op}_b}}
+\newcommand{\Opr}{\ensuremath{\textbf{Op}_r}}
+\newcommand{\opa}{\ensuremath{\textit{op}_a}}
+\newcommand{\opb}{\ensuremath{\textit{op}_b}}
+\newcommand{\opr}{\ensuremath{\textit{op}_r}}
+
+% programs
+
+% The macros that don't start with ``L'' for elementary blocks do
+% their own counting of the labels for you.
+% Use \RESETLABELS to start over (from 1) again.
+% Those starting with L you have to label yourself.
+\newcounter{PALABEL}
+\setcounter{PALABEL}{0}
+\newcommand{\RESETLABELS}{\setcounter{PALABEL}{0}}
+\newcommand{\NEXTLABEL}{{\stepcounter{PALABEL}\thePALABEL}}
+% Elementary blocks
+\newcommand{\LASSIGN}[3]{\textrm{[}{#1} := {#2}\textrm{]}\ensuremath{^{#3}}}
+\newcommand{\ASSIGN}[2]{\LASSIGN{#1}{#2}{\NEXTLABEL}}
+\newcommand{\LSKIP}[1]{\textrm{[}\texttt{skip}\textrm{]}\ensuremath{^{#1}}}
+\newcommand{\SKIP}{\LSKIP{\NEXTLABEL}}
+\newcommand{\LEXP}[2]{\textrm{[}#1\textrm{]}\ensuremath{^{#2}}}
+\newcommand{\EXP}[1]{\LEXP{#1}{\NEXTLABEL}}
+
+%% programs
+\makeatletter
+\@ifundefined{myobeycr}{\input{obey}}{\relax}
+\makeatother
+
+% one can renew this command to use a different font for program text
+\newcommand*{\programFontDeclaration}{\normalfont\ttfamily}
+
+% environment for programs, indented, set in typewriter font, obeys cr, tab,etc
+\newenvironment{program*}{%
+\samepage\programFontDeclaration\RESETLABELS%
+\begin{list}{}{}\item\obeyspaces\obeytabs\obeycr}{%
+\end{list}}
+
+% Section 1.3
+\newcommand{\EXIT}[1]{\ensuremath{{#1}_{\textit{\small exit}}}}
+\newcommand{\ENTRY}[1]{\ensuremath{{#1}_{\textit{\small entry}}}}
+\newcommand{\ANALYSIS}[1]{\textsf{#1}}
+\newcommand{\ANALYSISSUB}[1]{\textsf{\scriptsize #1}}
+\newcommand{\RD}{\ANALYSIS{RD}}
+\newcommand{\RDENTRY}{\ENTRY{\RD}}
+\newcommand{\RDEXIT}{\EXIT{\RD}}
+
+% constraint based analysis, section 1.4
+\newcommand{\C}{\ensuremath{\widehat{C}}}
+\newcommand{\ENV}{\ensuremath{\widehat{\rho}}}
+\newcommand{\LFN}[3]{\texttt{fn #1 => } \LEXP{#2}{#3}}
+\newcommand{\FN}[2]{\LFN{#1}{#2}{\NEXTLABEL}}
+
+% math definitions
+\newcommand{\implies}{\ensuremath{\Rightarrow}}
+\newcommand{\impliedby}{\ensuremath{\Leftarrow}}
+\newcommand{\IFF}{\Leftrightarrow}
+\newcommand{\arr}{\ensuremath{\rightarrow}}
+\newcommand{\DOM}{\ANALYSIS{DOM}}
+\newcommand{\POWERSET}[1]{\ensuremath{{\cal P}}(#1)}
+
+% abstract interpretation, section 1.5
+\newcommand{\CS}{\ANALYSIS{CS}}
+\newcommand{\CSENTRY}{\ENTRY{\CS}}
+\newcommand{\CSEXIT}{\EXIT{\CS}}
+\newcommand{\SRD}{\ANALYSIS{SRD}}
+
+% Annotated Type constructors
+\newcommand{\RULE}[1]{[\textit{#1}]}
+\newcommand{\ANNARR}[2]{\ensuremath{-\!\!\!\frac{#1}{#2}\!\!\!\arr}}
+\newcommand{\Sarr}[2]{\ensuremath{\Sigma \ANNARR{#1}{#2} \Sigma}}
+
+% Chapter 2
+
+% Section 2.1
+% Flow graphs, p. 34ff
+\newcommand{\INIT}{\textsl{init}}
+\newcommand{\FINAL}{\textsl{final}}
+\newcommand{\FLOW}{\textsl{flow}}
+\newcommand{\FLOWR}{\ensuremath{\textsl{flow}^{R}}}
+\newcommand{\BLOCKS}{\textsl{blocks}}
+\newcommand{\LABELS}{\textsl{labels}}
+
+% various sets, p. 36ff
+\newcommand{\STAR}[1]{\ensuremath{{#1}_{\star}}}
+\newcommand{\Block}{\Blocks}
+\newcommand{\Blocks}{\textbf{Blocks}}
+\newcommand{\ProgLab}{\STAR{\Lab}}
+\newcommand{\ProgVar}{\STAR{\Var}}
+\newcommand{\ProgBlock}{\STAR{\Block}}
+\newcommand{\ProgAExp}{\STAR{\AExp}}
+\newcommand{\Prog}{\STAR{S}}
+\newcommand{\FV}{\textsl{FV}}
+
+\newcommand{\KILL}[1]{\ensuremath{\textsl{kill}_{\ANALYSISSUB{#1}}}}
+\newcommand{\GEN}[1]{\ensuremath{\textsl{gen}_{\ANALYSISSUB{#1}}}}
+
+% 2.1.1 Available Expressions
+\renewcommand{\AE}{\ANALYSIS{AE}}
+\newcommand{\AEENTRY}{\ENTRY{\AE}}
+\newcommand{\AEEXIT}{\EXIT{\AE}}
+\newcommand{\KILLAE}{\KILL{AE}}
+\newcommand{\GENAE}{\GEN{AE}}
+% 2.1.2 Reaching Definitions
+\newcommand{\KILLRD}{\KILL{RD}}
+\newcommand{\GENRD}{\GEN{RD}}
+% 2.1.3 Very Busy Expressions
+\newcommand{\VB}{\ANALYSIS{VB}}
+\newcommand{\VBENTRY}{\ENTRY{\VB}}
+\newcommand{\VBEXIT}{\EXIT{\VB}}
+\newcommand{\KILLVB}{\KILL{VB}}
+\newcommand{\GENVB}{\GEN{VB}}
+% 2.1.4 Live Variables
+\newcommand{\LV}{\ANALYSIS{LV}}
+\newcommand{\LVENTRY}{\ENTRY{\LV}}
+\newcommand{\LVEXIT}{\EXIT{\LV}}
+\newcommand{\KILLLV}{\KILL{LV}}
+\newcommand{\GENLV}{\GEN{LV}}
+
+% 2.1.5 Derived Data Flow Information
+\newcommand{\ud}{\textsl{ud}}
+\newcommand{\CLEAR}{\textsl{clear}}
+\newcommand{\USE}{\textsl{use}}
+\newcommand{\DEF}{\textsl{def}}
+\newcommand{\du}{\textsl{du}}
+\newcommand{\UD}{\ANALYSIS{UD}}
+\newcommand{\DU}{\ANALYSIS{DU}}
+
+% 2.2.1 Structural Operational Semantics
+\newcommand{\State}{\textbf{State}}
+\newcommand{\s}{\ensuremath{\sigma}}
+\newcommand{\CONFIG}[1]{\ensuremath{\langle #1 \rangle}}
+\newcommand{\REDUCESTO}{\rightarrow}
+\newcommand{\WITHFOR}[3]{\ensuremath{#1[#2\mapsto #3]}} % subst #2 for #3 in #1
+% brackets that surround syntax (as in denotational semantics)
+\newcommand{\synbracket}[1]{[\![#1]\!]}
+\newcommand{\MEANING}[2]{\ensuremath{{\cal #1}}\synbracket{#2}}
+\newcommand{\DENAEXP}[1]{\MEANING{A}{#1}}
+\newcommand{\DENBEXP}[1]{\MEANING{B}{#1}}
+\newcommand{\DENOP}[1]{\MEANING{O}{#1}}
+
+\newcommand{\INTEGER}{\textbf{Z}}
+\newcommand{\BOOLEAN}{\textbf{T}}
+\newcommand{\TRUE}{\textsl{true}}
+\newcommand{\FALSE}{\textsl{false}}
+
+% erratic choice operator []
+\newcommand{\ERRATIC}{\framebox[0.45em]{\rule{0em}{0.5em}}}
+
+% 2.2.2 Theoretical Properties
+\newcommand{\EQUATIONS}[1]{\ensuremath{\ANALYSIS{#1}^{=}}}
+\newcommand{\CONSTRAINTS}[1]{\ensuremath{\ANALYSIS{#1}^{\subseteq}}}
+\newcommand{\GENERATOR}[1]{\ensuremath{F^{\Prog}_{\ANALYSISSUB{#1}}}}
+\newcommand{\GENERATORFOR}[2]{\ensuremath{F^{#2}_{\ANALYSISSUB{#1}}}}
+\newcommand{\LIVE}{\textsl{live}}
+\newcommand{\REACH}{\textsl{reach}}
+\newcommand{\entry}{\textsl{entry}}
+\newcommand{\exit}{\textsl{exit}}
+% fixed points
+\newcommand{\LFP}{\textsl{lfp}}
+\newcommand{\GFP}{\textsl{gfp}}
+\newcommand{\REDUCTIVE}{\textsl{Red}}
+% lattice theory
+\newcommand{\meet}{\ensuremath{\sqcap}}
+\newcommand{\join}{\ensuremath{\sqcup}}
+% \bigmeet is a hack, because latex doesn't have \bigsqcap
+\newcommand{\bigmeet}{\meet}
+%% a better version of \bigmeet is in the stmaryrd package.  To use it do:
+%  \usepackage{stmaryrd}
+%  \renewcommand{\bigmeet}{\bigsqcap}
+\newcommand{\bigjoin}{\bigsqcup}
+
+\newcommand{\LAMBDA}[1]{\lambda{#1}\:.\:}
+
+% 2.3 Monotone frameworks
+\newcommand{\FUNS}{{\cal F}}
+\newcommand{\ANALYSISo}[1]{\ensuremath{\ANALYSIS{#1}_{\circ}}}
+\newcommand{\ANALYSISdot}[1]{\ensuremath{\ANALYSIS{#1}_{\bullet}}}
+
+% example 2.36 and exercise 2.14
+\newcommand{\SIGN}{\textbf{Sign}}
+\newcommand{\SUBSIGN}[1]{\ensuremath{#1_{\textsf{sign}}}}
+\newcommand{\SUPSIGN}[1]{\ensuremath{#1^{\textsf{sign}}}}
+\newcommand{\LSIGN}{\SUBSIGN{L}}
+\newcommand{\ASIGNOF}[1]{\SUBSIGN{{\cal A}}\synbracket{#1}}
+\newcommand{\OPSIGNOF}[1]{\SUBSIGN{{\cal O}}\synbracket{#1}}
+\newcommand{\ssign}{\SUPSIGN{\sigma}}
+\newcommand{\fsign}{\SUPSIGN{f}}
+\newcommand{\phisign}{\SUPSIGN{\phi}}
+\newcommand{\sign}{\textsl{sign}}
+\newcommand{\PLUS}{\texttt{+}}
+\newcommand{\MINUS}{\texttt{-}}
+\newcommand{\ZERO}{\texttt{0}}
+
+% Section 2.5 Interpreocedural Analysis
+\newcommand{\ProgDecl}{\STAR{D}}
+\newcommand{\INTERFLOW}{\textsl{inter-flow}}
+% use \STAR{\FLOW} etc for the starred versions.
+\newcommand{\LIS}[1]{\texttt{is}\ensuremath{^{#1}}}
+\newcommand{\IS}{\LIS{\NEXTLABEL}}
+\newcommand{\LEND}[1]{\texttt{end}\ensuremath{^{#1}}}
+\newcommand{\END}{\LEND{\NEXTLABEL}}
+\newcommand{\LCALL}[3]{\textrm{[}\texttt{call }#1\textrm{]}\ensuremath{^{#2}_{#3}}}
+\newcommand{\CALL}[1]{\LCALL{#1}{\NEXTLABEL}{\NEXTLABEL}}
+\newcommand{\PROCSKEL}{\texttt{proc}~p\/(\texttt{val}~x, \texttt{res}~y)~\LIS{\ell_n}~S~\LEND{\ell_x}}
+
+% Section 2.5.1 SOS for procedures
+\newcommand{\loc}{\ensuremath{\xi}}
+\newcommand{\Loc}{\textbf{Loc}}
+\newcommand{\env}{\ensuremath{\rho}}
+\newcommand{\Env}{\textbf{Env}}
+\newcommand{\store}{\ensuremath{\varsigma}}
+\newcommand{\Store}{\textbf{Store}}
+\newcommand{\finarr}{\ensuremath{\rightarrow_{\rm fin}}}
+
+% Section 2.5.2 Intra vs Interprocedural Analysis
+\newcommand{\EMBELLISH}[1]{\ensuremath{\widehat{#1}}}
+\newcommand{\HATL}{\EMBELLISH{L}}
+\newcommand{\hatf}[1]{\EMBELLISH{f_{#1}}}
+\newcommand{\hatfone}[1]{\EMBELLISH{f^1_{#1}}}
+\newcommand{\hatftwo}[1]{\EMBELLISH{f^2_{#1}}}
+\newcommand{\ISCALL}{\textsl{call}}
+\newcommand{\ISRETURN}{\textsl{return}}
+\newcommand{\POP}{\textsl{pop}}
+\newcommand{\FORMALS}{\textsl{formals}}
+\newcommand{\VALFORMALS}{\textsl{val-formals}}
+\newcommand{\RESFORMALS}{\textsl{res-formals}}
+\newcommand{\ACTUALS}{\textsl{actuals}}
+\newcommand{\VALACTUALS}{\textsl{val-actuals}}
+\newcommand{\RESACTUALS}{\textsl{res-actuals}}
+
+% Section 2.6 Shape Analysis
+\newcommand{\sel}{\textit{sel}}
+\newcommand{\Sel}{\textbf{Sel}}
+\newcommand{\p}{\textit{p}}
+\newcommand{\PExp}{\textbf{PExp}}
+% \loc and \Loc are above
+\newcommand{\nil}{\textbf{\diamond}}
+\newcommand{\Heap}{\textbf{Heap}}
+\newcommand{\h}{{\cal \scriptstyle H}}
+\newcommand{\DENP}[1]{\MEANING{P}{#1}}
+% \finarr is above
+
+% Section 2.6.2, shape graphs
+\newcommand{\AS}{\textsf{S}}
+\newcommand{\AH}{\textsf{H}}
+\newcommand{\is}{\textsf{is}}
+\newcommand{\ALoc}{\textbf{ALoc}}
+\newcommand{\AState}{\textbf{AState}}
+\newcommand{\AHeap}{\textbf{AState}}
+\newcommand{\SG}{\textbf{SG}}
+\newcommand{\Shape}{\textsl{Shape}}
+
+% Chapter 4
+\newcommand{\CORRECTNESSFOR}[1]{\ensuremath{R_\ANALYSISSUB{#1}}}
+\newcommand{\ABSTRFOR}[1]{\ensuremath{\beta_\ANALYSISSUB{#1}}}
+% the following require the latexsym package
+% ~> is \leadsto
+% |> is \rhd

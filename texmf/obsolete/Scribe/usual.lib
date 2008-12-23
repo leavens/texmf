@@ -1,0 +1,32 @@
+@Message{ [Loading usual] }
+@Comment{ An underscore (sigh)}
+@TextForm<us={@ux[@ @ ]}>
+@TextForm[Accent = ""]
+@TextForm[Umlaut = ""]
+@Comment{ Various unspread lists }
+@Define[UnNumList=Enumerate, Numbered <>, Spread 1]
+@Comment{@Modify[Enumerate, Spread 0]}
+@Comment{@Modify[Itemize, Spread 0]}
+@Modify[Figure, Group, Break Around]
+@Comment{ Program examples in normal type face }
+@Define[CluProg=Example, Font BodyFont, FaceCode R, BlankLines Hinge]
+@Define[SmallCluProg=Example, Font SmallBodyFont, FaceCode R, BlankLines Hinge]
+@Comment{ Synonyms for title fonts }
+@Define[Small, Font SmallBodyFont]
+@Define[Big, Font TitleFont3, FaceCode R]
+@Define[Huge, Font TitleFont5, FaceCode R]
+@Comment{ Heading at top of dsgnotes, parameter is "DSGNote#" }
+@Form<DSGNoteStart={
+@PageFooting[Immediate, Left "", Center "", Right ""]
+@PageHeading[Left 'DSG Note @parm<DSGNote#>',
+	Center (@Value[Page]),
+	Right (@Value[Date])]
+@Center[@b[Massachusetts Institute of Technology]]
+@Center[@b[Laboratory for Computer Science]]
+
+DSG Note @parm[DSGNote#]@>@Value[Date]
+@*
+
+@*
+
+}>

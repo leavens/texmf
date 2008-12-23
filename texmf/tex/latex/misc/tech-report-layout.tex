@@ -1,0 +1,61 @@
+%margins and spacings
+\input{use-full-height}
+\setlength{\textwidth}{6.75in} 
+\setlength{\columnsep}{0.25in}
+\setlength{\oddsidemargin}{0in}	% 1 inch on binding side, 0.75 on other
+\setlength{\evensidemargin}{-0.125in}
+
+\input{line-spacing}
+
+\input{alternate-theorem-style}
+\input{theorems}
+
+% Fixup formatting of section headings
+
+\makeatletter
+\font\chaptitle=cmbx10 scaled\magstep3
+\def\@makechapterhead#1{ \vspace*{25pt} { \parindent 0pt 
+ \flushleft 
+ \ifnum \c@secnumdepth >\m@ne \Large \sl \@chapapp{} \thechapter \par 
+ \vskip 17pt \fi \chaptitle  #1\par 
+ \nobreak  \vskip 50pt } }
+\def\@makeschapterhead#1{ \vspace*{25pt} { \parindent 0pt 
+ \flushleft
+ \Large \vspace*{\baselineskip}
+ \vspace*{17pt}
+ \chaptitle  #1\par 
+ \nobreak  \vskip 50pt } }
+
+\def\section{\@startsection {section}{1}{\z@}{-3.25ex plus -1ex 
+    minus -.2ex}{1.5ex plus .2ex}{\large\bf}}
+\def\subsection{\@startsection{subsection}{2}{\z@}{-3.25ex 
+  plus  -1ex minus  -.2ex}{1.15ex plus .2ex}{\normalsize\bf}}
+
+\def\subsubsection#1{\xsubsubsection{#1.\ }}
+\newcommand{\xsubsubsection}{\@startsection{subsubsection}{3}{\z@}{-3.25ex
+ plus -1ex minus -.2ex}{- 0em plus .2em}{\normalsize\bf}}
+
+\renewenvironment{thebibliography}[1]{\chapter*{References\@mkboth
+  {REFERENCES}{REFERENCES}}\list
+  {[\arabic{enumi}]}{\setlength{\leftmargin}{0pt}
+    \setlength{\listparindent}{0pt}
+    \setlength{\labelwidth}{-\labelsep}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\itemindent}{0pt}
+    \usecounter{enumi}}
+    \def\newblock{\hskip .11em plus .33em minus -.07em}
+    \sloppy
+    \sfcode`\.=1000\relax
+    \addcontentsline{toc}{chapter}{References}}{\endlist}
+\makeatother
+
+\makeatletter
+\def\@citex[#1]#2{\if@filesw\immediate\write\@auxout{\string\citation{#2}}\fi
+  \def\@citea{}\@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{, }\@ifundefined
+       {b@\@citeb}{{\bf ?}\@warning
+       {Citation `\@citeb' on page \thepage \space undefined}}%
+\hbox{\csname b@\@citeb\endcsname}}}{#1}}
+\makeatother
+
+\parskip 0pt plus 0pt

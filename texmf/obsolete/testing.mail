@@ -1,0 +1,815 @@
+Path: dino!ux1.cso.uiuc.edu!uwm.edu!rpi!uupsi!bse.com!eberard
+From: eberard@bse.com (Edward V. Berard)
+Newsgroups: comp.object
+Subject: Issues in the Testing of Object-Oriented Software
+Summary: A quick look at the issues raised in testing object-oriented software
+Keywords: testing, object-oriented software, bibliography
+Message-ID: <0B010001.aa0skr@bse.com>
+Date: 10 Oct 90 17:40:50 GMT
+Reply-To: eberard@bse.com
+Organization: Berard Software Engineering, Inc.
+Lines: 9
+Approved: eberard@bse.com (Edward V. Berard)
+X-Mailer: uAccess - Mac Release: 0.2.4
+
+
+				Issues in the Testing of Object-Oriented Software
+
+							By Edward V. Berard
+					Berard Software Engineering, Inc.
+
+"Testing proves the presence, not the absence, of bugs."
+
+	-- E.W. Dijkstra
+
+"Absence of evidence is not evidence of absence."
+
+	-- Source Unknown
+
+								PROLOGUE
+
+In my presentations on object-oriented technology, I often inform my clients
+that object- oriented technology will impact everything in a software
+engineering organization, from  contracting practices, to documentation
+standards, and, of course, to the choice of  programming languages. One
+frequently asked question is, "Is the testing of object- oriented software
+different, and, if so, how is it different?" When I attempt to answer this 
+question, I regularly uncover other problems.
+
+					CONFUSION WITH OTHER TECHNOLOGIES
+
+It is not a good idea to assume that, just because an organization is involved
+in software  production or maintenance, that its staff has an adequate
+background in software testing  technology. Very often, for example, testing is
+confused with debugging or software  quality assurance.
+
+	Testing is the process of examining something with the intention of
+	finding  errors. While testing may reveal a symptom of an error, it may
+	not uncover  the exact cause of the error.
+
+	Debugging is the process of locating the exact cause of an error, and 
+	removing that cause.
+
+	Software quality assurance assures the effectiveness of a software
+	quality  program within a software engineering organization.
+
+[For a good working definition of "software error," see [Myers, 1976] and
+[Myers, 1979].  For an excellent general discussion of "quality," see [Crosby,
+1979].]
+
+General references on software testing technology include: [Basili and Selby,
+1987],  [Beizer, 1983], [Beizer, 1990], [DeMillo, et. al., 1987], [Howden,
+1987], [Laski, 1989],  [Miller and Howden, 1981], [Myers, 1979], [Musa and
+Ackerman, 1989], [Parrington and  Roper, 1989], and [Quirk, 1985]. There are
+currently only a very few references which  specifically address the testing of
+object-oriented software, e.g., [Balfour, 1988], [Fiedler,  1989], [Grogono and
+Bennett, 1989], [Honda and Yonezawa, 1989], and [Perry and  Kaiser, 1990].
+
+General references on software debugging include: [Agrawal and Spafford, 1989],
+[Bates,  1989], [Brown and Sampson, 1973], [Dunn, 1984], [Gould and Drongowski,
+1972],  [Gould, 1975], [Hseush and Kaiser, 1988], [Lazzerini and Lopriore,
+1989], [Podgurski  and Clarke, 1989], and [Tassel, 1978]. Articles which
+specifically cover the debugging of  object-oriented software (e.g., [Honda and
+Yonezawa, 1989]) are even rarer than those  covering object-oriented testing.
+
+General references on software quality assurance include: [Chow, 1985], [Dunn,
+1990],  [Dunn and Ullman, 1982], [Mizuno, 1983], and [Schulmeyer and McManus,
+1987]. While  there is a growing body of knowledge regarding the quality
+assuring of object-oriented  software, I could find no specific references on
+the topic.
+
+[I have also included a few references which deal (at least in part) with the
+management of  software testing (i.e., [Gunther, 1978] and [Humphrey, 1989]),
+and the management of  software quality assurance (i.e., [Dunn, 1990]).]
+
+					SOME BASIC CONCEPTS AND DEFINITIONS
+
+We will need some basic working definitions, i.e.:
+
+	-	Software: We will define software as "everything which is not
+	    hardware or  'flesh and blood' in a computer system."JTherefore, in
+		addition to source code and object code, we will include plans,
+		policies, procedures, the results of analysis and design efforts, test
+		cases, general documentation, and software tools in our definition of
+		software. Given that all software should be tested, this implies that
+		such items as designs and test cases should be submitted to some form
+		of testing.  
+
+	-	White-Box Testing: White-box testing is the testing of the underlying 
+		implementation of a piece of software (e.g., source code) without 
+		regard to  the specification (external description) for that piece of 
+		software. The goal  of white-box testing of source code is to identify 
+		such items as  (unintentional) infinite loops, paths through the code 
+		which should be  allowed, but which cannot be executed (e.g.,
+		[Frankel and Weyuker,  1987]), and dead (unreachable) code.
+
+Probably the most commonly used example of a white-box testing testing technique
+is  "basis path testing." (See, e.g., [Beizer, 1990], [Chusho, 1987], [McCabe,
+1976],  [McCabe, 1982], and [McCabe, 1987]. For an opposing view see
+[Evangelist, 1984].)  McCabe's approach requires that we determine the number of
+linearly independent paths  through a piece of software (what he refers to as
+the cyclomatic complexity), and use that  number coupled with a graph of the
+control flow through the same piece of software to  come up with a set of test
+cases which will cause executable statements to be executed at  least once.
+
+McCabe's approach is an attempt to systematically address an even older concept
+in white- box testing, i.e., coverage. Coverage is simply a measure of the
+number and type of  statements executed, as well as how these statements are
+executed. Glen Myers, in [Myers,  1979], describes several types of coverage.
+"Statement coverage," the weakest acceptable  form of coverage, requires that
+enough test cases be written so that we can be assured that  all executable
+statements will be executed at least once. "Condition coverage" requires that 
+all statements be executed at least once, and that all binary decisions have a
+true and a false  outcome at least once.
+
+Here, we uncover two of problems with simple coverage concepts. Suppose, we are 
+working with a programming language which supports exceptions. The raising
+(activating)  of an exception will cause a change in control flow without the
+usual visible "test and  branch" instructions. Each statement in a piece of
+software could potentially cause one or  more exceptions to be raised, depending
+on conditions, e.g., improper input or division by  zero. Testing for all
+possible exceptions in all possible places where an exception could be  raised
+is usually considered impractical. Therefore, we state that a minimum acceptable
+ level of coverage must assure us that all possible exceptions are raised at
+least once.  Restating our definition of "condition coverage," we say that
+enough test cases must be  written so that we can reasonably be assured that all
+statements are executed at least once,  all binary decisions take on a true and
+a false outcome at least once, and all exceptions are  raised at least once.
+
+The second problem has to do with interrupts. An interrupt is a low-level event,
+typically  generated by the computer hardware, which requires that an executing
+piece of software  respond in some manner. For example, an application may
+initiate a transfer of a large  amount of information, and request that the
+hardware notify the application when the  transfer is complete. While virtually
+unknown in some application domains, interrupts are  common in low-level (i.e.,
+very close to the hardware) applications. Like exceptions,  interrupts cause
+changes in control flow without the usual visible "test and branch" 
+instructions. Interrupts may occur at many different points in the execution of
+a piece of  software. Therefore, it is, for all intents and purposes,
+impractical to exhaustively test all  possible occurrences of all possible
+interrupts for a given piece of software. We will state  that, in a situation
+where the software must explicitly deal with interrupts, a minimum  acceptable
+level of coverage will require that all possible interrupts are forced to occur
+at  least once.
+
+Further revising our definition of "condition coverage," we say that enough test
+cases must  be written so that we can be reasonably assured that all statements
+are executed at least  once, all binary decisions take on a true and a false
+outcome at least once, all exceptions are  raised at least once, and all
+possible interrupts are forced to occur at least once.
+
+[In [Myers, 1979], Myers goes on to describe progressively more comprehensive
+forms of  coverage, i.e., "condition coverage," "decision/condition coverage,"
+and "multiple  condition coverage."]
+
+If we attempt to combine McCabe's approach with what we know about coverage, we 
+arrive at some interesting observations. One can make a strong intuitive
+argument that, if  done correctly, McCabe's approach will give us a very high
+degree of coverage, i.e., at  least statement coverage, and quite possibly, as
+high as multiple condition coverage.  However, we will be required to augment
+these test cases with additional test cases for  exceptions and interrupts,
+where appropriate.
+
+	-	Black-Box Testing: Black-box testing is the testing of a piece of
+		software  without regard to its underlying implementation. Specifically,
+		it dictates that  test cases for a piece of software are to be generated
+		based solely on an  examination of the specification (external
+		description) for that piece of  software. The goal of black-box testing
+		is to demonstrate that the software  being tested does not adhere to its
+		external specification. (Note that if there  is no "external
+		specification" it will be difficult to conduct black-box  testing.)
+
+There are quite a number of black-box testing techniques. "Boundary value
+analysis," one  of the most fruitful forms of black-box testing, requires that
+test cases be generated which  are on, and immediately around, the boundaries of
+the input and output for a given piece of  software. (See, e.g., [Myers, 1979].)
+"Equivalence class partitioning" is a formalization of  the way many people
+already test software. An equivalence class is a collection of items  which can
+all be regarded as identical at a given level of abstraction, e.g., a set of
+data items  which will all evoke the same general behavior from a given software
+module. (See, e.g.,  [Knuth, 1973].) As described in [Myers, 1979], equivalence
+class partitioning can be a quite systematic approach to black-box testing.
+
+In situations where there are many different combinations of inputs possible,
+[Myers,  1979] suggests a black-box technique called "cause-effect graphing."
+This technique helps  software engineers identify those specific combinations of
+inputs which will be the most  error-prone. The intuition of a software engineer
+is an important part of any testing effort. This intuitive approach to testing
+can be slightly formalized under the black-box testing  technique known as
+"error guessing."
+
+	-	Gray-Box Testing: Gray-box testing is testing based on an
+		examination of  both the specification for a piece of software, and the
+		underlying implementation (e.g., source code) for that piece of
+		software. A typical goal  of gray-box testing is to identify
+		singularities in a piece of software, i.e., situations in which the
+		behavior of a piece of software become unbounded.
+
+Any good testing effort is a carefully planned combination of black-box,
+white-box, and  gray-box testing techniques. Low-level testing -- generally
+thought of as testing small  amounts of software (e.g., a single function) --
+usually involves a significant amount of  white-box testing. Higher-level
+testing (testing larger amounts of software, e.g., system  and acceptance
+testing) is almost exclusively black-box in nature.
+
+	-	Static Testing: Static testing is any testing of a piece of software
+		which can  be done without actually executing that piece of software.
+		(Some people  restrict the definition of static testing to any testing
+		of a piece of software  which does not involve the use of a computer.)
+
+In addition to desk checking, structured walkthroughs and inspections are
+common, and  extremely beneficial, examples of static testing. (See e.g.,
+[Ackerman et al, 1989], [Fagan,  1976], [Fagan, 1986], [Freedman and Weinberg,
+1982], and [Yourdon, 1978].)
+
+	-	Dynamic Testing:  Dynamic testing is any testing of a piece of 
+		software which involves the actual execution of that piece of
+		software.
+
+Since the introduction of concurrency also introduces non-determinacy, the
+dynamic testing  of concurrent software is a difficult process. However there is
+a growing body of  knowledge regarding the testing of concurrent software
+applications, e.g., [Carver, 1989],  [Carver and Tai, 1989], [Tai, 1985a], [Tai,
+1985b], [Tai, 1986], [Tai, 1987], and [Tai and  Din, 1985].  (Of course, there
+is a corresponding interest in the debugging of concurrent  software
+applications, e.g., [Honda and Yonezawa, 1989], [Hseush and Kaiser, 1988],  and
+[Tai et al, 1989].)
+
+	-	Formal Testing: The application of formal, or semi-formal,
+		mathematical  techniques to demonstrate the correctness of a piece of
+		software.
+
+In the early 1960s, E.W. Dijkstra recognized that a computer program could be
+viewed as a  series of mathematical relationships. He reasoned that mathematical
+proofs of correctness  for software should be possible. His first attempts were
+very frustrating and lead to his  early observations on seemingly chaotic way in
+which software was developed (e.g.,  [Dijkstra, 1965]), and later to what he
+called "structured programming" ([Dijkstra, 1969]).
+
+Others, most notably C.A.R. Hoare, were also interested in what has become known
+as  formal proofs of program correctness. (See, e.g., [Hoare, 1969], [Hoare,
+1971], and  [Hoare, 1972].) Many of these approaches involved the use of
+assertions (a statement  about a particular state of affairs which is assumed to
+be true), e.g. [Anderson, 1979],  [Berg et al, 1982], [Roe and Rowland, 1987],
+and [Shankar, 1982].
+
+After a while, people began to realize that they did not have to wait until
+module testing to  begin using formal techniques. Beginning in the 1970s, some
+people began creating the so- called "formal methods" for software development,
+e.g. Vienna Development Method  (VDM) ([Jones, 1986]) and Z ([Abrial, 1980],
+[Hayes, 1987], and [Sommerville, 1989]).  The intersection of formal
+specification techniques, functional programming, and object- oriented
+approaches, interestingly enough, has yielded OBJ and its descendants. (See,
+e.g.  [Gallimore et al, 1989], [Goguen, 1984], and [Grogono and Bennett, 1989].)
+
+Formal proofs of software correctness are difficult enough without having to do
+them by  hand. That is why there is a significant effort to automate the
+process, e.g., [Gallimore et  al, 1989]. C.A.R. Hoare has refined and expanded
+his earlier work into Communicating  Sequential Processes (CSP), e.g., [Hoare,
+1985]. Realizing the value of both formal  proofs of correctness and automation,
+Bertrand Meyer included assertions in his object- oriented programming language
+Eiffel (e.g., [Meyer, 1987]). 
+
+[Please note that there are many more forms of testing (and many testing issues)
+than can  possibly be covered in this small article. Please be sure to check
+some of the previously  mentioned general references.]
+
+						ENCAPSULATION AND INFORMATION HIDING
+
+When making the transition to a new technology, we should expect that some of
+what we  currently know will still be important and useful. We can also expect
+that there will be  those things which will have little or no relevance, and
+still others will have to be modified.  This is indeed the case when we
+investigate the testing of object-oriented software.
+
+Two concepts which will have a major impact on our testing strategies are
+information  hiding and encapsulation. Since some people confuse these two
+concepts, let me provide  some simple definitions. Information hiding requires
+that we suppress (or hide) some  information regarding an item. (See, e.g.,
+[Parnas, 1972] and [Ross et al, 1975].) The  general idea is that we show only
+that information which is necessary to accomplish our  immediate goals. If we
+were to show more information we increase the chances of errors,  either at the
+present time, or when the software is later modified. There are degrees of 
+information hiding, e.g., C++'s public, private and protected members ([Ellis
+and  Stroustrup, 1990]), and Ada's private and limited private types ([Booch,
+1986]).
+
+Encapsulation, on the other hand, describes the packaging (or binding together)
+of a  collection of items. Common low-level examples of encapsulation include
+records and  arrays. Procedures, functions, and subroutines are another way of
+encapsulating  information. Object-oriented approaches require still higher
+levels of encapsulation, e.g.,  classes. (Yes, I know that not all
+object-oriented approaches are class-based (e.g., [Ungar  and Smith, 1987]), but
+let me perpetuate the illusion of simplicity for the moment.) Among  other
+things, classes can encapsulate operations, other objects, and exceptions.
+Depending  on the programming language, and the decisions of the software
+engineer, items which are  encapsulated in a class will have varying degrees of
+visibility (information hiding).
+
+					THE IMPACT OF ENCAPSULATION ON TESTING
+
+Let's look at the impact of encapsulation first. We will state that
+object-oriented approaches  use different encapsulation strategies than do the
+more conventional approaches, and that  this has a twofold impact on software
+testing:
+
+	1.	The basic testable unit will no longer be the subprogram, and
+
+	2.	We will have to modify our strategies for integration testing.
+
+Let's examine each of these separately.
+
+Most technical and managerial software personnel are very familiar with
+functional  decomposition methodologies. Outside of complete programs, the
+typical program unit  produced by such an approach is some form of subprogram,
+e.g., functions, procedures,  subroutines, and paragraphs. Many software
+standards and procedures are based on  subprogram "units," i.e., the subprogram
+is the basic "building block" from which  applications are fashioned. In a
+classic waterfall approach to software development,  subprogram units are
+usually well-defined by the end of the design phase, and some may  have been
+introduced as early as the analysis phase.
+
+There have long been rules for well-designed subprograms (e.g., [Myers, 1978]
+and  [Yourdon and Constantine, 1979]). Even before there was any code written, a
+good  subprogram unit had a well-defined interface, and performed a single
+specific function  (i.e., it was functionally cohesive). Designs could be
+black-box tested in a static manner,  and the specifications for each subprogram
+unit could then be used as the basis for black- box testing the module once the
+code was written.
+
+Once an individual subprogram unit was thoroughly tested, it was seldom, if
+ever, tested as  a unit again. If a subprogram unit was reused (either in the
+same application or in another  application), however, its appropriateness had
+to be re-determined in each context. For  example, was the function being
+performed the right one for the given context, and did the  interface for the
+module mesh smoothly with the surrounding code.
+
+Now, let's consider an object-oriented environment. Here, we are dealing with
+larger  program units, e.g., a class. Further, the concept of a subprogram is
+not quite the same as  it is in more traditional systems. Specifically, we tend
+to separate the specification  (interface) for the subprogram from its
+implementation (body). We refer to the specification  as an "operation" (i.e.,
+and advertised capability in the external interface the class presents  to the
+outside world), and to the implementation as a "method" (i.e., the internal
+(hidden)  algorithm by which the operation is carried out). We often further
+complicate matters by  allowing one operation to be supported by multiple
+methods. 
+
+For the moment, let's keep things simple. We will view an operation plus one of
+its  methods as the equivalent of a single subprogram in a more traditional
+environment. A  class can therefore encapsulate many subprograms. In addition,
+the same subprogram may  find itself encapsulated in a number of different
+classes -- frequently in subclass  descendents of the class in which it first
+appeared. We also stipulate that classes may also  encapsulate exceptions, other
+objects, and various forms of state information.
+
+In object-oriented systems, we will most often think of subprograms as being
+bound  (encapsulated) within a larger entity, e.g., a class. Further, these
+subprograms will work in  conjunction with the other items encapsulated within
+the same object. This means that, in  an object-oriented environment, attempting
+to test a subprogram in isolation is virtually  meaningless. In effect, the
+smallest testable unit is no longer the subprogram, but classes  and instances
+of classes. This impact will be felt even at relatively high levels of
+abstraction  when, for example, we submit the results of analysis or design to
+the testing process.
+
+[Yes, I realize that some of these observations change when we talk about
+object-oriented  development in the large (OODIL), but allow me to keep things
+simple for this article.]
+
+Suppose that I thoroughly test a "subprogram" (i.e., an operation plus one of
+its methods)  within the context of a given class. Next, suppose I create a
+subclass based on this class,  and that the subclass inherits the tested
+"subprogram" from the superclass. Even though I  have tested the "subprogram"
+within the context of the superclass, I cannot begin to  guarantee the
+appropriateness of the same "subprogram" within the context of the subclass, 
+unless I re-test the "subprogram" within the context of the subclass.
+
+Dewayne E. Perry and Gail E. Kaiser ([Perry and Kaiser, 1990]) cite the work of
+Elaine J.  Weyuker and others (e.g., [Weyuker, 1986], [Weyuker, 1988], and
+[Zweben and  Gourlay, 1989]) to provide some more insight into this phenomenon,
+e.g.:
+
+	-	Antiextensionality: This principle says that the black-box test
+		cases we  created for the "subprogram" within the superclass, are
+		probably not  entirely appropriate for the same "subprogram" within the
+		context of a  subclass derived from the superclass. (In fact, we may
+		also have to modify  some of our white-box test cases as well.) This is
+		no different than saying  that we have to re-establish the
+		appropriateness of a function when it is  reused in a different context
+		within a system designed using a functional  decomposition approach.
+
+Now, let's move to the second point, i.e., integration testing. In
+non-object-oriented  approaches, once a unit (usually a subprogram) is tested in
+isolation, it is then integrated  into the larger whole. If I do this on a
+non-incremental basis, this means that I test each unit  in isolation,
+simultaneously integrate all units, and then attempt to test the resulting
+whole.  (This is why non-incremental testing is sometimes called "big bang"
+testing.) With the  exception of very small, non-critical systems,
+non-incremental testing is not advisable.
+
+Incremental testing, on the other hand, dictates that I test each unit in
+isolation, and then  integrate each unit, one at a time, into the system,
+testing the overall system as I go. There  are quite a number of different
+approaches to incremental testing, e.g., top-down, bottom- up, sandwich, and
+modified sandwich. (See, e.g.,  [Myers, 1976] and [Myers, 1979].)  Incremental
+testing is almost always preferable to non-incremental testing.
+
+Let's consider what happens in an object-oriented approach. If we were using a
+functional  decomposition approach, our smallest testable unit would be a
+subprogram, and, during  integration testing (depending on our integration
+strategy) we would be integrating one, or  a few, subprogram(s) at a time. In
+our object-oriented system, our smallest testable unit  will be a class (or
+comparable object-oriented unit). Given that the methods associated with  each
+operation often take advantage of the underlying implementation of the class, it
+is  difficult to claim that each operation-method combination can be tested in
+isolation.
+
+Integrating "subprograms" into a class, one at a time, testing the whole as we
+go, may not  be an option. For example, there are usually direct or indirect
+interactions among the  components which make up the class. One operation may
+require that the object be in a  specific state -- a state which can only be set
+by another encapsulated operation, or  combination of encapsulated operations.
+Reversing the order of integration may not help  since each operation may be
+used to test the other.
+
+				THE IMPACT OF INFORMATION HIDING ON TESTING
+
+Advocates of object-oriented technology are fond of citing the black-box nature
+of objects.  Specifically, a user of an object is denied access to the
+underlying implementation. This  creates problems during testing. For example,
+consider a simple list object. In its interface  there are a number of
+operations, e.g., add, delete, and length. Suppose we add an item to  the list
+using the "add" operation. How can we be assured that the specific item was 
+actually added? (If the list is ordered, e.g., how can we be assured that the
+item was added  in the correct position?) Since we cannot directly inspect the
+underlying implementation, we  must seek some other strategy.
+
+[Unless, the final product will actually incorporate an interactive debugger, it
+is generally  not advisable to use a debugger for testing. One of the most
+fundamental axioms of testing  is that we must test the actual product, not a
+variation on the product.]
+
+A general approach is to first establish an acceptable level of confidence in
+the state- reporting operations in the object's interface, i.e., those
+operations which do not change  alter the state of the object, but rather return
+information on some aspect of the object's  state. For example, if we could
+trust the "length" operation in our list object, we would  expect to see the
+length increase by one when we added an object. Of course, if we had an 
+acceptable level of confidence in the list's "delete" operation, and that
+operation returned or  required the actual item to be deleted, we could use that
+operation to help check the "add"  operation.
+
+At the very least, test designers will have to plan class testing strategies
+carefully.
+
+								OTHER ISSUES
+
+If one is working with a language which supports user-definable metaclasses,
+there will be  the issue of how one tests metaclasses. A metaclass is a class
+whose instances are  themselves classes. Using the list example again, if one is
+able to create a list metaclass,  that metaclass will be parameterized (to some
+degree) to allow users to define specific list  classes, e.g., a list of names
+class or a list of numbers class. The testing effort will try to  demonstrate
+that at least some of the instances of the list metaclass do not have their 
+intended characteristics.
+
+In testing a subclass-superclass hierarchy, testers will want to demonstrate
+that the desired  combination of characteristics may not be present in a given
+subclass due to mistakes in the  inheritance structure as defined by the
+software engineers. In languages which support  multiple inheritance, testers
+will seek out improper conflict resolution. In the so-called  "classless"
+object-oriented languages (e.g., Self), testers will attempt to highlight
+problems  with delegation schemes.
+
+								CONCLUSION
+
+Much of what we know about testing technology does indeed apply to
+object-oriented  systems. However, object-orientation brings with it, its own
+specialized set of concerns.  Fortunately, there is a significant amount of
+research going on, and there is already an  existing experience base.
+
+							  BIBLIOGRAPHY
+
+[Abrial, 1980]. J.R. Abrial, The Specification Language Z: Basic Library,
+Programming  Research Group, Oxford University, United Kingdom, 1980.
+
+[Ackerman et al, 1989]. A. F. Ackerman, L. Buchwald, and F. Lewski,"Software 
+Inspections: An Effective Verification Process," IEEE Software, Vol. 6, No. 3, 
+May 1989, pp. 31 - 36.
+
+[Agrawal and Spafford, 1989]. H. Agarwal and E. Spafford, "Bibliography on
+Debugging  and Backtracking," Software Engineering Notes, Vol. 14, No. 2, April
+1989, pp.  49 - 56.
+
+[Anderson, 1979]. R.B. Anderson, Proving Programs Correct, John Wiley and Sons, 
+New York, New York, 1979.
+
+[Balfour, 1988]. B. Balfour, "On 'Unit Testing' and other Uses of the Term
+'Unit'," MCC  '88 Military Computing Conference, Military Computing Institute,
+1988, pp. 127 -  130.
+
+[Basili and Selby, 1987]. V.R. Basili and R.W. Selby, "Comparing the
+Effectiveness of  Software Testing Strategies," IEEE Transactions on Software
+Engineering, Vol.  13, No. 12, December 1987, pp. 1278 - 1296.
+
+[Bates, 1989]. P. Bates, "Debugging Heterogeneous Distributed Systems Using
+Event- Based Models of Behavior,"JSIGPLAN Notices, Vol. 24, No. 1, January 1989,
+ pp. 11 - 22.
+
+[Beizer, 1983]. B. Beizer, Software Testing Techniques, Van Nostrand Reinhold,
+New  York, New York, 1983.
+
+[Beizer, 1990]. B. Beizer, Software Testing Techniques, Second Edition, Van
+Nostrand  Reinhold, New York, New York, 1990.
+
+[Berg et al, 1982]. H.K. Berg, W.E. Boebert, W.R. Franta, and T.G. Moher, Formal
+ Methods of Program Verification and Specification, Prentice-Hall, Englewood 
+Cliffs, New Jersey, 1982.
+
+[Booch, 1986]. G. Booch, Software Engineering with Ada, Second Edition, 
+Benjamin/Cummings, Menlo Park, California, 1986.
+
+[Brown and Sampson, 1973]. A.R. Brown and W.A. Sampson, Program Debugging, 
+Macdonald, London, United Kingdom, 1973.
+
+[Carver, 1989]. R. Carver, Testing, Debugging, and Analysis of Concurrent
+Software,  Ph.D. Thesis, North Carolina State University at Raleigh, Raleigh,
+North Carolina,  (UMI Order No. GAX89-18077), 1989.
+
+[Carver and Tai, 1989]. R. Carver and K.C. Tai, "Deterministic Execution Testing
+of  Concurrent Ada Programs," Proceedings of TRI-Ada '89 -- Ada Technology In 
+Context: Application, Development, and Deployment, October 23-26, 1989, 
+Association for Computing Machinery, New York, New York, pp. 528 - 544.
+
+[Chow, 1985]. T.S. Chow, Editor, IEEE Tutorial: Software Quality Assurance: A
+Practical  Approach, IEEE Computer Society Press, Silver Spring, Maryland, 1985.
+
+[Chusho, 1987]. T. Chusho, "Test Data Selection and Quality Estimation Based on
+the  Concept of Essential Branches for Path Testing," IEEE Transactions on
+Software  Engineering, Vol. SE-13, No. 5, May 1987, pp. 509 - 517.
+
+[Crosby, 1979].  P. B. Crosby, Quality is Free, The New American Library, Inc.,
+New  York, New York, 1979.  (Originally published by McGraw-Hill, Inc., New
+York,  New York.)
+
+[DeMillo, et. al., 1987]. R. DeMillo, W. McCracken, R. Martin, J. Passafiume,
+Software  Test and Evaluation, Benjamin/Cummings, Menlo Park, California, 1987.
+
+[Dijkstra, 1965]. E.W. Dijkstra, "Programming Considered as a Human Activity," 
+Proceedings of the 1965 IFIP Congress, North Holland Publishing Company, 
+Amsterdam, The Netherlands, 1965, pp. 213 - 217.
+
+[Dijkstra, 1969].  E. Dijkstra, "Structured Programming," in Software
+Engineering  Concepts and Techniques, Proceedings of the NATO Conferences,
+Edited by J.N.  Buxton, P. Naur, and B. Randell, Petrocelli/Charter, New York,
+New York, 1976,  pp. 222 - 226.
+
+[Dunn, 1984]. R. Dunn, Software Defect Removal, McGraw-Hill, New York, New York, 
+1984.
+
+[Dunn, 1990]. R. H. Dunn, Software Quality: Concepts and Plans, Prentice-Hall, 
+Englewood Cliffs, New Jersey, 1990.
+
+[Dunn and Ullman, 1982].  R. Dunn and R. Ullman, Quality Assurance for Computer 
+Software, McGraw-Hill, New York, New York, 1982.
+
+[Ellis and Stroustrup, 1990]. M.A. Ellis and B. Stroustrup, The Annotated C++
+Reference  Manual, Addison-Wesley, Reading, Massachusetts, 1990.
+
+[Evangelist, 1984]. M. Evangelist, "An Analysis of Control Flow Complexity," 
+Proceedings of the Eighth International Computer Software and Applications 
+Conference, Chicago, Illinois, November 7-9, 1984, pp. 235 - 237, 239.
+
+[Fagan, 1976]. M.E. Fagan, "Design and Code Inspections To Reduce Errors in
+Program  Development," IBM Systems Journal, Vol 15, No. 3, 1976, pp. 219 - 248.
+
+[Fagan, 1986]. M.E. Fagan, "Advances in Software Inspections," IEEE Transactions
+on  Software Engineering, Vol. 12, No. 7, July 1986, pp. 744 - 751.
+
+[Fiedler, 1989]. S.P. Fiedler, "Object-Oriented Unit Testing," HP Journal, Vol.
+36, No.  4, April 1989.
+
+[Frankel and Weyuker, 1987]. P.G. Frankel and E.J. Weyuker, "Data Flow Testing
+in the  Presence of Unexecutable Paths," Proceedings of the Workshop on Software
+ Testing, Bariff, Canada, July 1987, pp. 4 - 13.
+
+[Freedman and Weinberg, 1982]. D.P. Freedman and G.M. Weinberg, Handbook of 
+Walkthroughs, Inspections, And Technical Reviews, Third Edition, little, Brown 
+and Company, Boston, Massachusetts, 1982.
+
+[Gallimore et al, 1989]. R. Gallimore, D. Coleman, and V. Stravridou, Computer
+Journal,  "UMIST OBJ: A Language for Executable Program Specifications,"
+Computer  Journal, Vol. 32, No. 5, October 1989, pp. 413 - 421.
+
+[Goguen, 1984]. J.A. Goguen, "Parameterized Programming,"JIEEE Transactions on 
+Software Engineering, Vol. SE-10, No. 5, September 1984, pp. 528 - 543.
+
+[Goguen and Meseguer, 1987]. J.A. Goguen and J. Meseguer, "Unifying Functional, 
+Object-Oriented and Relational Programming With Logical Semantics," in Research 
+Directions in Object-Oriented Programming, Edited by B. Shriver and P. Wegner, 
+The MIT Press, Cambridge, Massachusetts, 1987, pp. 417 - 477.
+
+[Grogono and Bennett, 1989]. P. Grogono and A. Bennett, "Polymorphism and Type 
+Checking in Object-Oriented Languages," SIGPLAN Notices, Vol. 24, No. 11, 
+November 1989, pp. 109 - 115.
+
+[Gould and Drongowski, 1972]. J.D. Gould and P. Drongowski, A Controlled 
+Psychological Study of Computer Program Debugging, Technical Report RC-
+4083, IBM Research Division, Yorktown Heights, New York, 1972.
+
+[Gould, 1975]. J.D. Gould, "Some Psychological Evidence on How People Debug 
+Computer Programs," International Journal of Man-Machine Studies, Vol. 7, No. 
+2, 1975, pp. 151 - 182.
+
+[Gunther, 1978]. R.C. Gunther, Management Methodology For Software Product 
+Engineering, John Wiley and Sons, New York, New York, 1978.
+
+[Hayes, 1987]. I. Hayes, Editor, Specification Case Studies, Prentice-Hall,
+London,  United Kingdom, 1987.
+
+[Hoare, 1969]. C.A.R. Hoare, "An Axiomatic Basis for Computer 
+Programming,"JCommunications of the ACM, Vol. 12, No. 10, October 1969, 
+pp. 576 - 580, 583.
+
+[Hoare, 1971]. C.A.R. Hoare, "Proof of a Program: FIND," Communications of the 
+ACM, Vol. 14, No. 1, January 1971, pp. 39 - 45.
+
+[Hoare, 1972]. C.A.R. Hoare, "Proof of Correctness of Data Representation," Acta
+Informatica, Vol. 1, 1972, pp. 271 - 181.
+
+[Hoare, 1985]. C.A.R. Hoare, Communicating Sequential Processes, Prentice-Hall, 
+Englewood Cliffs, New Jersey, 1985.
+
+[Honda and Yonezawa, 1989]. Y. Honda and A. Yonezawa, "Debugging Concurrent 
+Systems Based on Object Groups," in ECOOP '88: Proceedings of the European 
+Conference on Object-Oriented Programming, Lecture Note on Computer Science, 
+Volume 322, S. Gjessing and K. Nygaard, Editors, Springer Verlag, New York, 
+New York, 1988, pp. 267 - 282.
+
+[Howden, 1987]. W. Howden, Software Engineering and Technology: Functional 
+Program Testing, McGraw-Hill, New York, New York, 1987.
+
+[Hseush and Kaiser, 1988]. W. Hseush and G.E. Kaiser, "Data Path Debugging:
+Data- Oriented Debugging for a Concurrent Programming Language," Proceedings of
+the  ACM SIGPLAN/SIGOPS Workshop on Parallel and Distributed Debugging, 
+Madison, Wisconsin, May 1988, pp. 236 - 246.
+
+[Humphrey, 1989]. W.S. Humphrey, Managing the Software Process,  Addison-Wesley 
+Publishing Company, Reading, Massachusetts, 1989.
+
+[Jones, 1986].  C.B. Jones, Systematic Software Development Using VDM, Prentice-
+Hall, Englewood Cliffs, New Jersey, 1986.
+
+[Knuth, 1973]. D.E. Knuth, The Art of Computer Programming, Volume 1:
+Fundamental  Algorithms, Second Edition, Addison-Wesley Publishing Company,
+Reading, Massachusetts, 1973.
+
+[Laski, 1989]. J. Laski, "Testing in the Program Development Cycle," Software 
+Engineering Journal, Vol. 4, No. 2, March 1989, pp. 95 - 106.
+
+[Lazzerini and Lopriore, 1989]. B. Lazzerini and L. Lapriore, "Abstraction
+Mechanisms  for Event Control in Program Debugging," IEEE Transactions on
+Software  Engineering, Vol. 15, No. 7, July 1989, pp. 890 - 901.
+
+[Lin and LeBlanc, 1989]. C. Lin and R. LeBlanc, "Event Based Debugging of 
+Object/Action Programs," SIGPLAN Notices, Vol. 24, No. 1, January 1989, pp. 
+23 - 34.
+
+[McCabe, 1976]. T. McCabe, "A Complexity Measure" IEEE Transactions on Software 
+Engineering, December 1976, pp. 308 - 320.
+
+[McCabe, 1982]. T.J. McCabe, Editor, IEEE Tutorial: Structured Testing, IEEE
+Computer  Society Press, Silver Spring, Maryland, 1982.
+
+[McCabe, 1987]. T. McCabe, "Automating the Testing Process Through Complexity 
+Metrics," Conference Proceedings Software Testing and Validation September 23-
+24, 1987, National Institute for Software Quality and Productivity, Inc., 1987,
+pp. G-l - G-30.
+
+[Meyer, 1987]. B. Meyer, "Eiffel: Programming for Reusability and Extendability," 
+SIGPLAN Notices, Vol. 22, No. 2, February 1987, pp. 85 - 94.
+
+[Miller and Howden, 1981]. E. Miller, and W.E. Howden, Tutorial: Software
+Testing and  Validation Techniques, IEEE Computer Society Press, Washington,
+D.C., IEEE  Catalog No. EHO180-0, 1981.
+
+[Mizuno, 1983]. Y. Mizuno, "Software Quality Improvement," IEEE Computer, Vol.
+16,  No. 3, March 1983, pp. 66 - 72.
+
+[Musa and Ackerman, 1989]. J. Musa and A. F. Ackerman, "Quantifying Software 
+Validation: When to Stop Testing?," IEEE Software, Vol. 6, No. 3, May 1989, pp. 
+19 - 27.
+
+[Myers, 1976]. G.J. Myers, Software Reliability Principles and Practices, John
+Wiley and  Sons, New York, New York, 1976.
+
+[Myers, 1978].  G. J. Myers, Composite/Structured Design, Van Nostrand Reinhold 
+Company, New York, New York, 1978.
+
+[Myers, 1979]. G.J. Myers, The Art of Software Testing, John Wiley and Sons, New 
+York, New York, 1979.
+
+[Ostrand et al, 1987]. T.J. Ostrand, R. Sigal, and E. Weyuker, "Design for a
+Tool to  Manage Specification Based Testing," Workshop on Software Testing,
+Bariff, Canada, July 1987, pp. 41 - 50.
+
+[Parnas, 1972]. D.L. Parnas, "On the Criteria To Be Used in Decomposing Systems
+Into  Modules," Communications of the ACM, Vol. 5, No. 12, December 1972, pp. 
+1053-1058.
+
+[Parrington and Roper, 1989]. N. Parrington and M. Roper, Understanding Software 
+Testing, Halstead Press, New York, New York, 1989.
+
+[Perry and Kaiser, 1990]. D.E. Perry and G. E. Kaiser, "Adequate Testing and
+Object- Oriented Programming," Journal of Object-Oriented Programming, Vol. 2,
+No. 5,  January/February 1990, pp. 13 - 19.
+
+[Podgurski and Clarke, 1989]. A. Podgurski and L. Clarke, "The Implications of
+Program  Dependencies for Software Testing, Debugging, and Maintenance,"
+Software  Engineering Notes, Vol. 14, No. 8, December 1989, pp. 168 - 178.
+
+[Quirk, 1985]. W.J. Quirk, Editor, Verification and Validation of Real-Time
+Software,  Springer-Verlag, New York, New York, 1985.
+
+[Roe and Rowland, 1987]. R.P. Roe and J.H. Rowland, "Some Theory Concerning 
+Certification of Mathematical Subroutines by Black Box Testing," IEEE 
+Transactions on Software Engineering, Vol. SE-13, No. 7, July 1987, pp. 761 - 
+766.
+
+[Ross et al, 1975]. D.T. Ross, J.B. Goodenough, and C.A. Irvine, "Software 
+Engineering: Process, Principles, and Goals," IEEE Computer, Vol. 8, No. 5, May 
+1975, pp. 17 - 27.
+
+[Schulmeyer and McManus, 1987]. G.G. Schulmeyer and J.I. McManus, Editors, 
+Handbook of Software Quality Assurance, Van Nostrand Reinhold, New York, 
+New York, 1987.
+
+[Shankar, 1982].  K. S. Shankar, "A Functional Approach to Module Verification,"
+IEEE  Transactions on Software Engineering, Vol. SE-8, No. 2, March 1982, pp.
+147 -  160.
+
+[Sommerville, 1989]. I. Sommerville, Software Engineering, Third Edition,
+Addison-Wesley Publishing Company, Reading, Massachusetts, 1989.
+
+[Tai, 1985a]. K.C. Tai, "Reproducible Testing of Concurrent Ada Programs,"
+Proceedings  of SOFTFAIR II, IEEE Computer Society Press, Silver Spring,
+Maryland,  December, 1985, pp. 114 - 120.
+
+[Tai, 1985b]. K.C. Tai, "On Testing Concurrent Programs," Proceedings of COMPSAC 
+'85, IEEE Computer Society Press, Silver Spring, Maryland, October, 1985, pp. 
+310 - 317.
+
+[Tai, 1986]. K.C. Tai, "Reproducible Testing of Ada Tasking Programs,"
+Proceedings of the IEEE Second International Conference on Ada Applications and
+Environments, IEEE Computer Society Press, Silver Spring, Maryland, 1986, pp.
+69 - 79.
+
+[Tai, 1987]. K.C. Tai, "A Methodology for Testing Concurrent Ada Programs," 
+Proceedings of The Joint Ada Conference Fifth National Conference on Ada 
+Technology and Washington Ada Symposium, March, 1987, pp. 459 - 464.
+
+[Tai and Din, 1985]. K.C. Tai and C. Y. Din, "Validation of Concurrency in
+Software  Specification and Design," Third International Workshop on Software
+Specification  and Design, IEEE Computer Society Press, Silver Spring, Maryland,
+1985, pp.  223 - 227.
+
+[Tai et al, 1989]. K.C. Tai, R.H. Carver, and E.E. Obaid, "Deterministic
+Execution  Debugging of Concurrent Ada Programs," Proceedings of Compsac '89,
+IEEE  Computer Society Press, Silver Spring, Maryland, October, 1989, pp.102 -
+109.
+
+[Tassel, 1978]. D.V. Tassel, Program Style, Design, Efficiency, Debugging, and
+Testing,  Second Edition, Prentice-Hall, Englewood Cliffs, New Jersey, 1978.
+
+[Ungar and Smith, 1987]. D. Ungar and R.B. Smith, "Self: The Power of
+Simplicity,"  OOPSLA '87 Conference Proceedings, Special Issue of SIGPLAN
+Notices, Vol. 22, No. 12, December 1987, pp. 227 - 242.
+
+[Weyuker, 1986]. E.J. Weyuker, "Axiomatizing Software Test Data Accuracy," IEEE 
+Transactions on Software Engineering, Vol. SE-12, No. 12, December 1986, pp. 
+1128 - 1138.
+
+[Weyuker, 1988]. E.J. Weyuker, "The Evaluation of Program-Based Software Test
+Data  Accuracy Criteria," Communications of the ACM, Vol. 31, No. 6, June 1988,
+pp. 668 - 675.
+
+[Yourdon, 1978]. E. Yourdon, Structured Walkthroughs, Second Edition, Yourdon
+Press,  New York, New York, 1978.
+
+[Yourdon and Constantine, 1979].  E. Yourdon and L. L. Constantine, Structured
+Design: Fundamentals of a Discipline of Computer Program and System Design,
+Prentice- Hall, Englewood Cliffs, New Jersey, 1979.
+
+[Zweben and Gourlay, 1989]. S.H. Zweben and J. Gourlay, "On the Adequacy of 
+Weyuker's Test Data Adequacy Axioms," IEEE Transactions on Software 
+Engineering, Vol. 15, No. 4, April 1989, pp. 496 - 500.
+
+
+----------------------------------------------------------------------------
+Edward V. Berard                                | Phone: (301) 353-9652
+Berard Software Engineering, Inc.               | FAX:   (301) 353-9272
+18620 Mateney Road                              | E-Mail: eberard@bse.com
+Germantown, Maryland 20874                      | 
+----------------------------------------------------------------------------
+

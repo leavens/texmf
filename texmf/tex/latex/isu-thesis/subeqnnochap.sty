@@ -1,0 +1,72 @@
+%% FILE:   subeqn.sty in SYS2.TEX.PUB.ISULATEX.STYLES
+%% AUTHOR: Erica M. S. Harris
+%% DATE:   March 1990
+%% DESCR:  A style option for use in any style. It provides three declarations
+%%         for turning subequation numbering on and off and for stepping the
+%%         equation number for a new set of subequations. The commands are
+%%         \subequations, \nosubequations and \newsubequation respectively.
+%%         These commands should only be used inside the eqnarray and equation
+%%         environments and should be used at the start of the equation line
+%%         from which the change should take effect. This means that, for
+%%         example, \subequations could appear in one eqnarray environment
+%%         and \nosubequations or \newsubequation in a subsequent one.
+%%         \label and \ref (or \pageref) and be used as normal with
+%%         subequations. To refer to the whole equation use \eqlabel to
+%%         generate the label. \eqlabel can be used on any of the subequation
+%%         lines belonging to the equation.
+%%         The following code skeletons provide some illustration of the
+%%         possibilities:
+%%
+%%         a)     \begin{eqnarray}
+%%                ... \\
+%%                ... \label{ }\\
+%%                \subequations  ... \label{ }\\
+%%                ... \label{ }\\
+%%                ... \label{ }\\
+%%                \nosubequations  ... \\
+%%                ...
+%%                \end{eqnarray}
+%%
+%%         b)     \begin{eqnarray}
+%%                \subequations ... \eqlabel{ }\label{ }\\
+%%                ... \label{ }\\
+%%                \newsubequation ... \label{ }\\
+%%                ... \label{ }\\
+%%                ... \eqlabel{ }\label{ }
+%%                \end{eqnarray}
+%%                ...
+%%                \begin{equation}
+%%                \nosubequations  ...
+%%                \end{equation}
+%%
+%%
+%% MODS:
+%%
+\newcounter{oldequation}
+
+\def\subequations{\setcounter{oldequation}{\c@equation}%
+  \setcounter{equation}{1}%
+  \global\let\oldtheequation\theequation%
+  \@ifundefined{chapter}%
+       {\gdef\theequation{\theoldequation\alph{equation}}
+        \global\let\thewholequation\theoldequation
+        \gdef\@currentlabel{\theoldequation\alph{equation}}}
+       {\gdef\theequation{\theoldequation\alph{equation}}
+        \gdef\thewholequation{\theoldequation}
+        \gdef\@currentlabel{\theoldequation\alph{equation}}}
+  \global\let\@currenteqlabel\thewholequation}
+
+\def\nosubequations{\setcounter{equation}{\c@oldequation}%
+  \stepcounter{equation}
+  \global\let\theequation\oldtheequation
+  \global\let\@currentlabel\theequation}
+
+\def\newsubequation{\stepcounter{oldequation}
+    \setcounter{equation}{1}}
+
+\def\@currenteqlabel{}
+
+\def\eqlabel#1{\@bsphack\if@filesw {\let\thepage\relax
+   \xdef\@gtempa{\write\@auxout{\string
+      \newlabel{#1}{{\@currenteqlabel}{\thepage}}}}}\@gtempa
+   \if@nobreak \ifvmode\nobreak\fi\fi\fi\@esphack}

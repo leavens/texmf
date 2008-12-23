@@ -1,0 +1,148 @@
+From guttag@larch.lcs.mit.edu Wed Mar 10 11:29:37 1993
+Return-Path: <guttag@larch.lcs.mit.edu>
+Date: Tue, 9 Mar 93 09:56:13 EST
+From: guttag@larch.lcs.mit.edu (John Guttag)
+To: leavens@cs.iastate.edu
+Subject: Re:  larch.sty in SliTeX?
+
+Gary,
+
+I have some macros that I think work pretty well, but I use them in
+the context of regular LaTeX.
+
+John
+-----------------
+\documentstyle[fleqn,12pt,/u/guttag/tex/larch]{article}
+\font\latexsyms=lasy10
+\tolerance=1200
+\pretolerance=1000
+\hyphenpenalty=600
+
+\nosuperscripts
+\nosubscripts
+
+\renewcommand{\topfraction}{.95}
+\renewcommand{\bottomfraction}{.95}
+\renewcommand{\textfraction}{.05}
+\renewcommand{\floatpagefraction}{.70}
+\setcounter{topnumber}{4}
+\setcounter{bottomnumber}{3}
+\setcounter{totalnumber}{5}
+
+\newcommand{\f}[1]{{\tt #1}}
+\renewcommand{\fbox}[1]{\,\mbox{\f{#1}}\,}
+\renewcommand{\d}[1]{{\it #1\/}}
+\newcommand{\dbox}[1]{\mbox{\d{#1}}}
+
+\newcommand{\sfig}{\begin{figure}[tbp]}
+\newcommand{\efig}[2]{\caption{#1}\label{#2}\end{figure}}
+
+\newcommand{\verbi}[1]{\begin{verbatim} \input{#1}}
+\newcommand{\speci}[1]{\begin{spec} \LARGE\tt \input{#1}}
+\newcommand{\form}{\begin{spec} \LARGE\tt}
+
+\mathrename{\forall}{\mathforall}
+\mathrename{\exists}{\mathexists}
+\mathrename{\in}{\mathin}
+\mathrename{\ominus}{\mathominus}
+\mathrename{\subset}{\mathsubset}
+\mathrename{\subseteq}{\mathsubseteq}
+\mathrename{\neq}{\mathneq}
+\mathrename{\neg}{\mathneg}
+\mathrename{\circ}{\mathcirc}
+\mathrename{\sim}{\mathsim}
+
+\newcommand{\inv}{^{-1}}
+\mathrename{\inv}{\mathinv}
+\newcommand{\lpand}{$\wedge$}
+\newcommand{\lpor}{$\vee$}
+\newcommand{\lpnot}{$\not$}
+\newcommand{\lpimplies}{$Rightarrow$}
+\newcommand{\pre}{{\it pre}}
+\mathrename{\pre}{\mathpre}
+\newcommand{\post}{{\it post}}
+\mathrename{\post}{\mathpost}
+\newcommand{\reqP}{{\it reqP}}
+\mathrename{\reqP}{\mathreqP}
+\newcommand{\lpequiv}{\Leftrightarrow}
+\mathrename{\lpequiv}{\mathlequiv}
+\newcommand{\lequiv}{\Leftrightarrow} % For debugging chapter
+\mathrename{\lequiv}{\mathlequiv}     % For debugging chapter
+\newcommand{\I}{\cap}
+\mathrename{\I}{\mathI}
+\newcommand{\U}{\cup}
+\mathrename{\U}{\mathU}
+\newcommand{\modList}{{\it modList}}
+\mathrename{\modList}{\mathmodList}
+\newcommand{\ensP}{{\it ensP}}
+\mathrename{\ensP}{\mathensP}
+\newcommand{\terminates}{{\it terminates}}
+\mathrename{\terminates}{\mathterminates}
+\newcommand{\modP}{{\it modP}}
+\mathrename{\modP}{\mathmodP}
+\newcommand{\gd}{{\tt =>}}            % For LM3 guard punctuation
+\mathrename{\gd}{\mathgd}
+\newcommand{\ra}{{\tt ->}}            % For LCL rightarrow, points to
+\mathrename{\ra}{\mathra}
+\newcommand{\any}{^\sim}
+\mathrename{\any}{\mathany}
+
+\newcommand{\hatt}{$\,^{\wedge}$}
+\newcommand{\qb}{{\tt \char'134}}
+
+
+% Derived from Leslie Lamport's suggestions
+
+    \makeatletter
+    \def\partcaption{\@dblarg{\@mycaption\@captype}}
+    
+    \long\def\@mycaption#1[#2]#3{\par\begingroup
+        \@parboxrestore
+        \normalsize
+        \@makecaption{\csname fnum@#1\endcsname}{\ignorespaces #3}\par
+      \endgroup}
+    \makeatother
+
+  \newcommand{\multicaption}{}
+  \newcounter{multipart}
+
+  \newenvironment{multifigure}[1]%
+     {\renewcommand{\multicaption}{#1}
+       \setcounter{multipart}{1}
+       \begin{figure}[bp]}%
+     {\partcaption{\multicaption, part \themultipart}\end{figure}}
+
+  \newcommand{\breakfigure}{
+      \ifnum\themultipart=1
+         \caption{\multicaption, part \themultipart}\label{\multicaption}
+         \else\partcaption{\multicaption, part \themultipart}
+         \fi
+         \addtocounter{multipart}{1}
+       \end{figure}
+       \begin{figure}[tpb]}
+
+\textwidth=7.1in
+\textheight=24.0cm
+\hoffset=-.4in
+\voffset=-1in
+\parskip=.2in
+\leftmargini=12pt
+\topsep=0pt
+\partopsep=0pt
+\itemsep=0pt
+\marginparwidth=0.7in
+\setlength{\parindent}{0in}
+\pagestyle{empty}
+\newfont{\slf}{cmr10 scaled\magstep4}
+\newfont{\emss}{cmr10 scaled\magstep4}
+\newfont{\slbf}{cmb10 scaled\magstep4}
+\newfont{\slif}{cmti10 scaled\magstep4}
+\newcommand{\rw}{\slbf}
+\newcommand{\np}[1]{\newpage\begin{center}{\rw #1}\end{center}\vspace{.25in}}
+\newcommand{\ind}{\hspace{25pt}}
+\newcommand{\hd}{\slf}
+\newenvironment{items}
+    {\addtolength{\parindent}{30pt}}%
+    {\addtolength{\parindent}{-30pt}}
+
+

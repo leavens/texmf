@@ -1,0 +1,13 @@
+%% FILE:   hangpar.sty in SYS2.TEX.PUB.ISULATEX.STYLES
+%% AUTHOR:
+%% DATE:
+%% DESCR:  Option Installed 23 March 1989
+%%         Provides an environment where hanging indentation is used for
+%%         every paragraph. Useful for bibliographies where citations are
+%%         not being used.
+%% MODS:
+%%
+\def\hangpar{\par
+    \raggedright \parindent=0pt \parskip=\baselineskip
+    \everypar{\hangindent=24pt \hangafter=1}}
+\def\endhangpar{\par\vspace{\baselineskip}}

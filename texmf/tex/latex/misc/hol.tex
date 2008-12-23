@@ -1,0 +1,49 @@
+% $Id: hol.tex,v 1.2 2002/03/27 04:46:49 leavens Exp $
+%% Higher-Order logic a la Back and von Wright (HOL style),
+%% with calculational proofs etc.
+
+% requires calculation.tex
+
+% Change the style of brackets from calculation.tex
+\renewcommand{\LEFTREASONBRACKET}{\{}
+\renewcommand{\RIGHTREASONBRACKET}{\}}
+\renewcommand{\BYPHRASE}{\relax}
+
+\newcommand{\BIGDOT}{\mbox{$\bullet$}}
+
+\newcommand{\SUBPROOF}{\+\+ \kill \BIGDOT}
+\newcommand{\ASSUMPTIONSUBPROOF}[1]{\+\+ \kill \BIGDOT \>\>[#1] \\}
+\newcommand{\ENDSUBPROOF}{\-\- \kill}
+\newcommand{\CONCLUSIONANDLAST}[1]{\mbox{$\cdot$} \LASTFORMULA{#1}}
+\newcommand{\CONCLUSIONOFSUBPROOF}[1]{\CONCLUSIONANDLAST{#1} \\}
+
+\newcommand{\EQUIVREASON}[1]{\REASON{\equiv}{#1}}
+\newcommand{\TRUTH}{\mbox{T}}
+\newcommand{\FALSITY}{\mbox{F}}
+
+%% The HOLcalculation has no assumptions, while the HOLproof form does
+\newenvironment{HOLcalculation}{
+\samepage
+\begin{tabbing}
+mm \= n \= mm \= n \= mm \= n \= mm \= n \= mm \= n \= \kill
+\mbox{$\vdash$}
+}{
+\end{tabbing}
+}
+
+\newenvironment{HOLproof}[1]{
+\samepage
+\begin{tabbing}
+mm \= n \= mm \= n \= mm \= n \= mm \= n \= mm \= n \= \kill
+\mbox{$#1$} \\
+\mbox{$\vdash$}
+}{
+\end{tabbing}
+}
+
+%% Typesetting of program calculations
+
+\newcommand{\ASSIGN}{\mbox{ := }}
+\newcommand{\IS}{\ensuremath{\widehat{=}}}
+\newcommand{\VAR}{\mbox{var~}}
+\newcommand{\SET}{\mbox{set}}

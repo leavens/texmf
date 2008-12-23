@@ -1,0 +1,47 @@
+%% boxed-figure.tex
+%
+% formatting boxed displays
+
+%% some parameters
+\newcommand{\BFIGURESKIP}{-2ex}
+\newcommand{\BFIGURELINEHEIGHT}{0.2pt}
+
+
+
+\newcommand{\BFIGURELINE}{
+\begin{flushleft}\rule{\textwidth}{\HLINEHEIGHT}\end{flushleft}%
+}
+
+\newcommand{\BFIGUREHALFLINE}{%
+\begin{flushleft}\rule{\columnwidth}{\HLINEHEIGHT}\end{flushleft}%
+}
+
+\newcommand{\UNSPACEFORBOX}{\vspace{\BFIGURESKIP}}
+\newcommand{\HLINE}{\UNSPACEFORBOX\BFIGURELINE\UNSPACEFORBOX}
+\newcommand{\HALFLINE}{\UNSPACEFORBOX\BFIGUREHALFLINE\UNSPACEFORBOX}
+
+\newenvironment{BFIGURE}{
+\begin{figure}
+\HLINE
+}{
+\HLINE
+\end{figure}
+}
+
+\newenvironment{BHALFFIGURE}{
+\begin{figure}
+\HALFLINE
+}{
+\HALFLINE
+\end{figure}
+}
+
+\newenvironment{BFIGURE*}{
+\begin{figure*}
+\HLINE
+}{
+\HLINE
+\end{figure*}
+}
+
+%% end of boxed-figure.tex

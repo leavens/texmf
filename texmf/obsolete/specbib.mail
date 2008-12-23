@@ -1,0 +1,233 @@
+Path: dino!ux1.cso.uiuc.edu!julius.cs.uiuc.edu!wuarchive!uunet!ssbell!mcmi!unocss!mariam
+From: mariam@unocss.unomaha.edu (mariam)
+Newsgroups: comp.specification,comp.edu
+Subject: Summary of Respones to: Suggestions for Formal Spec Textbook
+Message-ID: <3084@unocss.unomaha.edu>
+Date: 7 Sep 90 00:22:17 GMT
+Organization: U. of Nebraska at Omaha
+Lines: 222
+Xref: dino comp.specification:136 comp.edu:1858
+
+The following is a summary of suggestions I received about
+good textbooks for teaching a Formal Spec course. Thanks
+to all of you... Also thanks go to Prof. Jones for his public
+reply to my request.
+
+Regards,
+----------------------------------
+
+
+You might consider a book that is about software engineering and is
+conceptually grounded in formal specifications (although most of the book
+uses informal specifications):
+
+    Abstraction and Specification in Program Development
+    Barbara Liskov and John Guttag
+    MIT Press/ McGraw-Hill
+    1986
+    
+
+
+
+I've been teaching a course on formal methods here for three years now.
+Initially it was to second-year students with the same sort of background that
+you mention.  I've now written up my course with additional maertial in:
+
+Antoni Diller
+Z: An Introduction to Formal Methods
+Chichester, Wiley, 1990
+ISBN 0 471 92489 X
+
+Even if you don't decide to adopt this as a set book, it contains a lot
+that I've learnt trying to teach formal methods to students who aren't
+that keen on it. The third edition of Ian Summerville's book on
+Software Engineering (which is recommended to our students) contains a
+very good informal account of the advantages of all kinds of formal
+specification.  Together with my book they are a really good
+introduction to Z.
+
+
+
+Have you looked at the text: An Introduction to Discrete Mathematics and
+Formal Systems Specification, by Darrell C. Ince?  I recommend it highly.
+It offers an introduction to requirements analysis and discrete math thats
+needed, then approaches the task of formally specifying systems with a 
+"what do I need to do now?" and "how do I do what I need to do?" kind of 
+look at the process.  The book is published by Oxford Univ Press, c in 1988.
+If you send me a fax telephone number I'll fax the table of contents to you.
+
+
+
+check the following for an intro to formal methods:
+J.Woodcock, M.Loomes, "Software Engineering Mathematics",
+Pitman, 1988.
+
+
+
+Well, this is a bit self-serving, but "Formal Methods of Program
+Verification and Specification" by Berg, Boebert (moi), Franta and
+Moher, though a bit out of date, is aimed at what you need.
+Prentice-Hall; I think you can still get it.
+
+
+
+The Bjorner and Jones book you mention is rather dated and also
+mostly oriented to language semantics.  From what you describe
+your needs as being, the latter would seem to be a disadvantage,
+and may (I hope) account for some of your feelings that it is
+too advanced.
+
+To some extent, an "easy" book on formal specification is unlikely:
+what formal specification does is to make visible just how hard
+software engineering is.  I would suggest that you consider the
+latest edition (2nd) of Jones' book "Systematic Software Development
+using VDM" (which is used as a 2nd course text here), and its
+companion volume "Case Studies in Systematic Software Development".
+It might be possible to drive a course from the case studies without
+getting too deeply into the semantics of the notation, if that would
+help.
+
+All the books are from Prentice-Hall's series in Computer Science.
+
+
+One of the best introductory books for students is:
+
+Woodcock J, Looms M, Software Engineering Mathematics, Pitman 1988
+
+
+
+Each year the Software Engineering Institute publishes a variety of materials
+in support of software engineering education.  Among these are course
+syllabi and reading lists.  I have included below the first draft of the
+reading list for a Software Specifications course.  If you are interested,
+I can send you the tech report (to be published in a few weeks) that
+contains recommendations for several such courses.
+
+
+Agerwala79
+T. Agerwala.  "Putting Petri Nets to Work."  Computer 12, 12 (Dec. 
+1979), 85-94. 
+
+Andrews83
+G. R. Andrews, and F. B. Schneider.  "Concepts and Notations for 
+Concurrent Programming."  ACM Computing Surveys 15, 1 (Mar. 1983), 
+3-43. 
+
+ANSI85
+ANSI Standard for Information Systems P Computer Graphics P 
+Graphical Kernel System (GKS) Functional Description.  Tech. Rep. 
+ANSI X3.124-1985, American National Standards Institute, 1985. 
+
+Auernheimer84
+B. Auernheimer, and R. A. Kemmerer.  ASLAN User's Manual.  
+Department of Computer Science, University of California, Santa 
+Barbara, 1984. 
+
+Cohen86
+B. Cohen, W. T. Harwood, and M. I. Jackson.  The Specification of 
+Complex Systems.  Addison-Wesley, 1986.  This book is now out of 
+print.
+
+Delisle89
+N. Delisle, and D. Garlan.  "Formally Specifying Electronic 
+Instruments."  Fifth International Workshop on Specification and 
+Design.  IEEE Computer Society, May 1989.  Also published as ACM 
+Software Engineering Notes 14 (3).
+
+Duce88
+D. A. Duce, E. V. C. Fielding, and L. S. Marshall.  "Formal 
+Specification of a Small Example Based on GKS."  ACM Transactions 
+on Graphics 7, 7 (July 1988), 180-197. 
+
+Gehani86
+N. Gehani, and A. McGettrick.  Software Specification Techniques.  
+Addison-Wesley, 1986. 
+
+Guttag85
+John V. Guttag, James J. Horning, and Jeanette M. Wing.  "The 
+Larch Family of Specification Languages."  IEEE Software 2, 5 
+(Sept. 1985), 24-36. 
+
+Harel87
+D. Harel.  "Statecharts:  A Visual Formalism for Complex Systems."  
+Science of Computer Programming 8 (1987), 231-274.  Need to 
+confirm that this is a journal paper.
+
+Harel88
+D. Harel, H. Lachover, A Naamad, A. Pnueli, M. Politi, R. Sherman, 
+and A. Shtul-Trauring.  "Statemate:  A Working Environment for the 
+Development of Complex Reactive Systems."  10th International 
+Conference on Software Engineering.  IEEE, 1988, 396-406. 
+
+Hayes85
+I. J. Hayes.  "Applying Formal Specification to Software 
+Develoment in Industry."  IEEE Trans. Software Engineering SE-11, 
+2 (Feb. 1985), 169-178. 
+
+Hoare78
+C. A. R. Hoare.  "Communicating Sequential Processes."  Comm. ACM 
+21, 8 (Aug. 1978), 666-677. 
+Horning73
+J. J. Horning, and B. Randel.  "Process Structuring."  ACM 
+Computing Surveys 5, 1 (Mar. 1973), 5-30. 
+
+IEEE84
+IEEE Guide to Software Requirements Specifications.  Tech. Rep. 
+Std. 830-1984, IEEE, 1984. 
+
+Jones89
+Peggy Jones.  DASC Requirements Document.  In Software Maintenance 
+Exercises for a Software Engineering Project Course, CMU/SEI-89-
+EM-1, Software Engineering Institute, Carnegie Mellon University, 
+Pittsburgh, Pa., Feb. 1989. 
+
+Kemmerer85
+R. A. Kemmerer.  "Testing Formal Specifications to Detect Design 
+Errors."  IEEE Trans. Software Engineering SE-11, 1 (Jan. 1985), 
+32-43. 
+
+Parnas72
+David L. Parnas.  "A Technique for Software Module Specification 
+with Examples."  Comm. ACM 15, 5 (May 1972), 330-336.  Also in 
+Software Specification Techniques, p. 75-88.
+
+Parnas86
+David L. Parnas, and Paul C. Clements.  "A Rational Design 
+Process:  How and Why to Fake It."  IEEE Trans. Software 
+Engineering SE-12, 2 (Feb. 1986), 251-257. 
+
+Peterson77
+J. L. Peterson.  "Petri Nets."  ACM Computing Surveys 9, 3 (Sept. 
+1977), 223-252. 
+
+Ruggles88
+C. Ruggles.  "Towards a Formal Definition of GKS and Other 
+Graphics Standards."  VDM '88 P The Way Ahead, L. Marshall; R 
+Bloomfield; R. Jones, eds.  Springer-Verlag, 1988, 64-73. 
+
+Spivey89
+J. M. Spivey.  "An Introduction to Z and Formal Specifications."  
+Software Engineering Journal 4, 1 (Jan. 1989), 40-50. 
+
+Woodcock88
+J. C. P. Woodcock, and B. Dickinson.  "Using VDM with Rely and 
+Guarantee-Conditions."  VDM '88 P The Way Ahead, L. Marshall; R 
+Bloomfield; R. Jones, eds.  Springer-Verlag, 1988, 449-455. 
+
+Zave82
+Pamela Zave.  "An Operational Approach to Requirements 
+Specification for Embedded Systems."  IEEE Trans. Software 
+Engineering SE-8, 3 (May 1982), 250-269.  Also in Software 
+Specification Techniques, p. 131-169.
+
+Zave85
+Pamela Zave.  "A Distributed Alternative to Finite-State-Machine 
+Specifications."  ACM Trans. Prog. Lang. and Systems 7, 1 (Jan. 
+1985), 10-36. 
+
+
+
+And of course Prof. Jones' new book:
+
+Systematic Software Development using VDM, 2nd Ed., Prentice-Hall
+

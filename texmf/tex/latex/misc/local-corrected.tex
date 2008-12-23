@@ -1,0 +1,457 @@
+% local.tex -- released 27 October 1988
+% Copyright(c) 1988 by Leslie Lamport
+%   for LaTeX version 2.09
+%
+% This file is used to produce a Local Guide for LaTeX users containing
+% information specific to a site plus errors and omissions from the LaTeX
+% manual (published by Addison-Wesley).
+%
+% The installer of LaTeX at a site is responsible for customizing this
+% document and providing copies for users.  He will have to read the
+% text of this file CAREFULLY to see what must be added, removed, and
+% changed.  
+
+% The \contact command is defined to generate the name of the person to
+% whom questions should be sent.  This should be someone at the site.
+% Most users' questions are easily answered by anyone slightly familiar
+% with LaTeX or TeX. Don't bother anyone at another site with questions
+% that can be answered locally.
+
+\documentclass{article}
+
+\newcommand{\contact}{the Systems Support Group}
+
+\newcommand{\BibTeX}{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\newcommand{\SLiTeX}{{\rm S\kern-.06em{\sc l\kern-.035emi}\kern-.06em T\kern
+   -.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+\newcommand\bs{\char '134 }   % A backslash character for \tt font
+\newcommand{\lb}{\char '173 } % A left brace character for \tt font
+\newcommand{\rb}{\char '175 } % A right brace character for \tt font
+
+\title{Using \LaTeX\ at ISU CS}
+
+\author{Gary T. Leavens \& Tracy J. Di Marco}
+
+\date{14 February 1996\\              % Keep this date current
+For \LaTeX\ 2e} 
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\LaTeX\ runs on a variety of computers at many different sites.  This
+document tells you how to use \LaTeX\ on the CS department
+computers, such as {\tt flash}, {\tt stimpy} and {\tt ren} at ISU.
+(A few notes about running \LaTeX\ on Project Vincent are included,
+but we cannot be responsible for documenting their system.)
+It is not about \LaTeX\ itself, which is described by
+the manual---{\em \LaTeX: A Document Preparation System\/} (second edition),
+published by Addison-Wesley, available at fine book stores everywhere.
+
+If you have a question that you can't answer by reading the manual and
+this document, ask \contact.  They should also be informed of any
+possible \LaTeX\ bugs or undocumented anomalies.
+
+
+\section{Getting Started}
+
+\subsection{Running a Sample File} \label{sec:sample}
+
+Before preparing your own documents, you may want to get acquainted
+with \LaTeX\ by running it on a sample input file.  First make your own
+copy of the file \mbox{\tt sample2e.tex} by typing the following
+command:
+\begin{verbatim}
+     cp /usr/local/lib/tex/inputs/sample2e.tex .
+\end{verbatim}
+(You must type the space followed by the period at the end.  This
+and all other HP-UX commands are ended by typing {\em return}.)
+A copy of the file \mbox{\tt sample.tex} is now in your current
+directory; you can edit it just like any other file.  If you destroy or
+mess up your copy, typing the above command again gets you a fresh
+one.
+
+(On Project Vincent, execute the following commands instead.)
+\begin{verbatim}
+    add tex
+    cp /home/tex/lib/tex/macros/sample2e.tex .
+\end{verbatim}
+
+Next, run \LaTeX\ on the file \mbox{\tt sample2e.tex} by typing:
+\begin{verbatim}
+     latex sample2e
+\end{verbatim}
+When \LaTeX\ has finished, it will have produced the file \mbox{\tt
+sample2e.dvi} in your directory.  On HP-UX you can print this file
+by typing the commands
+\begin{verbatim}
+     dvips sample2e.dvi
+\end{verbatim}
+The output will be produced on the printer lw2, in the second floor
+terminal room.
+
+To print on a CS department printer from Project Vincent, type
+\begin{verbatim}
+     add cs
+     dvips sample2e.dvi | cslpr -Plw2
+\end{verbatim}
+See the manual page for {\tt cslpr} for other options.
+
+After your output has been printed, you can delete \mbox{\tt
+sample.dvi} by typing
+\begin{verbatim}
+     rm sample2e.dvi 
+\end{verbatim}
+
+\subsection{Preparing and Running \LaTeX\ on Your Own Files}
+
+You must use a text editor to prepare an input file for \LaTeX.
+The easiest way to start learning about \LaTeX\ is by 
+examining the file \mbox{\tt small2e.tex} with your text editor.
+Your can get a copy by typing
+\begin{verbatim}
+     cp /usr/local/lib/tex/inputs/small2e.tex .
+\end{verbatim}
+
+After you have prepared your file, whose name should have the extension
+{\tt tex}, you must run it through \LaTeX\ and print the output.
+Follow the instructions in Section~\ref{sec:sample}, except substitute
+the first name of your file for ``\mbox{\tt sample2e}''.  Remember to
+save disk space by deleting the {\tt dvi} file after printing the
+output.
+
+
+%List the text editors, available, and any special features they have
+%for producing \LaTeX\ input.  Explain how the various text editors
+%could cause bad characters to appear in the input file that would
+%generate the
+%\begin{verbatim}
+%! Text line contains an invalid character.
+%\end{verbatim}
+%error.
+
+The {\tt emacs} editor has special support for \LaTeX.
+Put the characters
+\begin{verbatim}
+    % -*- LaTeX -*-
+\end{verbatim}
+in one of the first lines of your file to get {\tt emacs} to recognize your
+file as a \LaTeX\ input file.
+In {\tt emacs} you can also type {\tt M-x latex-mode}
+(that's emacs jargon for {\em Escape\/} then ``x'' followed by the characters
+``latex-mode'')
+to turn on \LaTeX\ support.
+In latex-mode,
+the command {\tt M-x validate-TeX-buffer} performs a sanity check
+on a \LaTeX\ buffer.
+
+If you want to stop \LaTeX\ in the middle of its execution, perhaps
+because it is printing a seemingly unending string of uninformative
+error messages, type {\em Control-C\/} (press $C$ while holding down
+the key labeled {\em CTRL\/}).  This will make \LaTeX\ stop as if it
+had encountered an ordinary error, and you can return to HP-UX command
+level by typing {\tt X}, as described in the manual.  If typing {\em
+Control-C\/} doesn't work, typing {\em Control-Z\/} will get you
+immediately to HP-UX command level, but this will leave a stopped job
+hanging around.  A stopped job won't hurt anything and will disappear
+when you log out, but it forces you to type two successive \mbox{\tt
+logout} commands to log out.
+
+To use the {\em spell\/} program for finding spelling errors in a
+\LaTeX\ input file named \mbox{\tt myfile.tex}, type the following
+command:
+%%% no detex or delatex here?
+\begin{verbatim}
+     delatex myfile.tex | spell
+\end{verbatim}
+This will type a list of possibly misspelled words on your terminal.
+If you'd rather have the output written to a file named \mbox{\tt
+foo.bar}, type
+\begin{verbatim}
+     delatex myfile.tex | spell >foo.bar
+\end{verbatim}
+
+\section{Carrying On}
+
+\subsection{\LaTeX\ on HP-UX} \label{sec:op-system}
+
+The only special problems in using \LaTeX\ caused by the HP-UX
+operating system involve the way HP-UX handles files.  The first
+problem arises because, when a program starts to write a file, HP-UX
+destroys the previous version of that file.  Thus, if an error forces
+you to stop \LaTeX\ prematurely (by typing {\em Control-C\/} or {\em
+Control-Z\/}), then the files that \LaTeX\ was writing are incomplete,
+and the previous complete versions have been destroyed.  You probably
+don't care about the output on the {\tt dvi} file, but, if you are
+making a table of contents or using cross-referencing commands, then
+\LaTeX\ also writes one or more {\em auxiliary files\/} that it reads
+the next time it processes the same input file.  If the auxiliary files
+are incomplete because \LaTeX\ was stopped before reaching the end of
+its input file, then the table of contents and cross-references will be
+incorrect the next time \LaTeX\ is run on the same input file.  You
+will have to run \LaTeX\ a second time to get them right.  If you want
+to avoid having to run \LaTeX\ twice after making an error---for
+example, if your input is very long---then you should save copies of
+these auxiliary files before running \LaTeX. An input file named
+\mbox{\tt myfile.tex} and all the auxiliary files produced by
+\LaTeX\ from it are included in the HP-UX file specifier \mbox{\tt myfile.*}.
+Use the HP-UX {\tt cp} command to save copies of these files.
+
+The second problem in using \LaTeX\ on HP-UX involves the files that
+\LaTeX\ reads.  The file whose name you type with HP-UX's {\tt latex}
+command is called the {\em root file}.  In addition to reading the root
+file, \LaTeX\ also reads the files specified by \hbox{\verb|\input|}
+and \hbox{\verb|\include|} commands.  With the HP-UX directory system,
+\LaTeX\ must know not only the names of these file but also on what
+directories they are.  It will have no problem finding the correct
+files if you follow two simple rules:
+\begin{enumerate}
+ \item Run \LaTeX\ from the directory containing the root file.
+ \item Keep all files specified by \hbox{\verb|\input|} and 
+      \hbox{\verb|\include|} commands in the same directory as the root
+       file.
+\end{enumerate}
+If you follow these rules, you never have to type an HP-UX path
+specifier when using \LaTeX.
+
+You should never break the first rule, otherwise \LaTeX\ will have
+trouble finding auxiliary files.  (To run \LaTeX\ on someone else's
+file, copy the file to your directory.) If you break the second
+rule, specifying a file from another directory in an
+\hbox{\verb|\input|} or \hbox{\verb|\include|} command, you can use a
+complete path name.  For example, to include the file
+\mbox{\tt hisfile.tex} from Jones' directory \hbox{\verb|/foo/bar|},
+you can type
+\begin{verbatim}
+     \include{/udir/jones/foo/bar/hisfile}
+\end{verbatim}
+A \verb|~| character may not appear in the argument of an
+\hbox{\verb|\input|} or \hbox{\verb|\include|} command, so you {\em
+can't\/} use a file name such as \hbox{\verb|~jones/foo/bar/hisfile|}.
+
+For people who don't like to obey rules, 
+here is exactly how \LaTeX\ finds its
+files.  The root file is found by HP-UX according to its usual rules.
+\LaTeX's auxiliary files are read and written in the directory from
+which it is run.  All file names specified in the \LaTeX\ input,
+including the names of document-style ({\tt sty}) files specified by
+the \hbox{\verb|\documentstyle|} command, are interpreted relative to
+the directory from which \LaTeX\ is run.  If \LaTeX\ does not find a
+file starting in this directory, it looks in the system directory
+\begin{verbatim}
+     /usr/local/lib/tex/inputs
+\end{verbatim}
+(On Project Vincent it is \hbox{\verb|/home/tex/lib/tex/inputs|}.
+You can change the directories in
+which \LaTeX\ looks for its input files by setting the environment
+variable \mbox{\tt TEXINPUTS}.  Putting the command
+\begin{verbatim}
+     set ULLT=/usr/local/lib/tex
+     setenv STDTEX ${ULLT}/inputs:/home/tex/lib/tex/macros
+     setenv TEXINPUTS .:~/include:$STDTEX:/usr/unsup/tex
+\end{verbatim}
+in your \mbox{\tt .login} file causes \LaTeX\ to look for files first
+in the current directory, then your {\tt include} directory,
+then in the standard system directories (for HP-UX and Vincent),
+and
+then in the unsupported tex directory {\tt /usr/unsup/tex}.
+
+You might want to do this if
+you have your own personal document-style files in your
+{\tt include} directory. 
+
+\subsection{Document Styles, Classes and Packages}
+
+There are several document styles, classes, and packages
+at ISU that are not described in the manual (or in {\em The \LaTeX\ Companion}: 
+\begin{itemize}
+\item the \mbox{\tt isuabbr} style option for
+locally defined abbreviations.
+
+\item The \mbox{\tt isuletter} style for making letters.
+
+\item The {\tt isudoc} style option that is a local variation of the
+standard report style.
+
+\item The {\tt isuthes} style for theses.
+\end{itemize} 
+
+There are also some style, class, and package
+files in {\tt /usr/unsup/tex}.
+
+\subsubsection{Letters} \label{sec:letters}
+
+The \mbox{\tt letter} document style, described in the manual, should
+be used for generating personal letters.  For generating letters with the
+ISU letterhead, use the \mbox{\tt isuletter} style.
+
+There have been problems in the past printing this;
+you may have to adjust the margins.
+See the manual page for {\tt dvips}.
+
+\subsubsection{The {\tt isuthes} Style Option}
+
+The easy way to find out about this is to ask your friends.
+The brave can look at the file {\tt isuthes.doc} in the appropriate
+directory (from the {\tt TEXINPUTS} variable defined above).
+
+
+\subsection{Where the Files Are}
+
+% must explain where the following files are:
+%   small.tex, sample.tex, *.sty, *.doc, lablst.tex, idx.tex
+%
+
+All \LaTeX\ files mentioned in the manual, including the {\tt sty} and
+{\tt doc} files, are in the directory \mbox{\tt /usr/local/lib/tex/inputs}
+on HP-UX.  They are in the  \mbox{\tt /home/tex/lib/tex/macros} directory
+on Project Vincent.
+
+
+\subsection{Differences from the Manual}
+
+All \LaTeX\ features described in the manual are provided by 
+the implementation at ISU.
+
+%Explain here any characters that can appear in input files other than
+%the ones listed in Section 2.1.
+
+%Tell if the \mbox{\tt log} file has an extension other than
+%\mbox{\tt .log}.  Note: on TOPS-20, its extension is \mbox{\tt .lst}.
+
+%Describe the sizes of disks and circles the are available.
+
+\subsection{Using \BibTeX}
+
+\BibTeX\ is a program for compiling a reference list for a document from
+a bibliographic database.  It is run by typing
+\begin{verbatim}
+     bibtex myfile
+\end{verbatim}
+where \mbox{\tt myfile.tex} is the name of your \LaTeX\ input file.
+This reads the file \mbox{\tt myfile.aux}, which was generated when you
+ran \LaTeX\ on \mbox{\tt myfile.tex}, and produces the file \mbox{\tt
+myfile.bbl}.  \BibTeX\ should be run from the directory containing
+\mbox{\tt myfile.tex} (which should be the same directory from which
+\LaTeX\ was run on that file).
+
+If the {\tt bib} file is not in the same directory as the \LaTeX\ input
+file---for example, if you're using someone else's {\tt bib}
+file---then you must include a path as part of the file name specified
+by the \hbox{\verb|\bibliography|} command.  A \verb|~| cannot appear
+in the argument of a \hbox{\verb|\bibliography|} command, so you should
+use a complete path name.  For example, the \LaTeX\ command
+\begin{verbatim}
+     \bibliography{/udir/jones/bibfiles/gnus}
+\end{verbatim}
+specifies the file \mbox{\tt gnus.bib} kept by Jones in his 
+\mbox{\tt /bibfiles} directory.
+
+
+There is now no formal provision for sharing bibliographic database
+information, nor are there programs to assist in making your own {\tt
+bib} files.
+%  Suggestions for forming one or more common {\tt bib} files are welcome.
+
+In addition to the bibliography styles described in the manual, there
+is a {\tt ieeetr} style that formats entries in the style of the IEEE
+transactions.
+There are several additional styles in {\tt /usr/unsup/tex}.
+
+In addition to the usual three-letter abbreviations for the months, the
+following abbreviations are defined by the bibliography styles:
+\begin{list}{}{\labelwidth 0pt \itemindent-.5\leftmargin
+       \itemsep=2pt plus 1pt
+       \let\makelabel\descriptionlabel}\it
+\item[\tt acmcs] ACM Computing Surveys
+\item[\tt acta] Acta Informatica
+\item[\tt cacm] Communications of the ACM
+\item[\tt ibmjrd] IBM Journal of Research and Development
+\item[\tt ibmsj] IBM Systems Journal
+\item[\tt ieeese] IEEE Transactions on Software Engineering
+\item[\tt ieeetc] IEEE Transactions on Computers
+\item[\tt ieeetcad]
+ IEEE Transactions on Computer-Aided Design of Integrated Circuits
+\item[\tt ipl] Information Processing Letters
+\item[\tt jacm] Journal of the ACM
+\item[\tt jcss] Journal of Computer and System Sciences
+\item[\tt scp] Science of Computer Programming
+\item[\tt sicomp] SIAM Journal on Computing
+\item[\tt tocs] ACM Transactions on Computer Systems
+\item[\tt tods] ACM Transactions on Database Systems
+\item[\tt tog] ACM Transactions on Graphics
+\item[\tt toms] ACM Transactions on Mathematical Software
+\item[\tt toois] ACM Transactions on Office Information Systems
+\item[\tt toplas] ACM Transactions on Programming Languages and Systems
+\item[\tt tcs] Theoretical Computer Science
+\end{list}
+
+% Note: All styles should share the same set of abbreviations.
+
+\subsection{Using {\em makeindex\/}} \label{sec:makeindex}
+
+The {\em makeindex\/} program helps in making an index.  It is 
+described in the manual page.
+
+\subsection{Special Versions}
+
+No foreign-language or other special versions of \LaTeX\
+are currently available at ISU in the CS department.
+
+
+\subsection{Including PostScript graphics}
+
+On HP-UX,
+PostScript graphics can be including in \LaTeX\ documents using the 
+{\tt psfig} macro.
+(To see how to do this on Project Vincent, use the {\tt olc}
+command, and select {\tt answers}, then select {\tt TeX and LaTeX answers},
+and then the appropriate menu item.)
+The {\tt psfig} macro assumes that the PostScript file to be included has a
+\verb|%%BoundingBox:| comment at the beginning of the file.
+(Most PostScript output generated by modern software will contain this 
+comment.)
+Insert the line
+\begin{verbatim}
+     \input{psfig}
+\end{verbatim}
+at the beginning of your document.
+Then, if you wish to include the file {\tt bogosity.ps}
+in your document, you would
+insert the following line in your \LaTeX\ document:
+\begin{verbatim}
+     \centerline{\psfig{file=bogosity.ps}}
+\end{verbatim}
+This includes the PostScript graphic described in the file
+{\tt bogosity.ps} at the current point in the file, centering
+it with regard to the left and right margins.
+
+Other options to the \verb|\psfig| macro are {\tt height}, 
+{\tt width} and {\tt scale}.
+The {\tt height} and {\tt width} options specify the height
+and width of the included graphic, and take as their arguments
+any valid \LaTeX\ unit.
+Thus, the line 
+\begin{verbatim}
+     \centerline{\psfig{file=bogosity.ps,width=2in,height=1in}}
+\end{verbatim}
+will cause {\tt psfig} to scale the graphic disproportionately,
+so that it is twice as wide as it is tall.
+The {\tt scale} option scales both the height and width of the 
+included figure by the specified ratio.  
+Thus, if you wanted to draw an included graphic at 80\% of 
+its original size, the line
+\begin{verbatim}
+     \centerline{\psfig{file=bogosity.ps,scale=80}}
+\end{verbatim}
+will do the trick.
+
+\end{document}

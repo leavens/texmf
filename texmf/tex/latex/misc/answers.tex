@@ -1,0 +1,41 @@
+\newcommand{\IGNOREANSWER}[1]{\vfill}
+\newcommand{\PRINTANSWER}{\par Answer:~~}
+\newcommand{\IGNOREANSWERTEXT}[1]{\relax}
+\newcommand{\PRINTANSWERTEXT}{\relax}
+
+\newcommand{\IGNOREDIRECTIONS}[1]{\relax}
+\newcommand{\PRINTDIRECTIONS}{\relax}
+\newcommand{\ANSWERRULE}[1]{\rule{#1}{0.1mm}}
+
+% the following asks whether you want answers when you run latex...
+\typein[\USEANSWERS]{Do you want answers included (y/n)?}
+\if n\USEANSWERS \newcommand{\ANSWER}[1]{\IGNOREANSWER{#1}}
+    \newcommand{\ANSWERTEXT}[1]{\IGNOREANSWERTEXT{#1}}
+    \newcommand{\DIRECTIONS}{\PRINTDIRECTIONS}
+    \newcommand{\BLANKFORANSWER}[2]{\ANSWERRULE{#1}}
+\else \newcommand{\ANSWER}{\PRINTANSWER}
+    \newcommand{\ANSWERTEXT}{\PRINTANSWERTEXT}
+    \newcommand{\DIRECTIONS}[1]{\IGNOREDIRECTIONS{#1}}
+    \newcommand{\BLANKFORANSWER}[2]{\makebox[#1]{{\it #2\/}}}
+\fi
+
+% the following commands use the verbfile style
+% so there must be \documentstyle[verbfile]{article} at the top of the latex
+% file.
+
+
+\newcommand{\VERBFILE}[1]{
+ \begin{list}{}{\listparindent 0.0in \leftmargin 0.0in \labelwidth 0.0in
+                \labelsep 0.0in \itemindent -2.5em}
+ \item
+ \verbfile{#1}
+ \end{list}
+}
+\newcommand{\INPUTCODE}[1]{
+ The file {\tt #1} contains the following code.
+ \VERBFILE{#1}
+}
+\newcommand{\INPUTTRANSCRIPT}[1]{
+ Testing of the above code is shown in the following transcript.
+ \VERBFILE{#1}
+}

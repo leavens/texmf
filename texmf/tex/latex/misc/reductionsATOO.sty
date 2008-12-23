@@ -1,0 +1,109 @@
+\ProvidesPackage{reductionsATOO}[2003/10/21 1.2 Curtis Clifton]
+
+%%% This package provide environments and commands for writing
+%%% reductions in the style of Abadi and Cardelli's, \emph{A Theory of
+%%% Objects}.  The package is by Curtis Clifton, cclifton@acm.org.  My
+%%% apologies for utterly failing to document this.  Hopefully the
+%%% command, environment, and length names are self-explanatory.
+
+%%% -------------------------------------------------------------
+%%% Sample client code.  Perhaps you want to copy this out to a
+%%% document, uncomment it, and run LaTeX on it.
+% 
+% \documentclass{article}
+% \usepackage{reductionsATOO}
+% 
+% \begin{document}
+% 
+% \begin{reduction}
+%   \begin{premises}
+%     \begin{premises}
+%       \begin{premises}
+% 	\judgment{Judg_1 Start}
+%       \hypcontinued{Judg_1 Rest}
+%       \end{premises}
+%       \conclusion[(rule 2)]{Judg_2}
+%     \end{premises}
+%     \conclusion[(rule 3)]{Judg_3}
+%     \begin{premises}
+%       \judgment[reason]{Judg_4}
+%     \end{premises}
+%     \conclusion[(rule 5)]{Judg_5 Start}
+%     \hypcontinued{Judg_5 Rest}
+%   \end{premises}
+%   \conclusion{Judg_6}
+% \end{reduction}
+% 
+% \end{document}
+%
+%%% -------------------------------------------------------------
+
+\newcommand*{\reductionRuleCommand}[1]{\textsc{#1}}
+
+\newlength{\reductionLineSep}
+\setlength{\reductionLineSep} {0.25em}
+\newlength{\reductionContentWidth}
+\newcommand*{\reductionArrowMiddle}{%
+  \hspace{\reductionLineSep}\vline\hspace{\reductionLineSep}}
+\newlength{\reductionArrowWidth}
+\settowidth{\reductionArrowWidth}{\reductionArrowMiddle}
+
+\newsavebox{\reductionArrowTop}
+\sbox{\reductionArrowTop}{
+  \setlength{\unitlength}{1em}\begin{picture}(1,1)
+    \put(0.69,0){\oval(1.5,1)[tl]}
+  \end{picture}
+}
+\newlength{\reductionArrowTopWidth}
+\settowidth{\reductionArrowTopWidth}{\usebox{\reductionArrowTop}}
+
+\newsavebox{\reductionArrowBottom}
+\sbox{\reductionArrowBottom}{
+  \setlength{\unitlength}{1em}\begin{picture}(1,1)
+    \put(-0.07,1){\vector(0,-1){1}}
+  \end{picture}
+}
+\newlength{\reductionArrowBottomWidth}
+\settowidth{\reductionArrowBottomWidth}{\usebox{\reductionArrowBottom}}
+
+\newenvironment{reduction}{%
+  \setlength{\reductionContentWidth}{\linewidth}
+  \addtolength{\reductionContentWidth}{-\leftmargin}
+  \addtolength{\reductionContentWidth}{-\rightmargin}
+  \begin{list}{}{
+      	\setlength{\itemsep}{0pt}
+    }
+}{%
+  \end{list}
+}
+\newcommand*{\reductionTermBody}[2]{% rule name or reason, judgment
+  ${#2}$ %
+  \ifthenelse {\equal{#1}{}} %
+              {}             % 
+              {\hfill {\reductionRuleCommand{#1}}}% or \dotfill
+}
+\newcommand*{\judgment}[2][]{\item \reductionTermBody{#1}{#2}}% name, judgment
+\newcommand*{\conclusion}[2][]{\item {% name, judgment
+    \raisebox{0.8em}[0pt][0pt]{\usebox{\reductionArrowBottom}}%
+    \hspace{-\reductionArrowBottomWidth}%
+  }{\reductionTermBody{#1}{#2}}}
+\newcommand*{\hypcontinued}[1]{\judgment{\quad\quad{#1}}}
+
+\newenvironment{premises}{%
+\item {%
+  \raisebox{0.7em}[0pt][0pt]{\usebox{\reductionArrowTop}}%
+  \hspace{-\reductionArrowTopWidth}%
+}{%
+  \reductionArrowMiddle%
+}%
+  \addtolength{\reductionContentWidth}{-2\reductionLineSep}
+  \addtolength{\reductionContentWidth}{-\reductionArrowWidth}
+  \begin{minipage}[t]{\reductionContentWidth}
+    \begin{list}{}{
+	\setlength{\leftmargin}{0pt}
+	\setlength{\itemsep}{0pt}
+	\setlength{\rightmargin}{0pt}
+      }
+}{%
+  \end{list} \end{minipage}
+}

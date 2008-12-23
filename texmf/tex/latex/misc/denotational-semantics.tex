@@ -1,0 +1,118 @@
+% requires math-notations
+
+% Typography as in Schmidt's book: Denotational Semantics.
+% Many of the following defs must be used in a math environment; all can be.
+
+% natural numbers: \NATURALS
+\renewcommand{\NATURALS}{{\it Nat}}
+\newcommand{\ZERO}{{\it zero}}
+\newcommand{\ONE}{{\it one}}
+\newcommand{\TWO}{{\it two}}
+\newcommand{\THREE}{{\it three}}
+\newcommand{\FOUR}{{\it four}}
+\newcommand{\PLUS}{{\it plus}}
+\newcommand{\MINUS}{{\it minus}}
+\newcommand{\TIMES}{{\it times}}
+\newcommand{\EQUALNATURALS}{{\it equals}}
+
+% integers: \INTEGER
+\newcommand{\INTEGER}{{\it Int}}
+
+% Booleans: \BOOLEAN
+\newcommand{\BOOLEAN}{{\it Boolean}}
+\newcommand{\TRUE}{{\it true}}
+\newcommand{\FALSE}{{\it false}}
+\newcommand{\NOT}{{\it not}}
+\newcommand{\OR}{{\it or}}
+\newcommand{\AND}{{\it and}}
+\newcommand{\IFEXP}[3]{#1 \rightarrow #2 [\!] #3 }
+\newcommand{\IFHEAD}[1]{#1 \rightarrow}
+\newcommand{\IFELSE}{[\!]~}
+
+% truth values
+\newcommand{\TR}{{\it Tr}}
+\newcommand{\TT}{{\it tt}}
+\newcommand{\FF}{{\it ff}}
+
+% Strings: \STRING
+\newcommand{\STRING}{{\it String}}
+\newcommand{\EMPTYSTRING}{{\it empty}}
+\newcommand{\ERRORSTRING}{{\it error}}
+\newcommand{\CONCATSTRINGS}{{\it concat}}
+\newcommand{\LENGTHOFSTRING}{{\it length}}
+\newcommand{\SUBSTRING}{{\it substr}}		% 3 arguments
+
+% other primitive domains
+\newcommand{\UNIT}{{\it Unit}}
+\newcommand{\ERROR}{{\it Error}}
+
+% other standard semantics domain names
+\newcommand{\ANSWERS}{{\it Answer}}
+\newcommand{\CMDCONT}{{\it Cmdcont}}
+\newcommand{\DENOTABLE}{\mbox{\it Denotable-value}}
+\newcommand{\ENVIRONMENT}{{\it Environment}}
+\newcommand{\EXPRESSIBLE}{\mbox{\it Expressible-value}}
+\newcommand{\EXPCONT}{{\it Expcont}}
+\newcommand{\LOCATION}{{\it Location}}
+\newcommand{\PROCEDURE}{{\it Procedure}}
+\newcommand{\REFERENCE}{{\it Reference}}
+\newcommand{\RESULT}{{\it Result}}
+\newcommand{\STORE}{{\it Store}}
+\newcommand{\STORABLE}{\mbox{\it Storable-value}}
+\newcommand{\UNBOUND}{{\it Unbound}}
+\newcommand{\VALUE}{{\it Value}}
+
+% disjoint union: $A + B$
+\newcommand{\INJECTION}[1]{{\rm in}\!{#1}}
+\newcommand{\ISTEST}[1]{{\rm is}\!{#1}}
+\newcommand{\CASEHEAD}[1]{\mbox{{\bf cases} ${#1}$ {\bf of} }}
+\newcommand{\CASE}[2]{{#1} \:\rightarrow\: {#2}}
+\newcommand{\CASESEP}{[\!]}
+\newcommand{\CASEELSE}{\mbox{{\bf else} }}
+\newcommand{\CASEEND}{{\bf end}}
+
+% product space: $A \times B$
+\newcommand{\PAIR}[2]{({#1},{#2})}
+\newcommand{\FST}{{\it fst}}
+\newcommand{\SND}{{\it snd}}
+\newcommand{\ATINDEX}[2]{#1 \downarrow #2}
+% Note $\ZEROORMORE{A} = Unit + A + (A \times A) + (A \times A \times A) + ...$
+% Lists are $Unit + A + (A \times A) + (A \times (A \times A)) + ...$
+
+% list space: $\LIST{A}$
+\newcommand{\LIST}[1]{{\it List}(#1)}
+\newcommand{\LNIL}{{\it nil}}
+\newcommand{\LCONS}{{\it cons}}
+\newcommand{\LHEAD}{{\it hd}}
+\newcommand{\LTAIL}{{\it tl}}
+\newcommand{\LNULL}{{\it null}}
+
+% function space: $A \rightarrow B$
+\newcommand{\UPDATEFUN}[3]{[{#1} \mapsto {#2}]{#3}}
+
+% finite functions
+\newcommand{\FINITEARROW}{\stackrel{{\rm fin}}{\rightarrow}}
+
+% lifted domain: $\LIFT{A}$
+\newcommand{\LIFT}[1]{{#1}_{\bot}}
+\newcommand{\STRICTLAMBDA}[1]{\underline{\lambda}{#1}\:.\:}
+\newcommand{\LETHEAD}[2]{\mbox{{\bf let} }{#1} = {#2}\mbox{ {\bf in} }}
+
+% fixpoints
+\newcommand{\FIX}{{\it fix}}
+
+% common valuation functions
+\newcommand{\MEANING}[2]{{\cal #1}\synbracket{#2}}
+\newcommand{\DENEXPRESSION}[1]{\MEANING{E}{#1}}
+\newcommand{\DENCOMMAND}[1]{\MEANING{C}{#1}}
+\newcommand{\DENLITERAL}[1]{\MEANING{L}{#1}}
+\newcommand{\DENPROGRAM}[1]{\MEANING{P}{#1}}
+
+% an environment for typesetting
+\newenvironment{DENOTATIONAL}{%
+\samepage
+\begin{tabbing}
+mmm \= mmm \= mmm \= mmm \= mmm \= mmm \= mmm \= mmm \= \kill
+}{
+\end{tabbing}
+}

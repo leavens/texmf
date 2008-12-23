@@ -1,0 +1,80 @@
+%!
+%  ppfix.ps
+%
+%As it is, it converts A4 to letter, but by uncommenting appropriate
+%lines it can handle other conversions.
+%
+% Here is a quick hack to print documents created for one
+% paper size on another.  Note that if the sizes are not
+% very close graphics will be distorted.
+%
+% Just add this as a prefix to your document.
+% (To retain pagination control, it should come AFTER the
+% %%EndComments line, preferably in the %%BeginSetup section.)
+%
+% James E. Burns, 1/21/93,  burns@nova.bellcore.com
+%  Revised 11/16/93 to avoid unneeded dictionary entries
+%  Revised 12/30/93 to handle any given page sizes
+%  Revised 1/6/92   to suppress pagedevice commands that block this hack
+%  Revised 1/7/92   Removed unnecessary dictionary entries
+
+%  Revised 4/13/94 (J.Chomicki) last part commented out to avoid problems
+
+systemdict begin
+ [
+  [
+    % This sets the transformation matrix to scale to the new page size.
+    % Exactly two of the following lines should be uncommented.
+    % The first size will be scaled to the second.
+    595  842   % A4
+    % 612 1008  % legal
+    % 792 1224  % 11x17
+    % 516  729  % B5
+    612  792  % letter
+    % 612  792  % lettersmall
+    % 420  595   % A5
+    % 729 1032  % B4
+    exch 4 -1 roll div
+    3 1 roll exch div
+    0.0 0.0 3 -1 roll
+    % For some documents, it might be useful to add some translation
+    % (i.e., replace the following two values.)
+    0.0 0.0
+  ]
+%  dup == flush % (For testing)
+  /concat load
+]
+
+cvx dup exec
+/showpage [ /showpage load 4 3 roll /exec load ] cvx
+end % systemdict
+def
+
+% The following is only needed if the software producing the PS
+% output is nasty and uses machine dependent stuff (essentially,
+% setpagedevice).  No guarantee that this won't cause you trouble!
+% If any of this cause the code to break, try commenting out the
+% stuff below.  On the other hand, if the rescaling has no effect
+% you might need to add another similar line for some paper size I
+% overlooked.
+% NOTE: if you get an "invalidaccess" command from one of the def's
+%  below (because the dict is not writable), try removing the
+%  begin-end pairs around the def's and adding a 'pop' (see the
+%  redefinition of /setpagedevice for an example).
+
+%/setpagedevice where { pop /setpagedevice {pop} def } if
+%/letter where { begin /letter{}def end} if
+%/lettersmall where { begin /lettersmall{}def end} if
+%/legal where { begin /legal{}def end} if
+%/ledger where { begin /ledger{}def end} if
+%/11x17 where { begin /11x17{}def end} if
+%/a4 where { begin /a4{}def end} if
+%/a4small where { begin /a4small{}def end} if
+%/a3 where { begin /a3{}def end} if
+%/a5 where { begin /a5{}def end} if
+%/b4 where { begin /b4{}def end} if
+%/b5 where { begin /b5{}def end} if
+
+% End of ppfix.ps
+
+

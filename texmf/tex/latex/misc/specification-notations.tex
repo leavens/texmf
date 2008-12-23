@@ -1,0 +1,92 @@
+%{specification-notations}
+
+% notations for algebraic specifications and their models
+
+\newcommand{\ALG}[1]{{\it Alg\/}(#1)}		% algebras over a sig or spec
+\newcommand{\INALG}[2]{{#1}^{#2}}		% meaning of op #1 in alg #2
+
+% assignments
+\newcommand{\ASS}{{\it asgn\/}}			% assignment of free vars
+\newcommand{\ASSOF}[1]{{\ASS}\synbracket{#1}}	% value of #1 (alg. understood)
+\newcommand{\EASSOF}[1]{\EXTENDAPP{\ASS}{#1}}   % extended asgn of #1
+\newcommand{\EXTEND}[1]{\overline{#1}}		% extension of an assignment
+\newcommand{\EXTENDAPP}[2]{\EXTEND{#1}\synbracket{#2}} % extension and appl
+
+\newcommand{\CARRIEROFALG}[1]{|{#1}|}		% carrier set of algebra #1
+\newcommand{\CARRIEROF}[2]{{#2}_{#1}}		% carrier of #1 in #2
+
+\newcommand{\ENSURES}{{\bf ensures}~}
+
+\newcommand{\EQUATION}[4]{\forall (#1) \: #2 = #3 : #4}
+\newcommand{\GROUNDEQUATION}[3]{#1 = #2 : #3}
+\newcommand{\VERTEQUATION}[4]{%
+\begin{array}{@{}ll}%
+\forall (#1) \\%
+\multicolumn{2}{l}{~~~~~ #2 = #3 : #4}%
+\end{array}%
+}
+\newcommand{\EVAL}{{\it Eval\/}}		% evaluation function
+\newcommand{\EVALIN}[1]{{\EVAL}^{#1}}		% evaluation function for #1
+\newcommand{\EVALOFIN}[2]{\EVALIN{#2}\synbracket{#1}} % eval in #2 of #1
+\newcommand{\EVALOF}[1]{{\EVAL}\synbracket{#1}}	% eval of #1 (alg. understood)
+
+\newcommand{\FORMALS}[1]{{\rm Formals}(#1)}	% formal args and results
+\newcommand{\FUNSPEC}{{\it FSPEC}}		% function specs
+
+\newcommand{\GEN}[1]{{\it Generated\/}(#1)}	% generated #1-algebras
+
+%\newcommand{\HTRIPLE}[3]{\{#1\}~#2~\{#3\}} 	% Hoare Triple: {P} E {Q}
+\newcommand{\HTRIPLE}[3]{#1~\left\{#2\right\}~#3} % Hoare Triple: P {E} Q
+\newcommand{\VERTHTRIPLE}[3]{%			% same, displayed vertically
+\begin{array}{l}%
+#1\\%
+\left\{#2\right\}\\%
+#3%
+\end{array}%
+}
+
+\newcommand{\ARGMARKER}{\_\_}			% where args go in LSL
+
+\newcommand{\MDEF}[1]{{\it MinDef}(#1)}		% minimally defined models
+\newcommand{\MNDET}[1]{{\it MaxNonDet\/}(#1)}	% maximally nondetermin. models
+\newcommand{\MODIFIES}{{\bf modifies at most}~}
+
+\newcommand{\OP}{{\it OPS}}			% set of operator symbols
+\newcommand{\OPS}{{\it OPS}}			% set of operator symbols
+
+\newcommand{\POSTOF}[1]{{\rm Post}(#1)}		% precondition of #1
+\newcommand{\PREOF}[1]{{\rm Pre}(#1)}		% postcondition of #1
+
+\newcommand{\PROOFVIA}[1]{\stackrel{#1}{\vdash}}% proof via relation #1
+\newcommand{\EQPROOF}{\PROOFVIA{{\rm EQ}}}	% equational calc proof
+\newcommand{\PCPROOF}{\PROOFVIA{\Pi}}		% positive conditional proof
+
+\newcommand{\REQUIRES}{{\bf requires}~}
+\newcommand{\REDUCTOF}[2]{{#1}_{(#2)}}		% #2 reduct of #1
+
+\newcommand{\SORTS}{{\it SORTS}}		% set of sort symbols
+\newcommand{\SIGN}{{\it SIGS}}			% domain of signatures
+\newcommand{\SIG}{{\it SIG}}			% signature
+\newcommand{\SPEC}{{\it SPEC}}			% set of type specifications
+\newcommand{\SIGALG}{\ALG{\SIG}}		% set of SIG-algebras
+\newcommand{\SPECALG}{\ALG{\SPEC}}		% set of SPEC-algebras
+
+\newcommand{\GROUNDTERMS}{{\it T}_{\OPS}}	% ground terms
+\newcommand{\TERMS}[1]{\GROUNDTERMS(#1)}	% terms over #1
+\newcommand{\GROUNDTERMSOFSORT}[1]{{\it T}_{\OP,#1}}	% terms of sort #1
+\newcommand{\TERMSOFSORT}[2]{\GROUNDTERMSOFSORT{#1}(#2)} % of sort #1, over #2
+
+\newcommand{\THEORYOF}[1]{{\it Theory}(#1)}	% theory of #1
+
+\newcommand{\VARS}{{\it X}}			% set of variables
+\newcommand{\VISIBLES}{{\it V}}			% visible sorts
+
+
+% environment for behavioral specs of types and operations
+\newenvironment{WING}{
+\samepage
+\begin{tabbing}
+mm \= abc \= mm \= mm \= mm \= \kill
+}{
+\end{tabbing}
+}

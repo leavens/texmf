@@ -1,0 +1,20 @@
+% To put a frame around an arbitrary amount of vertical material.
+% \begin{frame} ... \end{frame}
+
+\def\frame{%
+\setbox0=\vbox\bgroup%
+\advance\hsize by -2\fboxsep\advance\hsize by -2\fboxrule}
+
+\def\endframe{%
+\egroup\noindent\framebox[\textwidth][l]{\box0}}
+
+% For one column frame use frameone
+%
+
+\def\frameone{%
+\setbox0=\vbox\bgroup%
+\advance\hsize by -2\fboxsep\advance\hsize by -2\fboxrule}
+
+
+\def\endframeone{%
+\egroup\noindent\framebox[\mycolumnwidth][l]{\box0}}

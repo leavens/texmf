@@ -1,0 +1,42 @@
+%% tcfigure.sty
+%
+% Manually splitting figure content into two columns
+% 
+% Sample use:
+% 
+% \begin{figure*}
+% \begin{tcfigurecontent}
+% Content for left column...
+% \tcfigurebreak
+% Content for right column...
+% \end{tcfigurecontent}
+% \end{figure*}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tcfigure}
+	 [2003/13/03 Manually splitting figure content into two columns]
+
+%%-------------------------------------------------------------
+%% some parameters
+
+%% A rubber length giving the column separation.
+\newlength{\tcfigurecolumnsep}
+\newlength{\tcfigureleftcolumnwidth}
+\newlength{\tcfigurerightcolumnwidth}
+
+\setlength{\tcfigurecolumnsep}{2pc plus 1pc minus 1pc}
+\setlength{\tcfigureleftcolumnwidth}{\columnwidth}
+\setlength{\tcfigurerightcolumnwidth}{\columnwidth}
+
+\newenvironment{tcfigurecontent}{%
+  \begin{minipage}[t]{\tcfigureleftcolumnwidth}}{%
+  \end{minipage}
+}
+
+\newcommand{\tcfigurebreak}{%
+\end{minipage}
+\hspace{\tcfigurecolumnsep}
+\begin{minipage}[t]{\tcfigurerightcolumnwidth}
+}
+
+%% end of tcfigure.sty

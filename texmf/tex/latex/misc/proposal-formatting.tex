@@ -1,0 +1,29 @@
+% $Id: proposal-formatting.tex,v 1.3 2002/09/28 19:22:45 leavens Exp $
+% Assumes an article style for the document class
+
+\def\thebibliography#1{\PARTTITLE{Bibliography}\list
+ {[\arabic{enumi}]}{\settowidth\labelwidth{[#1]}\leftmargin\labelwidth
+ \advance\leftmargin\labelsep
+ \usecounter{enumi}}
+ \def\newblock{\hskip .11em plus .33em minus -.07em}
+ \sloppy
+ \sfcode`\.=1000\relax}
+\let\endthebibliography=\endlist
+
+\input{resume-macros}
+
+\newcommand{\NEWPART}[1]{
+  \pagebreak
+  \setcounter{page}{1}
+  \renewcommand{\thepage}{#1-\arabic{page}}
+}
+
+% for backwards compatability
+\newcommand{\NEWSECTION}[1]{\NEWPART{#1}}
+
+\newcommand{\PARTTITLE}[1]{
+\begin{center} \Large{\bf #1} \end{center}
+\addcontentsline{toc}{part}{#1}
+}
+
+\newcommand{\PART}[2]{\NEWSECTION{#1} \PARTTITLE{#2}}

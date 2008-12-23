@@ -1,0 +1,27 @@
+% spacing command in headings
+\def\headFill{~~~~}
+%
+% major heading
+\def\majorHead#1{\subsubsection*{#1}\par}
+\def\majorPartSep{\vskip 12pt}
+%
+% items within a major heading
+%\def\subHeadIndent{0.25in}
+\def\hangParStart{\relax}
+\def\hangParSep{\vskip 7pt\par\noindent}
+%
+% sub headings
+\def\subHeadingsStart{\begin{description}}
+\def\subHeadingsEnd{\end{description}}
+%\def\afterSubHeadSkip{\vskip 4pt}
+\def\subHead#1{\item{{\sl #1}}\par}
+%
+% items within a subheading
+%\def\subSubHeadIndent{0.5in}
+\def\subHangParStart{\relax}
+\def\subHangParSep{\vskip 7pt\par\noindent}
+\def\subPartSep{\vskip 6pt}
+%
+% indicate students
+\def\student#1{#1}
+% \def\student#1{{#1}*}

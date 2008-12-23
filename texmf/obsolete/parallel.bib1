@@ -1,0 +1,892 @@
+"Required: (for a 1st year grad student)"
+
+%A K. E. Batcher
+%T STARAN Parallel Processor System Hardware
+%J Proceedings AFIPS National Computer Conference
+%D 1974
+%P 405-410
+%K Required
+%X This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+
+%A David J. DeWitt
+%A Raphael Finkel
+%A Marvin Solomon
+%T The CRYSTAL Multicomputer: Design and Implementation Experience
+%I University of Wisconsin-Madison
+%R Computer Sciences Technical Report #553
+%D September 1984	
+%K Required
+%X A good current overview of the Crystal project.  The first part reads like
+the C.mmp retrospective by Wulf [1980] et al.  They suffered from the same
+problems as CMU: small address space, reliability, and they also pushed
+the software the software forward to the next stage of problems.
+
+%A Robert H. Kuhn
+%A David A. Padua, eds.
+%T Tutorial on Parallel Processing
+%I IEEE
+%D August 1981
+%K Required
+%X This is a collection of noted papers on the subject, collected for
+the tutorial given at the 10th conference (1981) on Parallel Processing.
+It eases the search problem for many of the obscure papers.
+Some of these papers might not be considered academic, others are
+applications oriented.  Data flow is given short coverage.  Still, a
+quick source for someone getting into the field.
+Where ever possible, paper in this bibliography are noted as being in this
+text.
+
+%A G. J. Lipovski
+%A A. Tripathi
+%T A reconfigurable varistructure array processor
+%J Proc. 1977 Int. Conf. on Parallel Processing
+%D August 1977
+%P 165-174
+%K Required, U Texas, TRAC
+
+%A Richard M. Russell
+%T The Cray-1 Computer System
+%J Communications of the ACM
+%V 21
+%N 1
+%P 63-72
+%D January 1978
+%K Required,
+existing classic architecture,
+maeder biblio: parallel hardware and devices, implementation,
+ginsberg biblio:
+%X The original paper describing the Cray-1.
+This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+Also reproduced in "Computer Structures: Principles and Examples" by
+Daniel P. Siewiorek, C. Gordon Bell, and Allen Newell, McGraw-Hill,
+1982, pp. 743-752.
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp.15-24.
+
+%A Richard J. Swan
+%A S. H. Fuller
+%A Daniel P. Siewiorek
+%T Cm* \(em A Modular, Multi-Microprocessor
+%J Proceedings AFIPS National Computer Conference
+%I AFIPS Press
+%V 46
+%D 1977
+%P 637-644
+%K CMU, required
+%X This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+
+%A Philip C. Treleaven
+%A David R. Brownbridge
+%A Richard P. Hopkins
+%T Data-Driven and Demand-Driven Computer Architecture
+%J Computing Surveys
+%V 14
+%N 1
+%D March 1982
+%P 93-143
+%K Required,
+CR Categories and Subject Descriptors: C.0 [Computer System Organization]:
+General - hardware/software interfaces; system architectures;
+C.1.2 [Processor Architecture]:
+Multiple Data Stream Architectures (Multiprocessors);
+C.1.3 [Processor Architecture]: Other Architecture Styles
+- data flow architectures; high level language architectures;
+D.3.2 [Programming Languages]: Language Classifications - data-flow
+languages; macro and assembly languages; very high-level languages
+General Terms: Design
+Additional Key Words and Phrases: Demand = driven architecture,
+data = driven architecture
+%X * The aim of this paper is to identify the concepts and relationships
+that exist both within and between the two areas of research of
+data-driven and demand-driven architectures.
+Reproduced in "Selected Reprints 
+
+%A W. A. Wulf
+%A C. G. Bell
+%T C.mmp \(em A multi-mini processor
+%J Proc. Fall Joint Computer Conference
+%V 41, part II
+%I AFIPS Press
+%C Montvale, New Jersey
+%D December 1972
+%P 765-777
+%K multiprocessor architecture and operating systems
+Required,
+parallel processing,
+
+"Recommended readings:"
+
+%A W. B. Ackerman
+%T Data flow languages
+%J Computer
+%V 15
+%N 2
+%D February 1982
+%P 15-25
+%K Recommended, programming languages,
+special issue on data flow,
+%X Very good summary of data flow, and changes made to
+traditional languages to accommodate parallelism [e.g. outlawing side-effects]
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 179-188.
+
+%A George B. Adams, III
+%A Howard Jay Siegel
+%T A survey of fault-tolerant multistage networks and comparison to the
+extra stage cube
+%J Seventeenth Hawaii Conference on System Sciences
+%D January 1984
+%P 268-277
+%K Recommended,
+Interconnection Network-Multistage Cube/ADM Comparisons, PASM,
+
+%A Sudhir R. Ahuja
+%A Charles S. Roberts
+%T An Associative/Parallel Processor for Partial Match Retrieval Using
+Superimposed Codes
+%J Proceedings of 7th Annual Symposium on Computer Architecture
+%C La Baule, France
+%D May 1980
+%P 218-227
+%K Recommended, Bell Laboratories
+
+%A Gregory R. Andrews
+%A Fred B. Schneider
+%T Concepts and Notations for Concurrent Programming
+%J Computing Surveys
+%V 15
+%N 1
+%P 3-43
+%O 133 REFS. Treatment BIBLIOGRAPHIC SURVEY, PRACTICAL
+%D March 1983
+%i University of Arizona, Tucson
+%r CS Dept. TR 82-12
+%d Sept. 1982. (To appear in \fIComputing Surveys.\fP)
+%K Recommended,
+parallel processing programming
+OS parallel processing concurrent programming language notations
+processes communication synchronization primitives
+
+%A Bruce W. Arden
+%A Hikyu Lee
+%T A Regular Network for Multicomputer Systems
+%J IEEE Transactions on Computers
+%V C-31
+%N 1
+%D January 1982
+%P 60-69
+%K Moore bound, multicomputer system, multitree structured (MTS) graph,
+regular,
+recommended,
+Multicomputer systems
+%X
+Reproduced in the 1984 tutorial: "Interconnection Networks for parallel
+and distributed processing" by Wu and Feng.
+
+%A J. Backus
+%T Can Programming be Liberated from the von Neumann Style?
+A Functional Style and its Algebra of Programs
+%J Communications of the ACM
+%V 16
+%N 8
+%D August 1978
+%P 613-641
+%K Recommended, Turing award lecture,
+Key words and phrases: functional programming, algebra of programs,
+combining forms, programming languages, von Neumann computers,
+von Neumann languages, models of computing systems,
+applicative computing systems, program transformation, program correctness,
+program termination, metacomposition,
+CR categories: 4.20, 4.29, 5.20, 5.24, 5.26,
+%X
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 215-243.
+
+%A Utrpal Banerjee
+%A Shyh-Ching Chen
+%A David J. Kuck
+%A Ross A. Towle
+%T Time and Parallel Processor Bounds for FORTRAN-like Loops
+%J IEEE Transactions on Computers
+%V C-28
+%N 9
+%P 660-670
+%D September 1979
+%K Recommended,
+Analysis of programs, data dependence, Fortran-like loops, parallel
+computation, processor bounds, program speedup, recurrence relations,
+time bounds,
+Parallel processing
+maeder biblio: parallel programming, concepts,
+
+%A George H. Barnes
+%A Richard M. Brown
+%A Maso Kato
+%A David J. Kuck
+%A Daniel L. Slotnick
+%A Richard A. Stokes
+%T The ILLIAC IV Computer
+%J IEEE Transactions on Computers
+%V C-17
+%N 8
+%D August 1968
+%P 746-757
+%K Recommended,
+array, computer structures, look-ahead, machine language, parallel processing,
+speed, thin-film memory, multiprocessors,
+maeder biblio: parallel hardware and devices,
+%X This was the original paper on the ILLIAC IV when it was proposed as
+a 256 processing element machine, a follow on to the SOLOMON.  It was a
+very ambitious design.
+
+%A Kenneth E. Batcher
+%Z Goodyear Aerospace
+%T Design of a Massively Parallel Processor
+%J IEEE Transactions on Computers
+%V C-29
+%N 9
+%D September 1980
+%P 836-840
+%K Recommended, MPP,
+multiprocessors, parallel processing, existing,
+%X This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+Also reprinted in the text compiled by Kai Hwang:
+"Supercomputers: Design and Application," IEEE, 1984.
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 25-29.
+
+%A Shahid H. Bokhari
+%T On the Mapping Problem
+%J IEEE Transactions on Computers
+%V C-30
+%N 3
+%D March 1981
+%P 207-214
+%K Recommended,
+adjacency matrices, array processing, assignment, computer networks,
+distributed processors, finite element machine (FEM),
+graph isomorphism, heuristic algorithm, mapping problem, pairwise interchange
+%X This paper is important because it points out that the mapping problem
+is akin to graph traversal and is at least P-complete.  Also see ICPP79.
+Reproduced in the 1984 tutorial: \fI Interconnection Networks for parallel
+and distributed processing\fP by Wu and Feng.
+
+%A Jay P. Boris
+%A Niels K. Winsor
+%T Vectorized Computation of Reactive Flow
+%E Garry Rodrigue
+%B Parallel Computations
+%I Academic Press
+%D 1982
+%P 173-215
+%K
+recommended
+%X Mentions programming style as an important consideration.
+Has some of the best advise regarding guidelines (Section VI.) in
+programming parallel supercomputers (KISS philosophy).
+
+%A W. J. Bouknight
+%A Stewart A. Denenberg
+%A David E. McIntyre
+%A J. M. Randall
+%A Amed H. Sameh
+%A Daniel L. Slotnick
+%T The ILLIAC IV System
+%J Proceedings of the IEEE
+%V 60
+%N 4
+%D April 1972
+%P 369-388
+%K Recommended,
+multiprocessors, parallel processing,
+%X This is the what we did paper in contrast to the design paper
+Barnes et al in 1968.
+A subsetted version of this paper appears in
+"Computer Structures: Principles and Examples" by
+Daniel P. Siewiorek, C. Gordon Bell, and Allen Newell,
+McGraw-Hill, 1982, pp. 306-316.
+
+%A J. B. Dennis
+%T First Version of a Data Flow Language
+%E B. Robinet
+%B Programming Symposium: Proceedings, Colloque sur la Programmation,
+%S Lecture Notes in Computer Science
+%V 19
+%D April 1974
+%P 362-376
+%K Recommended,
+
+%A Jack B. Dennis
+%T Data Flow Supercomputers
+%J Computer
+%V 13
+%N 11
+%D November 1980
+%P 48-56
+%K Recommended,
+multiprocessors, parallel processing, data flow,
+%X Covers basic data flow, the idea of activity templates, single assignment
+and so on.
+Also reprinted in the text compiled by Kai Hwang:
+"Supercomputers: Design and Application," IEEE, 1984.
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 102-110.
+
+%A D. D. Gajski
+%A D. A. Padua
+%A D. J. Kuck
+%A R. H. Kuhn
+%T A Second Opinion on Data Flow Machines and Languages
+%J Computer
+%V 15
+%N 2
+%D Feb. 1982
+%P 15-25
+%K Recommended, multiprocessing,
+%X (SKS) or why I'm afraid people won't use FORTRAN.
+This paper should only be read (by beginners) in conjunction with a
+pro-dataflow paper for balance: maybe McGraw's "Physics Today" May 1984.
+Also reprinted in the text compiled by Kai Hwang:
+"Supercomputers: Design and Application," IEEE, 1984.
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 165-176.
+%X * Due to their simplicity and strong appeal to intuition, data flow
+techniques attract a great deal of attention.  Other alternatives,
+however, offer more hope for the future.
+
+%A Daniel Gajski
+%A David Kuck
+%A Duncan Lawrie
+%A Ahmed Sameh
+%T Cedar \(em A Large Scale Multiprocessor
+%J Proceedings of the 1983 International Conference on Parallel Processing
+%I IEEE
+%D August 1983
+%P 524-529
+%K Recommended,
+U Ill, MIMD, Parafrase, multi-level parallelism, multiprocessor systems,
+parallel processing, proposed novel architecture,
+%X
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 69-74.
+
+%A Daniel Gajski
+%A Jih-Kwon Peir
+%T Essential Issues in Multiprocessor Systems
+%J Computer
+%I IEEE
+%V 18
+%N 6
+%D June 1985
+%P 9-27
+%K parallel processor vector shared memory message passing tightly
+loosely coupled dataflow partitioning cedar csp occam hep
+synchronization recommended
+%X The performance of a multiprocessor system depends on how it
+handles the key problems of control, partitioning, scheduling,
+synchronization, and memory access.
+On a second look, this paper has some nice ideas.  (rec added to %K).
+%X Detailed classification scheme based upon control model of computation,
+partitioning, scheduling, synchronization, memory access.
+Classification is illustrated with many examples, including a summary table
+for to Cray-1, Arvind's Data flow, HEP, NYU Ultracomputer, and Cedar.
+Reproduced in "Computer Architecture," D. D. Gajski,
+V. M. Milutinovic, H. J. Siegel, and B. P. Furht, eds., IEEE, 1987,
+pp. 115-133.
+
+%A W. M. Gentleman
+%T Some complexity results for matrix computations on parallel processors
+%J Journal of the ACM
+%V 25
+%N 1
+%D January 1978
+%P 112-115
+%K Recommended
+
+%A Allan Gottlieb
+%A Ralph Grishman
+%A Clyde P. Kruskal
+%A Kevin P. McAuliffe
+%A Larray Rudolph
+%A Marc Snir
+%T The NYU Ultracomputer \(em Designing a MIMD, Shared-Memory Parallel
+Machine
+%J Proceedings of 9th Annual International Symposium on Computer
+Architecture, SIGARCH Newsletter
+%V 10
+%N 3
+%D April 1982
+%P 27-42
+%K Recommended,
+computer architecture, fetch-and-add, MIMD multiprocessor,
+Omega-network, parallel computer, parallel processing, shared memory,
+systolic queues, VLSI,
+%X
+Reproduced in "Parallel Computing: Theory and Comparisons,"
+by G. Jack Lipovski and Miroslaw Malek,
+Wiley-Interscience, New York, 1987, pp. 241-266, appendix B.
+
+%A Allan Gottlieb
+%Z Courant Institute of Mathematical Sciences, Computer Science Dept.,
+New York University
+%T An Overview of the NYU Ultracomputer Project
+%E Jack J. Dongarra
+%B Experimental Parallel Computing Architectures
+%r ULTRACOMPUTER NOTE #32
+%r ULTRACOMPUTER NOTE #100
+%I North-Holland
+%C New York, NY
+%d July 1986
+%D 1987
+%K recommended,
+
+%A J. R. Gurd
+%A C. C. Kirkham
+%A I. Watson
+%T The Manchester Prototype Dataflow Computer
+%J Communications of the CACM
+%V 28
+%N 1
+%D January 1985
+%P 34-52
+%K CR Categories and Subject Descriptors:
+C.1.3 [Processor Architectures]: Other Architecture Styles;
+C.4 [ Performance of Systems]; D.3.2 [Programming Languages]: Language
+Classifications
+General Terms: Design, Languages, Performance
+Additional Key Words and Phrases: tagged-token dataflow,
+single assignment programming, SISAL
+recommended
+%X A special issue on Computer Architecture.  Mentions SISAL, but not LLNL.
+%X * Using tagged-token dataflow, the Manchester processor is running
+reasonably large user programs at maximum rates of between 1 and 2
+MIPS.
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 111-129.
+
+%A Ching-Tien Ho
+%A S. Lennart Johnsson
+%Z Yale
+%T Distributed Routing Algorithms for Broadcasting and
+Personalized Communication in Hypercubes
+%J Proceedings of the 1986 International Conference on Parallel Processing
+%I IEEE
+%D August 1986
+%P 640-648
+%K Hypercube architecture, Intel iPSC-7d, spanning tree,
+multiple spanning binomial tree, balanced spanning trees,
+performance measurement, experimental results, parallel algorithms,
+recommended,
+%X This paper was awarded "Outstanding Paper" at the ICPP, hence, it is
+recommended.
+
+%A R. W. Hockney
+%A C. R. Jesshope
+%T Parallel Computers
+%I Adam Hilger Ltd
+%C Bristol, England
+%D 1981
+%K Recommended, book,
+%X Older text covering architectures, programming and algorithms.
+Classifies Cray-1, CYBER 205, and FPS AP-120B as pipelined computers,
+ICL DAP and Burroughs BSP under arrays.  Has good coverage of software
+and algorithms.  SOMEWHAT IMPORTANT BOOK.
+
+%A R. Michael Hord
+%T The ILLIAC IV: The First Supercomputer
+%I Computer Science Press
+%D 1982
+%K recommended
+%X A collection of papers dealing with the ILLIAC IV.  These papers include
+reminisces and applications on the ILLIAC.
+It is slightly apologetic in tone.
+%X Describes in detail the background of the Illiac IV,
+programming and software tools, and applications. The chapters are a
+little disjointed, and the instruction set is
+not well explained or motivated.
+
+%A Tsutomu Hoshino
+%A Tomonori Shirakawa
+%A Takeski Kamimura
+%A Takahisa Kageyama
+%A Kiyo Takenouchi
+%A Yoshio Oyanagi
+%A Toshio Kawai
+%T High parallel processor array "PAX" for wide scientific applications
+%J Proceedings of the 1983 International Conference on Parallel Processing
+%I IEEE
+%D August 1983
+%P 95-105
+%K Recommended,
+(PACS), 128 processors (PAX-128)
+numerical algorithms
+
+%A Kai Hwang
+%A Faye A. Briggs
+%T Computer Architecture and Parallel Processing
+%I McGraw-Hill
+%C New York, NY
+%D 1984
+%K recommended, book,
+%X This text is quite weighty.  It covers much about the interconnection
+problem.  It's a bit weak on software and algorithms.
+
+%A H. T. Kung
+%T Why Systolic Architectures?
+%J Computer
+%V 15
+%N 1
+%D Jan. 1982
+%P 37-46
+%K Recommended,
+multiprocessors, parallel processing, systolic arrays, VLSI,
+%X * Systolic architectures, which permit multiple computations for
+each memory access, can speed execution of compute-bound problems
+without increasing I/O requirements.
+reconfigured to suit new computational structures; however, this
+capability places new demands on efficient architecture use.
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 300-309.
+
+%A Butler W. Lampson
+%T Atomic transactions
+%E B. W. Lampson
+%E M. Paul
+%E H. J. Siegel
+%B Distributed Systems \(em Architecture and Implementation
+(An Advanced Course)
+%S Lecture Notes in Computer Science
+%V 105
+%I Spring-Verlag
+%D 1981
+%P 246-265
+%K Recommended,
+
+%A Duncan H. Lawrie
+%T Access and Alignment of Data in an Array Processor
+%J IEEE Trans. on Computers
+%V C-24
+%N 12
+%D Dec. 1975
+%P 1145-1155
+%K Alignment network, array processor, array storage, conflict-free access,
+data alignment, indexing network, omega network, parallel processing,
+permutation network, shuffle-exchange network, storage mapping,
+switching network
+recommended, U Ill, N log N nets,
+Ginsberg biblio:
+%X This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+Reproduced in the 1984 tutorial: "Interconnection Networks for parallel
+and distributed processing" by Wu and Feng.
+
+%A Neil R. Lincoln
+%T "Its really not as much fun building a supercomputer as it is simply
+inventing one"
+%B High Speed Computer and Algorithm Organization
+%E D. J. Kuck
+%E D. H. Laurie
+%E A. H. Sameh
+%I Academic Press
+%C New York
+%D 1977
+%P 3-11
+%K recommended, Cyber 205,
+Ginsberg biblio:
+%X Delightful, entertaining, yet very informative about the
+real problems of actually building a supercomputer.  The
+story has not changed much in the last 10 years. A
+"must" reading for anyone interested in computer architecture.
+Amos Omondi
+
+%A Neil R. Lincoln
+%T Technology and Design Tradeoffs in the Creation of a Modern
+Supercomputer
+%J IEEE Transactions on Computers
+%V C-31
+%N 5
+%D May 1982
+%P 349-362
+%K Architecture, parallelism, pipeline, supercomputer, technology,
+vector processor,
+recommended, Special issue on supersystems
+%X Architectural survey of the STAR-100, Cyber 203/205 line
+Also printed in Fernbach's "Supercomputers, Class VI Systems..."
+book, North-Holland, 1986.
+Also reprinted in the text compiled by Kai Hwang:
+"Supercomputers: Design and Application," IEEE, 1984, pp. 32-45.
+
+%A Stephen F. Lundstrom
+%A George H. Barnes
+%T A Controllable MIMD Architecture
+%J Proceedings of the 1980 International Conference on Parallel Processing
+%I IEEE
+%D August 1980
+%P 19-27
+%K Recommended, parallel architecture, existing (not really),
+maeder biblio:
+%X This paper is reproduced in Kuhn and Padua's (1981, IEEE)
+survey "Tutorial on Parallel Processing."
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 30-38.
+This paper describes the proposed FMP "Flow Model Processor" follow on to
+the Burroughs Scientific processor.  The FMP was to have 512 processors
+and 521 memory modules connected by an Omega network.  The software
+was to include a DOALL construct for FMP parallel FORTRAN, DOMAINS for
+index sets.
+
+%A James R. McGraw
+%T The VAL Language: Description and Analysis
+%J ACM Transactions on Programming Languages and Systems
+%V 4
+%N 1
+%D January 1982
+%P 44-82
+%K Design, Languages
+Categories: D.3.2 [Programming Languages]: Language classifications-
+applicative languages; data-flow languages; VHL; D.3.3
+[Programming Languages]: Language Constructs - concurrent programming
+structures; D.4.1 [Operating Systems]: process management -
+multiprocessing/multiprogramming
+recommended
+
+%A Elliott Organick
+%T A Programmer's Guide to the Intel 432
+%I McGraw-Hill
+%D 1982
+%K Recommended,
+
+%A James M. Ortega
+%A Robert G. Voigt
+%T Solution of Partial Differential Equations on Vector and Parallel
+Computers
+%I NASA Langley Research Center
+%R ICASE Report No. 85-1
+%D January 1985
+%K Linear algebra, elliptic equations, initial-boundary value problems,
+vector computers, parallel computers, pipelining, fluid dynamics,
+recommended,
+%X Review of present (Jan 1985) status of numerical methods for PDEs on
+vector and parallel computers, including a discussion of relevant aspects
+of these computers and a brief review of their development, with particular
+attention paid to those characteristics which influence algorithm selection.
+Points out attractive methods as well as areas where this class of computer
+architecture cannot be fully utilized because of either hardware restrictions
+or lack of adequate algorithms.
+John Cooley
+Manager, CYBER 205 Technical Support
+Colorado State University
+ZEZJOHN@CSUGREEN.BITNET
+
+%A Jack A. Rudolph
+%A Kenneth E. Batcher
+%T A productive implementation of an associative array processor: STARAN
+%E Daniel P. Siewiorek
+%E C. Gordon Bell
+%E Allen Newell
+%B Computer Structures: Principles and Examples
+%I McGraw-Hill
+%D 1982
+%P 317-331
+%K Recommended
+
+%A M. Satyanarayanan
+%T Multiprocessors: A Comparative Study
+%I Prentice-Hall
+%D 1980
+%K Recommended,
+%X Survey text on multiprocessors including: IBM 370/168 (AP), CDC 6600,
+Univac 1100, Burroughs 6700, Honeywell 60/66, DEC-10, C.mmp, and Cm*.
+It has an excellent bibliography which was published in IEEE as the
+book was excerpted.
+
+%A Michael A. Scott
+%T A Framework for the Evaluation of High-Level Languages for Distributed
+Computing
+%R TR #563
+%I Computer Science Dept., Univ. of Wisc.
+%C Madison, WI
+%D October 1984
+%K Recommended
+%X An excellent survey of the issues on concurrent languages:
+communication, synchronization, naming, and so forth.
+
+%A Howard J. Siegel
+%A S. Diane Smith
+%T Study of Multistage SIMD Interconnection Networks
+%J Proceedings of 5th Annual Symposium on Computer Architecture
+%D 1978
+%P 223-229
+%K Purdue University, recommended, PASM,
+Multistage Cube/ADM Comparisons,
+
+%A Howard J. Siegel
+%T Interconnection networks for SIMD machines
+%J Computer
+%V 12
+%N 6
+%D June 1979
+%P 57-65
+%K Recommended, Multistage Cube/ADM Comparisons, PASM,
+%X A good survey paper on processor memory interconnects.
+This paper was reproduced in Kuhn and Padua's (1981)
+"Tutorial on Parallel Processing."
+
+%A Howard J. Siegel
+%A Leah J. Siegel
+%A F. C. Kemmerer
+%A P. T. Mueller, Jr.
+%A H. E. Smalley, Jr.
+%A S. Diane Smith
+%T PASM: A Partitionable SIMD/MIMD System for Image Processing and Pattern
+Recognition
+%J IEEE Transactions on Computers
+%V C-30
+%N 12
+%D December 1981
+%P 934-947
+%K Recommended, Purdue U
+Image processing, memory management, MIMD machines,
+multimicroprocessor systems, multiple-SIMD machines, parallel processing,
+partitionable computer systems, PASM, reconfigurable computer systems,
+SIMD machines,
+application-directed architecture, design,
+%X
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 339-352.
+
+%A Howard Jay Siegel
+%A Robert J. McMillen
+%A P. T. Mueller, Jr.
+%T A Survey of Interconnection Methods for Reconfigurable Parallel Processing
+Systems
+%J AFIPS Proc. of the NCC
+%V 48
+%D June 1979
+%P 529-542
+%K Purdue U, recommended
+maeder biblio: parallel architecture,
+general works on parallel processing,
+interconnection network-Multistage Cube/ADM Comparisons, PASM,
+
+%A Burton J. Smith
+%T A Pipelined, Shared Resource MIMD Computer
+%J Proceedings of the International Conference on Parallel Processing
+%I IEEE
+%C Bellaire, Michigan
+%D August 1978
+%P 6-8
+%K Recommended,
+multiprocessor architecture and operating systems,
+general purpose architectures, existing,
+maeder biblio: parallel hardware and devices,
+%X One of the first papers on the Denelcor Heterogeneous Element Processor
+(HEP) after major design had been completed.
+This paper was reproduced in Kuhn and Padua's (1981)
+"Tutorial on Parallel Processing."
+Reproduced in Dharma P. Agrawal's (ed.) "Advanced Computer Architecture,"
+IEEE, 1986, pp. 39-41.
+
+%A J. E. Thornton
+%T Design of a Computer: The CDC 6600
+%I Scott, Foresman & Co.
+%C Glenview, IL
+%D 1970
+%K recommended,
+%X The 6600 has influenced a lot of the supercomputers from
+Cray and CDC.  Also no commercial manufacturer of such
+an outstanding machine has ever revealed so much detail.
+Amos Omondi
+
+%A J. Tsoras
+%T The Massively Parallel Processor (MPP) Innovation in High Speed Processors
+%J AIAA Computers in Aerospace Conference
+%V III
+%D October 1981
+%K Recommended,
+
+%A I. Watson
+%A J. Gurd
+%T A practical data flow computer
+%J Computer
+%V 15
+%N 2
+%D February 1982
+%P 51-57
+%K Recommended,
+special issue on data flow,
+%X * Based on a tagged dynamic data flow model, this prototype machine has
+eight unusual matching functions for handling incoming data tokens at
+its computational nodes.
+
+%A Ian Watson
+%A Paul Watson
+%A Viv Woods
+%T Parallel Data-Driven Graph Reduction
+%B Fifth Generation Computer Architectures
+%I North-Holland
+%C Amsterdam
+%E J. V. Woods
+%D 1986
+%P 203-220
+%K recommended, hybrid systems,
+%X
+Reproduced in "Selected Reprints on Dataflow and Reduction Architectures"
+ed. S. S. Thakkar, IEEE, 1987, pp. 433-446.
+%X With so many "5th Generation" architecture projects,
+a good look at what the actual problems in building
+and using parallel machines are is in order.
+Slightly more than half of this paper is devoted to
+this, including "lessons that can be leart concerning
+cost-performance from more conventional approaches"
+As the title implies, it also discusses a computer
+architecture that is a synthesis of Dataflow and
+Graph Reduction; this alone makes it worth reading
+since the description is the basis of Alvey's big
+Flagship architecture project.
+Amos Omondi
+
+%A Richard W. Watson
+%T Distributed system architecture model
+%E B. W. Lampson
+%E M. Paul
+%E H. J. Siegel
+%B Distributed Systems \(em Architecture and Implementation
+(An Advanced Course)
+%S Lecture Notes in Computer Science
+%V 105
+%I Spring-Verlag
+%D 1981
+%P 10-43
+%K Recommended,
+
+%A Richard W. Watson
+%T IPC interface and end-to-end protocols
+%E B. W. Lampson
+%E M. Paul
+%E H. J. Siegel
+%B Distributed Systems \(em Architecture and Implementation
+(An Advanced Course)
+%S Lecture Notes in Computer Science
+%V 105
+%I Spring-Verlag
+%D 1981
+%P 140-190
+%K Recommended,
+
+%A William A. Wulf
+%A Roy Levin
+%A Samuel P. Harbison
+%T HYDRA/C.mmp: An Experimental Computer System
+%I McGraw-Hill
+%D 1981
+%K Recommended,
+CMU, C.mmp, HYDRA OS,
+multiprocessor architecture and operating systems
+%X * Describes the architecture of C.mmp, and details the goals, design, and
+performance of HYDRA, its capability based OS.
+

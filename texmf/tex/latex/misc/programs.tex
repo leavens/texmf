@@ -1,0 +1,115 @@
+%{programs}
+% \makeatletter
+% \@ifundefined{myobeycr}{\input{obey}}{\relax}
+% \makeatother
+
+\usepackage{xspace}
+
+% one can renew this command to use a different font for program text
+\newcommand*{\programFontDeclaration}{\normalfont\ttfamily}
+
+% environment for programs, indented and set in typewriter font
+\newcommand{\programCOLspace}{\hspace{1.2em}}
+\providecommand{\program}{}	% make sure program is defined, so renew works
+\renewenvironment{program}{%
+\samepage\programFontDeclaration%
+\begin{list}{}{}%
+\item\begin{tabbing}%
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\kill
+}{%
+\end{tabbing}\end{list}}
+
+% environment for programs, not-indented, but set in typewriter font
+\newenvironment{nonindentedprogram}%
+	       {\samepage\programFontDeclaration%
+		 \begin{list}{}{\setlength{\leftmargin}{0pt}}%
+		 \item\begin{tabbing}%
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \= 
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \= 
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \=
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \=
+		   \kill
+	       }%
+	       {\end{tabbing}\end{list}}
+
+
+% environment for programs, indented and set in typewriter font, and centered
+\newenvironment{centeredprogram}%
+	       {\nopagebreak\programFontDeclaration%
+		 \begin{center}\begin{minipage}{\linewidth}
+		 \begin{list}{}{\setlength{\leftmargin}{0pt}}%
+		 \item\begin{tabbing}%
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \= 
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \= 
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \=
+		   \programCOLspace \= \programCOLspace \= \programCOLspace \=
+		   \kill
+	       }%
+	       {\end{tabbing}\end{list}\end{minipage}\end{center}}
+
+% environment for programs, indented and set in typewriter font, stays on one page
+\newenvironment{programNoBreak}[1]{% argument is width, typically use \textwidth or \columnwidth
+\programFontDeclaration%
+\begin{list}{}{}\begin{minipage}{#1}%
+\item\begin{tabbing}%
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\kill
+}{%
+\end{tabbing}\end{minipage}\end{list}}
+
+% environment for programs, indented, set in typewriter font, obeys cr, tab,etc
+\newenvironment{program*}{%
+\samepage\programFontDeclaration% 
+\begin{list}{}{}\item\obeyspaces\obeytabs\obeycr}{%
+\end{list}}
+
+% programs with underbars typed as _ instead of \_
+% In these environments use \BEGINMATH ... \ENDMATH for math with subscripts.
+\newcommand{\BEGINMATH}{\begingroup\catcode`\_=8$}
+\newcommand{\ENDMATH}{$\catcode`\_=12\endgroup}
+%
+% Uprogram is like program
+\newenvironment{Uprogram}{%
+\samepage\programFontDeclaration%
+\begin{list}{}{}\item\begin{tabbing}\catcode`\_=12%
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\programCOLspace \= \programCOLspace \= \programCOLspace \= \programCOLspace \=
+\kill
+}{%
+\end{tabbing}\end{list}}
+% Uprogram* is like program*
+\newenvironment{Uprogram*}{%
+\samepage\programFontDeclaration% 
+\begin{list}{}{}\item\catcode`\_=12\obeyspaces\obeytabs\obeycr}{%
+\end{list}}
+
+% comment text in italic roman
+\newcommand{\programcommenttext}[1]{\textnormal{\textit{#1}}}
+\newcommand{\programnewparagraph}{\\[0.5\baselineskip]}
+
+% various program characters
+\newcommand{\singlequote}{{\programFontDeclaration\textquoteright}}  %\char19
+\newcommand{\doublequote}{{\programFontDeclaration"}}
+\newcommand{\backquote}{{\programFontDeclaration\char18}}
+\newcommand{\backwhack}{{\programFontDeclaration\textbackslash}} %\char`\\
+\newcommand{\atsign}{{\programFontDeclaration\char`\@}}
+\newcommand{\sharpsign}{{\programFontDeclaration\#}}
+\newcommand{\verticalbar}{{\programFontDeclaration\textbar}}
+\newcommand{\leftcurlybracket}{{\programFontDeclaration\{}\xspace}
+\newcommand{\rightcurlybracket}{{\programFontDeclaration\}}\xspace}
+
+% literate programming stuff
+\newcommand{\OMITTEDREF}[1]{\mbox{$\langle$}{\em #1\/}\mbox{$\rangle$}}
+\newcommand{\DEFINEIT}[1]{\mbox{$\langle$}{\em #1\/}\mbox{$\rangle ~~ \equiv$}}
+\newcommand{\ADDTODEF}[1]{\mbox{$\langle$}{\em #1\/}\mbox{$\rangle ~~ +\equiv$}}
+\newcommand{\WHEREUSED}[1]{{\footnotesize This code is used in #1.}}
+\newcommand{\SEEALSO}[1]{{\footnotesize See also #1.}}
+
+% program text within regular paragraphs, with hyphenation
+\newcommand{\code}[1]{{\programFontDeclaration\hyphenchar\font=`-\relax {#1}}}

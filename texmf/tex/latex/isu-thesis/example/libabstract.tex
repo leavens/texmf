@@ -1,0 +1,44 @@
+% Library abstract template that runs separately from a thesis.
+%  - throw away the extra title pages that this creates
+\documentclass[11pt]{report}
+\usepackage{isuthesis}
+\newcommand{\abauthor}[1]
+  {\noindent \bfseries Student Name: \mdseries #1 \vspace*{.1 in}} 
+\newcommand{\abtitle}[1]
+  {\noindent \bfseries Thesis Title: \mdseries #1 \vspace*{.1 in}}
+\newcommand{\abmprof}[1]
+  {\noindent \bfseries Major Professor: \mdseries #1}
+\newcommand{\abmprofs}[2]
+  {\noindent \bfseries Co-Major Professors: \mdseries #1 and #2}
+\renewcommand{\baselinestretch}{2}
+\begin{document}
+
+\begin{center}
+\bfseries
+Iowa State University\\
+Thesis Abstract
+\end{center}
+
+%% Enter your name as seen in the titletoc
+\abauthor{Wilbur Terrance Johnson}
+
+%% Enter your thesis title without any \\
+\abtitle{This is the title of a thesis
+submitted to Iowa State University
+Note that only the first letter of
+the first word and proper names
+are capitalized}
+
+%% Enter your mprof or mprofs information
+\abmprof{Susan D. Ross}
+%\abmprofs{Susan D. Ross}{Gregory McMann}
+%% End New Stuff
+\vspace*{.5 in}
+
+Complete library abstract information goes here but cannot exceed
+350 words in length and must be double-spaced.
+This is the format of the abstract that must
+be turned in by \textbf{all} students.  The pages are numbered separately
+from the thesis.  The heading is centered and includes only the basic information
+from the title page.
+\end{document}

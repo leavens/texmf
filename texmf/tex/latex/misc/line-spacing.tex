@@ -1,0 +1,16 @@
+%{line-spacing}
+
+\newlength{\originalskip}
+\setlength{\originalskip}{\baselineskip}
+
+\newcommand{\doublespacing}{
+  \setlength{\baselineskip}{2\originalskip}}
+
+\newcommand{\singlespacing}{
+  \setlength{\baselineskip}{\originalskip}}
+
+\newcommand{\spaceandhalf}{
+  \setlength{\baselineskip}{1.45\originalskip}}
+
+\newcommand{\variablespacing}[1]{
+  \setlength{\baselineskip}{#1\originalskip}}

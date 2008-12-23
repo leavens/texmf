@@ -1,0 +1,26 @@
+%  \draw package.  Vaughan Pratt  (C) 1993
+%
+%	*+,-|.|/012	Table of 81 vectors in [-4,4]x[-4,4]
+%	3456|7|89:;	Use as parameters to tell \draw how to step along
+%	<=>?|@|ABCD	\draw zzzzzzz\end draws a straight line 7 steps
+%	EFGH|I|JKLM	   down and to the right
+%       ----+-+----
+%	NOPQ|R|STUV	R = (0,0), C = (3,2), * = (-4,-4), r = (-4,4)
+%       ----+-+----
+%	WXYZ|[|\]^_	\draw -./9:CMV_gpowvukjaWNE=45\end
+%	`abc|d|efgh	   draws a reasonable circle
+%	ijkl|m|nopq
+%	rstu|v|wxyz
+%
+\newcount\PLv\newcount\PLw\newcount\PLx\newcount\PLy\newdimen\PLyy\newdimen\PLX
+\newbox\PLdot \setbox\PLdot\hbox{\tiny.} \def\scl{.08} % resettable scale
+\def\PLot#1{\PLx`#1\advance\PLx-42\PLy\PLx\PLv\PLx\divide\PLy9\PLw\PLy\multiply
+\PLw9\advance\PLx-\PLw\advance\PLx-4\PLy-\PLy\advance\PLy4\PLX=\the\PLx pt
+\advance\PLyy\the\PLy pt\wd\PLdot=\scl\PLX\raise\scl\PLyy\copy\PLdot}
+\def\draw#1{\ifx#1\end\let\next=\relax\else\PLot#1\let\next=\draw\fi\next}
+
+%  Girard's inverted ampersand.  Usage: \invamp. Draw time @ 10 Mips: .33 sec
+\def\invamp{\hbox{\PLyy=70pt\draw :::;DMV_gqppyyyyyooooxxxnnwvlutkjaWNE=5-./9%
+9:::CCCC:::99/..--544=EENWWaajjjkktttttttNNNVVVVVVVV\end \hskip4pt}}
+%  \Invamp = Boxed \invamp.  Draw time < .02 sec, but max ~300 chars/page
+\newbox\iabox\setbox\iabox\invamp \def\Invamp{\copy\iabox}

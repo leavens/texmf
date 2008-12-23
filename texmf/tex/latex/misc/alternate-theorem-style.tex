@@ -1,0 +1,8 @@
+% theorems, lemmas, and such, NOT in italic, and with PERIODS. (mbr)
+
+\makeatletter
+\def\@begintheorem#1#2{\trivlist \item[\hskip \labelsep{\bf #1\ #2.}]}
+\def\@opargbegintheorem#1#2#3{\trivlist
+      \item[\hskip \labelsep{\bf #1\ #2\ (#3).}]}
+\def\@endtheorem{\endtrivlist}
+\makeatother

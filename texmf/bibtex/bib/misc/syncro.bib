@@ -1,0 +1,939 @@
+Path: dino!ceres!zaphod.mps.ohio-state.edu!sol.ctr.columbia.edu!emory!hubcap!cjmchale
+From: cjmchale@cs.tcd.ie (Ciaran McHale)
+Newsgroups: comp.parallel
+Subject: bibliography (long) on inheritance and synchronization
+Message-ID: <8274@hubcap.clemson.edu>
+Date: 8 Mar 90 13:50:24 GMT
+Sender: fpst@hubcap.clemson.edu
+Lines: 928
+Approved: parallel@hubcap.clemson.edu
+
+Two months ago I asked for references to:
+
+>	1. How to overcome the basic conflict between inheritance and
+>	   synchronisation.
+>	2. Powerful synchronisation mechanisms. Semaphores and Monitors are
+>	   a bit low level. I'm looking for something with similar/more
+>	   expressive power than (Regular, Open, Predicate) Path Expressions.
+>	3. Efficient implementation of low level synchronisation primitives.
+
+and I promised to summerise if there was interest. There was plenty of interest
+but unfortunately I got swamped with work and didn't didn't have the time to
+respond until now. My sincere appologies for not responding sooner.
+
+A summary of responses (mainly in "refer" format) is given below and my own
+relevant bibliography enties (in "LaTeX" format) follow at the end.
+
+Thanks to all who responded,
+Ciaran.
+-------
+cjmchale@cs.tcd.ie
+
+
+
+>From louis@Xurilka.UUCP
+
+	BTW, you might want to look at a paper from AT&T Bell Labs :
+"Capsules: A Shared Memory Access Mechanism", by Narain Gehani. It may not
+be exactly what you are looking for, but I guess any piece of info is useful.
+-----
+~From: vsingh@mcc.com
+     
+	Inheritance and Synchronization with Enabled Sets
+	by Chris Tomlinson and Vineet Singh
+	OOPSLA '89
+-----
+~From: freudent@eric.ultra.nyu.edu
+
+At the ultralab we have been developing VERY efficient synchronization
+stuff for shared memory machines with fetch-and-add for several years.
+Below is the bibliography from a paper which
+I have recently finished on "Process Coordination with
+Fetch-and-increment" (submitted to ICPP; we can send you tech report
+version if you ask) which includes several appropriate refs.
+     
+.nr II \n(iiu
+.nr ii 9n
+.EQ
+delim off
+.EN
+.nr RR \n($ru
+.nr $r 4u
+.uh Bibliography
+.\"
+.ip [AHU74]
+Alfred V. Aho, John E. Hopcroft, and Jeffrey D. Ullman,
+.i "The Design and Analysis of Computer Algorithms" ,
+Addison-Wesley, 1974.
+.\"
+.ip [Ber88]
+Wayne Berke,
+.q "ParFOR\*-A Structured Environment for Parallel FORTRAN" ,
+Ultracomputer Note #137,
+Courant Institute, New York, NY, 1988.
+.\"
+.ip [CHP71]
+P. Courtois, F. Heymans, and D. Parnas,
+.q "Concurrent Control with `Readers' and `Writers'" ,
+.i CACM
+.b 14
+Number 10, pp. 667-668, Oct. 1971.
+.\"
+.ip [Dim88]
+Isaac Dimitrovsky,
+.q "ZLISP\*-A Portable Parallel LISP Environment" ,
+Doctoral Dissertation,
+Courant Institute, New York, NY, 1988.
+.\"
+.ip [EO88]
+Carla Schlatter Ellis and Thomas J. Olson,
+.q "Algorithms for Parallel Memory Allocation" ,
+.i "Intern. J. of Parallel Programming"
+.b 17
+Number 4, pp. 303-345, August 1988.
+.\"
+.ip [Edl84]
+Jan Edler,
+.q "Readers/Readers Synchronization" ,
+Ultracomputer System Software Note #46,
+Courant Institute, New York, NY, 1984.
+.\"
+.ip [FW78]
+Steven Fortune, and James Wylie,
+.q "Parallelism in Random Access Machines" ,
+.i "Proc. 10th ACM Symp. on Theory of Computation" ,
+pp. 114-118, 1978.
+.\"
+.ip [GSS89]
+James R. Goodman, J. Smith, Gurindar S. Sohi,
+.q "Restricted Fetch and \(*f Operations for Parallel Processing",
+to appear in
+.i "Intern. Conf. on Supercomputing" ,
+Hearklion-Crete, Greece, June, 1989.
+.\"
+.ip [GVW89]
+James R. Goodman, Mary K. Vernon, Phillip J. Woest,
+.q "Efficient Synchronization Primitives for Large-scale Cache-coherent
+ Multiprocessors" ,
+.i "Proc. ASPLOS III" ,
+pp. 64-75, April 1989.
+.\"
+.ip [GW88]
+James R. Goodman and Phillip J. Woest,
+.q "The Wisconsin Multicube: A New Large-Scale Cache-Coherent Multiprocessor"
+.i "Proc. 15th Annual Intern. Symp. on Comp. Arch." ,
+pp. 422-431, 1988.
+.\"
+.ip [GG83]
+Allan Gottlieb, Ralph Grishman, Clyde P. Kruskal,
+Kevin P. McAuliffe, Lawrence Rudolph, and Marc Snir,
+.q "The NYU Ultracomputer\*-Designing an MIMD Shared Memory Parallel Computer"
+ ,
+.i "IEEE Trans. Comp." ,
+pp. 175-189, February 1983.
+.\"
+.ip [GK81]
+Allan Gottlieb and Clyde P. Kruskal,
+.q "Coordinating Parallel Processors: A Partial Unification" ,
+.i "Computer Architecture News" ,
+pp. 16-24, October 1981.
+.\"
+.ip [GLR83]
+Allan Gottlieb, Boris Lubachevsky, and Larry Rudolph,
+.q "Basic Techniques for the Efficient Coordination of Very Large Numbers of
+ Cooperating Sequential Processors" ,
+.i "ACM TOPLAS"
+.b 5
+pp. 164-189, April 1983.
+Details on multiqueues appear only in
+Ultracomputer Note #16,
+Courant Institute, NYU, New York, 1980, from which the
+.i TOPLAS
+version was derived.
+.\"
+.ip [GG85]
+William Growther, John Goodhue, Edward Starr, Robert Thomas, Walter Milliken,
+and Tom Blackadar,
+.q "Performance Measurements on a 128-Node Butterfly Parallel Processor" ,
+.i "Proc ICCP" ,
+pp. 531-540, 1985.
+.\"
+.ip [PB85]
+Gregory F. Pfister, William C. Brantley, David A. George,
+Steve L. Harvey, Wally J. Kleinfielder, Kevin P. McAuliffe,
+Evelin S. Melton, V. Alan Norton, and Jodi Weiss,
+.q "The IBM Research Parallel Processor Prototype (RP3): Introduction and
+ Architecture" ,
+.i "Proc. ICCP" ,
+pp. 764-771, Aug. 1985.
+.\"
+.ip [Sni82]
+Marc. Snir,
+.q "On Parallel Search" ,
+.i "Proc. Principles of Distributed Computing" ,
+pp. 242-253, Aug 1982.
+.\"
+.ip [Sto82]
+Harold S. Stone,
+.q "Parallel Memory Allocation Using the Fetch-and-add Instruction" ,
+Technical Report RC9674, IBM Thomas J. Watson Research Center,
+November 1982.
+.\"
+.ip [YTL86]
+Pen-Chung Yew, Nian-Feng Tzeng, and Duncan H. Lawrie,
+.q "Distributing Hot-spot Addressing in Large-Scale Multiprocessors" ,
+.i "Proc. ICPP" ,
+1986.
+.\"
+.ip [TY90]
+Peiyi Tang, and Pen-Chung Yew,
+.q "Algorithms for Hot-Spot Addressing" ,
+.i "J. of Parallel and Distributed Computing" ,
+to appear.
+.\"
+.ip "[VGS89]"
+Mary K. Vernon, Rageev Jog, and Gurindar S. Sohi,
+.q "Analysis of  Hierarchical Cache-Coherent Multiprocessors"
+.i "Performance Evaluation" ,
+.b 9
+Number 4, August 1989.
+.\"
+.ip [Wil88]
+James Wilson,
+.q "Operating System Data Structures for Shared-Memory MIMD Machines with
+ Fetch-and-Add",
+Doctoral Disseration,
+Courant Institute, New York, NY, 1988.
+.nr ii \n(IIu
+.rm II
+.nr $r \n(RR
+.rm RR
+.EQ
+delim $$
+.EN
+-----
+~From: forman%nathaniel.sw.MCC.COM@MCC.com
+     
+At MCC we have be working on a language called Raddle that has
+a synchronization/communication primitive called N-party interaction,
+which is a specific case of multiparty interaction.
+Below are some references on Raddle and the more general notion multiparty
+interactions:
+     
+%T On the Design of Large Distributed Systems
+%A I. R. Forman
+%R STP-098-86 (Rev. 1.0)
+%D January, 1987
+%I Microelectronics and Computer Technology Corp.
+%C Austin, Texas
+%O (Preliminary version in \fIProc. First Int'l Conf. on Computer Languages\fP,
+ October 25-27, 1986, Miami, Florida.)
+     
+%A I. R. Forman
+%T Design by Decomposition of Multiparty Interactions in Raddle87
+%J Fifth International Workshop on Software Specification and Design
+%C Pittsburgh, Pa.
+%D May 19-20, 1989
+%P 2-10
+     
+%A P. Attie
+%T A Guide to Raddle87 Semantics
+%I Microelectronics and Computer Technology Corp.
+%R STP-340-87
+%D January 11, 1987
+     
+%A M. Evangelist
+%A V. Shen
+%A I. Forman
+%A M. Graf
+%T Using Raddle to Design Distributed Systems
+%R STP-285-87
+%I Microelectronics and Computer Technology Corp.
+%D 1987
+%O Presented at the 10th International Conf. on Software Engineering, April,
+ 1988.
+     
+%A M. Evangelist
+%A N. Francez
+%A S. Katz
+%T Multiparty Interactions for Interprocess Communication  and Synchronization
+%J IEEE Trans. on Software Engineering
+%V 15
+%N 11
+%D November, 1989
+%P 1417-1426
+-----
+~From: Mr David Murphy <dvjm%cs.glasgow.ac.uk@NSFnet-Relay.ac.uk>
+     
+You should be (and probably are) aware of the considerable
+theoretical literature on synchronisation problems/failures.
+If you read German, Mendler's thesis Uber die Realisierbarkeit
+von Synchronisationshardware (Studienarbeit, Lehrstuhl fuer
+Rechnerarchitektur und Verkehrstheorie, Universitaet
+Erlangen-Nuernberg) is most comprehensive and interesting.
+Otherwise try Barros & Johnson, Equivalence of the Arbiter,
+the Synchroniser, the Latch and the Inertial Delay, IEEE
+Trans. on Comp. C-32, 7, Pg. 603-614 and Chaney & Molnar,
+Anomalous behaviour of synchroniser and arbiter circuits.
+IEEE Trans. on Comp. C-22, 3, 421-422. I am sure that there
+is an Edinburgh (LFCS) thesis on the implementation and
+analysis of (fairly complex) synchronisation mechanisms,
+but I can't find the reference easily. I think it's by
+Mitchell, but that may be garbage.
+-----
+~From: Oscar Nierstrasz <oscar@cuisun.unige.ch>
+
+Here are a few references you might find useful.  I think the Kafura &
+Lee paper finally appeared in ECOOP '89.  You should also check out the
+paper by Tomlinson & Singh in OOPSLA '89 on "Inheritance &
+Synchronization with Enabled Sets".  We have also noted the problem
+with concurrency vs inheritance in the design of the language Hybrid.
+(See Nier87c and Papa89a.) We are currently working on an approach to
+concurrency based on a CCS-like model of concurrency (objects as
+synchronously communicating agents) and types as "protocols" (using a
+restricted kind of temporal logic based on the abstract states in which
+the object may find itself).
+
+%L Agha86b
+%K olit obib concurrency
+%A G.A. Agha
+%T ACTORS: A Model of Concurrent Computation in Distributed Systems
+%I The MIT Press
+%C Cambridge, Massachusetts
+%D 1986
+
+%L Amer87a
+%K olit concurrency oocp87
+%A P. America
+%T POOL-T: A Parallel Object-Oriented Language
+%B Object-Oriented Concurrent Programming
+%E A. Yonezawa, M. Tokoro
+%I The MIT Press
+%C Cambridge, Massachusetts
+%D 1987
+%P 199-220
+
+%L Kafu88a
+%K olit obib concurrency inheritance
+%A D.G. Kafura
+%A K.H. Lee
+%T Inheritance in Actor Based Concurrent Object-Oriented Languages
+%R TR 88-53
+%I Dept. Comp. Sci., Virgian Tech
+%D 1988
+%O Submitted for publication
+
+%L Nier87c
+%K olit obib concurrency triggers hybrid chloe oopsla87
+%A O.M. Nierstrasz
+%T Active Objects in Hybrid
+%J ACM SIGPLAN Notices, Proceedings OOPSLA '87
+%V 22
+%N 12
+%P 243-253
+%D Dec 1987
+
+%L Papa89a
+%K olit chloe ood89
+%A M. Papathomas
+%T Concurrency Issues in Object-Oriented Programming Languages
+%B Object Oriented Development
+%E D.C. Tsichritzis
+%I Centre Universitaire d'Informatique, University of Geneva
+%D July 1989
+%P 207-245
+
+%L Toml88a
+%K olit obib concurrency oocda89
+%A C. Tomlinson
+%A M. Scheevel
+%T Concurrent Object-Oriented Programming Languages
+%B Object-Oriented Concepts, Databases and Applications
+%E W. Kim and F. Lochovsky
+%I ACM Press and Addison-Wesley
+%D 1989
+%P 79-124
+
+%L Yoko86a
+%K olit obib ooplas concurrentsmalltalk oopsla86
+%A Y. Yokote
+%A Mario Tokoro
+%T The Design and Implementation of ConcurrentSmalltalk
+%J ACM SIGPLAN Notices, Proceedings OOPSLA '86
+%V 21
+%N 11
+%P 331-340
+%D Nov 1986
+-----
+~From: Colin Atkinson <ca@doc.imperial.ac.uk>
+
+In a recent USENET message you asked for information about languages
+which have addresses the traditional conflict between inheritance and
+concurrency, and which provide ``high-level'' synchronisation
+mechanism equivalent to path expressions. In the European Esprit project
+DRAGON we have developed an object-oriented language, called DRAGOON, which 
+handles synchronisation concerns by means of a special enhancement of
+multiple inheritance known as ``behavioural inheritance''. This 
+permits the programmer to superimpose an abstract (generic) synchronisation 
+strategy, specified in terms of deontic logic expressions over history 
+functions, on the methods of a normal ``sequential'' class at any time in the
+program development process. The resulting ``behavioured'' class 
+``inherits'' the functional properties of its sequential parent
+and the ``synchronisation'' properties of its ``behavioural'' parent.
+Since the synchronisation strategy is not embedded in the code of class
+bodies (in contrast with most existing concurrent OOLs), different strategies 
+can be superimposed on the same sequential class simply by reperfroming the 
+behavioural inheritance step.
+
+I would be glad to supply you with further information if you are
+interested.
+
+	Colin Atkinson.
+-----
+~From: Wolfgang Mueller <wolfgang@cadlab.uucp>
+
+Hello,
+I think there was an article in the following book discussing
+the problem of inheritance in concurrent systems. There are also
+some low level concepts of synchronization of several concurrent oo
+programming languages. But I think you already got this book.
+
+Yonezawa A., Tokoro M., Object-Oriented Programming, MIT Press, 1987.
+-----
+~From: Rik Fischer Smoody <riks@csl.sony.co.jp>
+
+>	1. How to overcome the basic conflict between inheritance and
+>	   synchronisation.
+I think someone fed your a line and you took it....
+I don't see a basic conflict at all unless you fall into the common trap
+of thinking that inheritance can only be done by latest-possible
+binding time ancestor search for a method.
+Peter Deutch's work at ParcPlace has long shown that you can do better.
+The Tektronix Smalltalk also did better.
+The Modular Smalltalk idea of that group lives on at Instantiations.
+As with "real" inheritance, you can bind your genetics as soon as
+you decide who your parents are.  It's really rare that I change the
+definitions in a reasonably well-designed set of abstract superclasses.
+Even when hacking, it's not a big problem.
+If I dynamically teach some object (or class) a new set of tricks, it's
+safest to check that it's appropriate to do so, and to update
+the method dictionary iff it is.
+See also David Unger's work on Self (several OOPSLA papers over the years
+but especially '89)
+Again, method dictionary is established at the time of definition.
+It can be updated as necessary.
+-----
+
+
+
+@incollection{Path-Expressions-1,
+          author =	"R. H. Campbell and A. N. Habermann",
+           title =	"{The Specification Of Process Synchronisation
+			 by Path Expressions}",
+       booktitle =	"Lecture Notes in Computer Science, No. 16",
+       publisher =	"Springer Verlag",
+            year =	"1973",
+           pages =	"89--102",
+          annote =	"This is the original paper on path expressions.
+			 The version of path expressions described here is
+			 a bit primitive but the paper is still worth reading.",
+	keywords =	"k-path-expressions, k-regular-path-expressions,
+			 k-synchronisation"
+}
+
+
+@inbook{Path-Expressions-2,
+          author =	"Maekawa and Oldehoeft and Oldehoeft",
+           title =	"{Operating Systems---Advanced Concepts}",
+         chapter =	"3.4.2",
+           pages =	"71--79",
+       publisher =	"Benjamin/Cummings",
+            year =	"1987",
+          annote =	"This gives an overview of both Open and
+			 Predicate Path Expressions",
+	keywords =	"k-path-expressions, k-predicate-path-expressions,
+			 k-open-path-expressions, k-synchronisation"
+}
+
+
+@unpublished{Path-Expressions-3,
+          author =	"S. J. Goldsack",
+           title =	"{Path Expressions and Ada Programs
+			 (Second Draft)}",
+          annote =	"This paper compares Open Path Expressions to
+			 Petri Nets and shows by example how to prove the
+			 correctness of a Path Expression.",
+	    month=	aug,
+            year =	"1986",
+	abstract =	"An overview of path expressions as a means of
+			 specifying synchronisation laws for concurrent
+			 systems. It is written as a possible chapter for
+			 the book on specifying concurrency, being produced
+			 by Ada Europe Formal Methods Group, and gives some
+			 attention to the relation of path expressions to the
+			 semantics of concurrency in Ada programs.",
+	keywords =	"k-path-expressions,  k-open-path-expressions,
+			 k-synchronisation, k-ada"
+}
+
+
+@article{Path-Expressions-4,
+          author =	"Prof. S. J. Goldsack  and T. Moreton",
+           title =	"{Ada Package Specifications: Path Expressions
+			 and Monitors}",
+         journal =	"{IEE PROC.}",
+            year =	"1982",
+          volume =	"129",
+          number =	"2",
+           pages =	"49--54",
+           month =	mar,
+	abstract =	"The paper describes how path expressions can be
+			 introduced in an Ada package specification to define
+			 the permitted interleavings between calls on the
+			 functions and procedures in the visible part of the
+			 package. A preprocessor is described which synthesises
+			 the internal task and entry calls required to enforce
+			 the specified protocols.",
+	keywords =	"k-path-expressions,  k-open-path-expressions,
+			 k-synchronisation,  k-ada"
+}
+
+
+@article{Path-Expressions-5,
+          author =	"Roy H. Campbell and Robert B. Kolstad",
+           title =	"{An Overview of Path Pascal's Design and the
+			 Path Pascal User Manual}",
+         journal =	"ACM Sigplan Notices",
+            year =	"1980",
+          volume =	"15",
+          number =	"9",
+           pages =	"13--24",
+           month =	sep,
+          annote =	"Path Pascal uses Open Path Expressions.",
+	keywords =	"k-path-expressions,  k-open-path-expressions,
+			 k-path-pascal"
+}
+
+
+@inproceedings{Path-Expressions-6,
+          author =	"Sten Andler",
+           title =	"{Predicate Path Expressions}",
+       booktitle =	"Sixth Annual ACM Synposium on Principles of
+			 Programming Languages",
+            year =	"1979",
+           pages =	"226--236",
+         address =	"San Antonio, Texas",
+          annote =	"This paper describes the usage of Predicate Path
+			 Expressions, their formal semantics and an
+			 effecient implementation.",
+	keywords =	"k-path-expressions,  k-predicate-path-expressions"
+}
+
+
+@inproceedings{Other-Powerful-Sync-1,
+          author =	"Chris Tomlinson and Vineet Singh",
+           title =	"{Inheritance and Synchronisation with
+			 Enabled-Sets}",
+       booktitle =	"{OOPSLA} '89 Proceedings",
+            year =	"1989",
+           pages =	"103--112",
+           month =	oct,
+          annote =	"Enabled-Sets offer an easy way to inherit
+			 synchronisation constraints. Also see
+			 \cite{Other-Powerful-Sync-2}.",
+	keywords =	"k-enabled-sets, k-inheritance, k-synchronisation"
+}
+
+
+@inproceedings{Other-Powerful-Sync-2,
+          author =	"Dennis G. Kafura and Keung Hae Lee",
+           title =	"{Inheritance in Actor Based Concurrent
+			 Object-Orientated Languages}",
+       booktitle =	"{ECOOP} 89",
+            year =	"1989",
+          editor =	"Stephen Cook",
+           pages =	"131--145",
+       publisher =	"Cambridge University Press",
+           month =	jul,
+          annote =	"This paper also appears in {\em The Computer
+			 Journal\/}, VOL. 32, No. 4, 1989, pages 297--303.
+			 The mechanism presented, {\em behaviour abstraction\/},
+			 is really Enabled-Sets\cite{Other-Powerful-Sync-1}
+			 by a different name.",
+	keywords =	"k-enabled-sets,  k-inheritance,  k-synchronisation"
+}
+
+
+@book{Other-Powerful-Sync-3,
+          author =	"Fran\c{c}oise Andr\'{e} and Daniel Herman and
+			 Jean-Pierre Verjus",
+           title =	"{Synchronisation of Parallel Programs}",
+       publisher =	"North Oxford Academic",
+            year =	"1985",
+          series =	"Studies in Computer Science",
+            note =	"Original French language edition
+			 (Synchronisation de Programmes Parall\`{e}les, Dunod)
+			 \copyright BORDAS 1983",
+          annote =	"A whole book on using boolean expressions as a
+			 means of expressing synchronisation constraints. This
+			 book seems to have provided a basis for the
+			 {\em Activation Conditions\/} of the Guide
+			 language\cite{Comandos-Sync-3}.",
+	keywords =	"k-synchronisation, k-synchronisation-counters"
+}
+
+
+@inproceedings{Theory-of-Synch-1,
+          author =	"Toby Bloom",
+           title =	"{Evaluating Synchronisation Mechanisms}",
+       booktitle =	"Seventh International ACM Symposium on Opertating
+			 System Principles",
+            year =	"1979",
+           pages =	"24--32",
+          annote =	"This paper discusses six features which an ideal
+			 synchronisation mechanism should process and
+			 discusses how existing mechanisms compare to this
+			 ideal.",
+	abstract =	"In recent years, many high-level synchronisation
+			 constructs have been proposed. each claims to satisfy
+			 criteria such as expressive power, ease of use,
+			 and modifiability. Because these terms are so
+			 impercise, we have no good methods for evaluating how
+			 well these mechanisms actually meet such requirements.
+			 This paper presents a methodology for performing such
+			 an evaluation. Synchronisation problems are
+			 categorised according to some basic properties, and
+			 this categorisation is used in formulating more
+			 precise definitions of the criteria mentioned, and in
+			 devising techniques for accessing how well those
+			 criteria are met.",
+	keywords =	"k-synchronisation"
+}
+
+
+@article{Other-Powerful-Sync-4,
+          author =	"Gregory R. Andrews",
+           title =	"{Synchronising Resources}",
+         journal =	"ACM Transactions on Programming Languages and
+			 Systems",
+            year =	"1981",
+          volume =	"3",
+          number =	"4",
+           pages =	"405--430",
+           month =	oct,
+	keywords =	"k-synchronisation"
+}
+
+
+@article{Other-Powerful-Sync-5,
+          author =	"Denis Caromel",
+           title =	"{Service, Asynchrony, and Wait-By-Necessity}",
+         journal =	"Journal of Object Orientated Programming (JOOP)",
+            year =	"1989",
+           pages =	"12--22",
+           month =	nov,
+          annote =	"This paper discusses the addition to Eiffel of a
+			 {\em process object\/} so that objects are split into
+			 two basic categories---passive and active.",
+	keywords =	"k-eiffel, k-active-objects"
+}
+
+
+@article{Path-Expressions-7,
+          author =	"Arthur E. Oldehoeft and Steven F. Jennings",
+           title =	"{Dataflow Resource Managers and Their
+			 Synthesis from Open Path Expressions}",
+         journal =	"{IEEE} Transactions on Software Engineering",
+            year =	"1984",
+          volume =	"SE-10",
+          number =	"3",
+           pages =	"244--256",
+           month =	may,
+	abstract =	"The control of concurrent access to shared resources
+			 is an important feature of both centralised and
+			 distributed operating systems. In conventional
+			 systems, exclusive access is the rule while concurrent
+			 access is the exception. Dataflow computer systems,
+			 along with an applicative style of programming,
+			 provide an execution environment in which this
+			 philosophy is reversed. In these latter systems, it is
+			 necessary to reexamine the manner in which
+			 synchronisation of access to shared resources is
+			 specified and implemented. A basic design for a
+			 dataflow resource manager is reviewed, illustrating
+			 the clear separation between access mechanism and
+			 scheduling policy. The semantics of the access
+			 mechanism is based solely on the principle of data
+			 dependency. Specifications are presented for a general
+			 scheduler to further constrain or order access to the
+			 resource. Using ``open path expressions'' as a very
+			 high-level specification language for synchronisation,
+			 it is shown how to automatically synthesise a
+			 scheduler as a distributed network of communicating
+			 modules.",
+	keywords =	"k-path-expressions k-open-path-expressions,
+			 k-data-flow"
+}
+
+@article{Monitors-2,
+          author =	"Andrew Lister",
+           title =	"{The Problem of Nested Monitor Calls}",
+         journal =	"ACM Operating Systems Review",
+            year =	"1977",
+          volume =	"11",
+          number =	"3",
+           pages =	"5--7",
+           month =	jul,
+          annote =	"This paper states that a problem exists if monitors
+			 make calls on each other. Should mutual be released
+			 when such a call is made? If not then deadlock might
+			 occur. On the other hand if mutual exclusion is
+			 released then the calling monitor must be in a
+			 consistant state when making the call. The author
+			 invites others to suggest solutions. See
+			 \cite{Monitors-3} for a discussion on four different
+			 approaches. Since there is a lot of ongoing research
+			 into concurrent object-oriented systems, the problem
+			 of nested monitor calls has become the problem of
+			 nested {\em synchronised object\/} calls and poses some
+			 additional problems if the synchronisation constraints
+			 of the objects are allowed to be more complex than
+			 just mutual exclusion.",
+	keywords =	"k-monitors, k-nested-monitor-calls"
+}
+
+@article{Monitors-3,
+          author =	"Bruce K. Haddon",
+           title =	"{Nested Monitor Calls}",
+         journal =	"ACM Operating Systems Review",
+            year =	"1977",
+          volume =	"11",
+          number =	"4",
+           pages =	"18--23",
+           month =	oct,
+          annote =	"This paper discusses four mechanisms for dealing with
+			 the problem of nested monitor calls and argues that
+			 one of these mechanisms is the most viable approach.",
+	keywords =	"k-monitors, k-nested-monitor-calls"
+}
+
+
+@misc{Comandos-Sync-3,
+          author =	"D. Decouchant and S. Krakowiak and M. Meysembourg
+			 and R. Riveill and X. Rousset de Pina",
+           title =	"{A Synchronisation Mechanism for Typed Objects
+			 in a Distributed System}",
+    howpublished =	"Presented at the workshop on
+			 ``Object-Based Concurrent Programming'', {OOPSLA} '88",
+            year =	"1988",
+            note =	"Abstract in {\em ACM Sigplan Notices\/},
+			 24(4):105--107, April 1989",
+	abstract =	"This paper presents a mechanism for synchronising
+			 shared objects in a distributed system based on
+			 persistant, typed objects.",
+          annote =	"The Guide language uses {\em Activation Conditions\/},
+			 which are boolean expressions on synchronisation
+			 counters and instance variables, for expressing
+			 synchronisation constraints.",
+	keywords =	"k-synchronisation, k-guide, k-activation-conditions,
+			 k-comandos"
+}
+
+
+@inproceedings{Misc-3,
+          author =	"J. Eliot and B. Moss and Walter H. Kohler",
+           title =	"{Concurrency Features for the Trellis/Owl
+			 Language}",
+       booktitle =	"{ECOOP} '87---European Conference on Object-Oriented
+			 Programming",
+            year =	"1987",
+          editor =	"G. Goose and J. Hartmanis",
+           pages =	"171--180",
+       publisher =	"Springer-Verlag",
+           month =	jun,
+            note =	"This is Volume 276 of {\em Lecture Notes in Computer
+			 Science\/}.",
+	keywords =	"k-trellis, k-owl, k-concurrency, k-locks, k-queues"
+}
+
+@article{Misc-4,
+          author =	"David L. Detlefs and Maurice P. Herlihy and
+			 Jeannette M. Wing",
+           title =	"{Inheritance of Synchronisation and Recovery
+			 Properties in Avalon/C++}",
+         journal =	"{IEEE} Computer",
+            year =	"1988",
+           pages =	"57--69",
+           month =	dec,
+	keywords =	"k-inheritance, k-synchronisation, k-transactions,
+			 k-atomicity"
+}
+
+
+@inproceedings{Misc-5,
+          author =	"Pierre America",
+           title =	"{Inheritance and Subtyping in a Parallel
+			 Object-Oriented Language}",
+       booktitle =	"{ECOOP} '87---European Conference on Object-Oriented
+			 Programming",
+            year =	"1987",
+          editor =	"G. Goos and J. Hartmanis",
+           pages =	"234--242",
+       publisher =	"Springer-Verlag",
+           month =	jun,
+            note =	"This is Volume 276 of {\em Lecture Notes in Computer
+			 Science\/}.",
+	keywords =	"k-inheritance"
+}
+
+
+@inproceedings{Low-Level-Sync-1,
+          author =	"D. Decouchant",
+           title =	"{Effecient Implementation of low-level
+			 Synchronisation Primitives in the UNIX-based
+			 GUIDE kernel}",
+       booktitle =	"EUUG Autumn '89 Conference Proceedings",
+            year =	"1989",
+           pages =	"283--294",
+           month =	sep,
+	abstract =	"When developing new and complex applications on top
+			 of UNIX system, implementors are usually faced with
+			 synchronisation problems whose solution is not simple.
+			 This is especially true when such applications are in
+			 fact a new system level which defines a different
+			 model of synchronisation. Standard mechanisms
+			 normally provided are simple, general but not
+			 efficient enough when heavily used. Synchronisation
+			 implementation should be of low cost with respect to
+			 other system components, but this is not usually the
+			 case. This paper first summarises the synchronisation
+			 mechanism required by our object-oriented environment,
+			 then describes the implementation of our final
+			 solution, which was derived in several steps, and
+			 finally presents experience and performance
+			 measurements of different progressive improvements.",
+          annote =	"This paper shows how semaphore operations may be
+			 implemented which will be up to ninety times faster
+			 than those provided by the UNIX kernel.",
+	keywords =	"k-comandos, k-guide, k-semaphores"
+}
+
+
+@inproceedings{Other-Powerful-Sync-6,
+          author =	"J. E. Grass and R. H. Campbell",
+           title =	"{Mediators: A Synchronisation Mechanism}",
+	booktitle =	"Proceedings of the Conference on Distributed
+			 Computer Systems",
+            year =	"1986",
+           month = 	sep,
+           pages =	"468--477",
+    organization =	"IEEE",
+	abstract =	"This paper describes a construct called a
+			 {\em mediator\/}. Mediators support synchronisation
+			 and scheduling for systems programming within
+			 distributed systems. Mediators are based on a resource
+			 view of systems, and fit within a programming
+			 methodology that emphesises resource modularity,
+			 synchronisation modularity and encapsulated
+			 concurrency. The paper examines other existing
+			 synchronisation mechanisms in the light of modular
+			 programming requirements. Subsequently, a sample
+			 syntax and semantics for mediators is presented with
+			 many examples. 
+
+			 The mediator includes many interesting features.
+			 These include: an adaptation of guarded commands;
+			 {\em keys\/} that allow requests to be examined and
+			 manipulated before they recieve service; parallel
+			 guard execution; coupled and uncoupled modes of
+			 service execution.
+
+			 Finally this paper discusses a few aspects of
+			 implementation.",
+	  annote =	"The mediator concept is very powerful but it provides
+			 it's power at the price of some complexity.",
+	keywords =	"k-synchronisation, k-mediators"
+}
+
+@article{Low-Level-Sync-2,
+          author =	"Leslie Lamport",
+           title =	"{A Fast Mutual Exclusion Algorithm}",
+         journal =	"ACM Transations on Computer Systems",
+            year =	"1987",
+          volume =	"5",
+          number =	"1",
+           pages =	"1--11",
+           month =	feb,
+	abstract =	"A new solution to the mutual exclusion problem is
+			 presented that, in the absence of contention,
+			 requires only seven memory accesses. It assumes
+			 atomic reads and atomic writes to shared registers.",
+	keywords =	"k-mutual-exclusion"
+}
+
+
+@unpublished{Comandos-Sync-7,
+          author =	"D. Decouchant and P. le Dot and M. Riveill",
+           title =	"{A Synchronisation Mechanism for an Object Oriented
+			 Distributed System}",
+            note =	"(I'm not sure if this paper has been published)",
+            year =	"1989 or 1990",
+	abstract =	"This paper presents a mechanism for synchronising
+			 shared objects in a distributed system based on
+			 persistant, typed objets. Synchronisation constraints
+			 are expressed as separate control clauses and are
+			 factored for a class of objects. The interference of
+			 this mechanism with inheritance and transactions is
+			 examined and solutions are proposed. Examples of
+			 synchronised objects are provided and a
+			 semaphore-based implementation of this mechanism is
+			 described.",
+          annote =	"This is basically an updated version of
+			 \cite{Comandos-Sync-3}",
+	keywords =	"k-comandos, k-guide, k-activation-conditions,
+			 k-synchronisation, k-inheritance, k-transactions"
+}
+
+
+@inproceedings{Other-Powerful-Sync-7,
+          author =	"O. M. Nierstrasz",
+           title =	"{Active Objects in Hybrid}",
+       booktitle =	"{OOPSLA} '87 Proceedings",
+          editor =	"Norman Meyrowitz",
+    organization =	"ACM",
+            note =	"Special issue of {\em ACM SIGPLAN Notices\/},
+			 22(12):243--253",
+	abstract =	"Most object-oriented languages are strong on
+			 reusability or on strong-typing, but weak on
+			 concurrency. In response to this gap, we are developing
+			 {\em Hybrid\/}, an object-oriented language in which
+			 objects are the active entities. Objects in Hybrid are
+			 organised into {\em domains\/}, and concurrent
+			 executions into {\em activities\/}. All object
+			 communications are based on remote procedure-calls.
+			 Unstructured {\em sends\/} and {\em accepts\/} are
+			 forbidden. To this the mechanisms of
+			 {\em delegation\/} and {\em delay queues\/} are added
+			 to enable switching and triggering of activities.
+			 Concurrent subactivities and atomic actions are
+			 provided for compactness and simplicity. We show how
+			 solutions to many important concurrent problems, such
+			 as a pipelining, constraint management and
+			 ``administration'' can be compactly expressed using
+			 these mechanisms.",
+	keywords =	"k-hybrid, k-queues, k-delegation, k-atomicity,
+			 k-active-objects"
+}
+
+
+@article{Other-Powerful-Sync-8,
+          author =	"Anand Tripathi and Mehmet Aksit",
+           title =	"{Communication, Scheduling, and Resource Management
+			 in SINA}",
+         journal =	"JOOP",
+            year =	"1988",
+           pages =	"24--37",
+           month =	nov,
+	keywords =	"k-sina, k-concurrency, k-synchronisation"
+}
+
