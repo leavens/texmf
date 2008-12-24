@@ -17,7 +17,7 @@
 % with LaTeX or TeX. Don't bother anyone at another site with questions
 % that can be answered locally.
 
-\documentclass{article}
+\documentstyle[titlepage]{article}
 
 \newcommand{\contact}{the Systems Support Group}
 
@@ -36,8 +36,8 @@
 
 \author{Gary T. Leavens \& Dave Buckley}
 
-\date{14 February 1996\\              % Keep this date current
-For \LaTeX\ 2e} 
+\date{22 September 1992\\              % Keep this date current
+For \LaTeX\ Version 2.09} 
 
 \begin{document}
 
@@ -49,12 +49,12 @@ For \LaTeX\ 2e}
 
 \LaTeX\ runs on a variety of computers at many different sites.  This
 document tells you how to use \LaTeX\ on the CS department
-computers, such as {\tt flash}, {\tt stimpy} and {\tt ren} at ISU.
+computers, such as {\tt flash}, {\tt ren} and {\tt stimpy} at ISU.
 (A few notes about running \LaTeX\ on Project Vincent are included,
 but we cannot be responsible for documenting their system.)
 It is not about \LaTeX\ itself, which is described by
-the manual---{\em \LaTeX: A Document Preparation System\/} (second edition),
-published by Addison-Wesley, available at fine book stores everywhere.
+the manual---{\em \LaTeX: A Document Preparation System}, published by
+Addison-Wesley, available at fine book stores everywhere.
 
 If you have a question that you can't answer by reading the manual and
 this document, ask \contact.  They should also be informed of any
@@ -67,10 +67,10 @@ possible \LaTeX\ bugs or undocumented anomalies.
 
 Before preparing your own documents, you may want to get acquainted
 with \LaTeX\ by running it on a sample input file.  First make your own
-copy of the file \mbox{\tt sample2e.tex} by typing the following
+copy of the file \mbox{\tt sample.tex} by typing the following
 command:
 \begin{verbatim}
-     cp /usr/local/lib/tex/inputs/sample2e.tex .
+     cp /usr/local/lib/tex/inputs/sample.tex .
 \end{verbatim}
 (You must type the space followed by the period at the end.  This
 and all other HP-UX commands are ended by typing {\em return}.)
@@ -82,18 +82,18 @@ one.
 (On Project Vincent, execute the following commands instead.)
 \begin{verbatim}
     add tex
-    cp /home/tex/lib/tex/macros/sample2e.tex .
+    cp /home/tex/lib/tex/macros/sample.tex .
 \end{verbatim}
 
-Next, run \LaTeX\ on the file \mbox{\tt sample2e.tex} by typing:
+Next, run \LaTeX\ on the file \mbox{\tt sample.tex} by typing:
 \begin{verbatim}
-     latex sample2e
+     latex sample
 \end{verbatim}
 When \LaTeX\ has finished, it will have produced the file \mbox{\tt
-sample2e.dvi} in your directory.  On HP-UX you can print this file
+sample.dvi} in your directory.  On HP-UX you can print this file
 by typing the commands
 \begin{verbatim}
-     dvips sample2e.dvi
+     dvitps sample.dvi | lp -dlw2 
 \end{verbatim}
 The output will be produced on the printer lw2, in the second floor
 terminal room.
@@ -101,30 +101,26 @@ terminal room.
 To print on a CS department printer from Project Vincent, type
 \begin{verbatim}
      add cs
-     dvips sample2e.dvi | cslpr -Plw2
+     dvips sample.dvi | cslpr -Plw2
 \end{verbatim}
 See the manual page for {\tt cslpr} for other options.
 
 After your output has been printed, you can delete \mbox{\tt
 sample.dvi} by typing
 \begin{verbatim}
-     rm sample2e.dvi 
+     rm sample.dvi 
 \end{verbatim}
 
 \subsection{Preparing and Running \LaTeX\ on Your Own Files}
 
 You must use a text editor to prepare an input file for \LaTeX.
 The easiest way to start learning about \LaTeX\ is by 
-examining the file \mbox{\tt small2e.tex} with your text editor.
-Your can get a copy by typing
-\begin{verbatim}
-     cp /usr/local/lib/tex/inputs/small2e.tex .
-\end{verbatim}
+examining the file \mbox{\tt small.tex} with your text editor.
 
 After you have prepared your file, whose name should have the extension
 {\tt tex}, you must run it through \LaTeX\ and print the output.
 Follow the instructions in Section~\ref{sec:sample}, except substitute
-the first name of your file for ``\mbox{\tt sample2e}''.  Remember to
+the first name of your file for ``\mbox{\tt sample}''.  Remember to
 save disk space by deleting the {\tt dvi} file after printing the
 output.
 
@@ -265,11 +261,18 @@ You might want to do this if your name
 is Leavens and you have your own personal document-style files in your
 {\tt include} directory. 
 
-\subsection{Document Styles, Classes and Packages}
+\subsection{Document Styles}
 
-There are several document styles, classes, and packages
-at ISU that are not described in the manual (or in {\em The \LaTeX\ Companion}: 
+
+There are at least nine document styles and style options
+that are standard at ISU that
+are not described in the manual: 
 \begin{itemize}
+\item The {\tt bezier} option for drawing curves.
+
+\item The {\tt ifthen} option for implementing {\bf if-then-else} and
+{\bf while-do} control structures.
+
 \item the \mbox{\tt isuabbr} style option for
 locally defined abbreviations.
 
@@ -279,10 +282,115 @@ locally defined abbreviations.
 standard report style.
 
 \item The {\tt isuthes} style for theses.
+
+\item The {\tt makeidx} option for use with the {\it makeindex\/}
+program. (Section~\ref{sec:makeindex} for information about this
+program).
+
+\item The {\tt proc} style option for making camera ready papers
+for ACM and IEEE conferences.
+
+\item The {\tt showidx} option for printing index entries in the
+margin.  
 \end{itemize} 
 
-There are also some style, class, and package
-files in {\tt /usr/unsup/tex}.
+There are also many style files in the {\tt /usr/unsup/tex}.
+
+\subsubsection{The {\tt proc} Style Option}
+
+The {\tt proc} option is used with the \mbox{\tt article} document
+style.  It produces two-column output for ACM and IEEE conference
+proceedings.  The command \hbox{\verb|\copyrightspace|} makes the blank
+space at the bottom of the first column of the first page, where the
+proceedings editor will insert a copyright notice.  This command works
+by producing a blank footnote, so it is placed in the text of the first
+column.  It must go after any \hbox{\verb|\footnote|} command that
+generates a footnote in that column.
+
+\LaTeX\ automatically numbers the output pages.  It's a good idea 
+to identify the paper on each page of output.  Placing the command
+\begin{verbatim}
+     \markright{Jones---Foo}
+\end{verbatim}
+in the preamble (before the \hbox{\verb|\begin{document}|} command)
+prints ``Jones---Foo'' at the bottom of each page.  
+
+\subsubsection{The {\tt bezier} Style Option}
+
+This option defines a single command, \hbox{\verb|\bezier|}, that draws
+a curved line in a {\tt picture} environment.  Let $P_{i}$ be the point
+with coordinates $(x_{i},y_{i})$, for $i=1$, 2, and 3.  The command
+\begin{itemize} \tt
+\item[]
+\verb|\bezier{|$n$\verb|}(|$x_{1}$,$y_{1}$)($x_{2}$,$y_{2}$)($x_{3}$,$y_{3}$)
+\end{itemize}
+draws $n$ points on the quadratic Bezier spline determined by the three
+points $P_{1}$, $P_{2}$, and $P_{3}$.  The locus of points on this
+spline is a parabolic arc from $P_{1}$ to $P_{3}$ having the line
+$P_{1}P_{2}$ tangent to it at $P_{1}$ and the line $P_{2}P_{3}$ tangent
+to it at $P_{3}$.  Note that $P_{2}$ is {\em not\/} on this arc unless
+$P_{1}$, $P_{2}$, and $P_{3}$ are colinear, in which case the arc is a
+straight line.  Bezier splines are useful because it's easy to join two
+of them together smoothly by giving them the same tangent line where
+they meet.
+
+It takes roughly 75 points per inch to form a solid line, depending
+upon the line thickness.  See Section~C.13.3 of the manual for commands
+to specify line thickness in a {\tt picture} environment.  This command
+is {\em very\/} slow, and \TeX\ has enough memory to hold only about
+1000 points plus a page of text.  (Remember that \TeX\ keeps the
+current page plus all as yet unprinted figures in memory.) So, the
+\verb|bezier| command should be used for only a small number of small
+curves.
+
+
+\subsubsection{The {\tt ifthen} Style Option}
+
+This option provides two programming language features that are useful
+only for people who already know how to program.  It defines the
+two commands
+\begin{itemize} 
+\item[]
+\verb|\ifthenelse{|{\em test\/}\verb|}{|{\em then clause\/}\verb|}{|%
+{\em else clause\/}\verb|}|\\
+\verb|\whiledo{|{\em test\/}\verb|}{|{\em do clause\/}\verb|}|
+\end{itemize}
+that implement the following two Pascal language structures
+\begin{itemize}
+\item[]
+\begin{tabbing}
+{\bf if} {\em test\/} \= {\bf then} \= {\em then clause\/} \\
+ \> {\bf else} \> {\em else clause\/} \\[2pt]
+{\bf while} {\em test\/} {\bf do} {\em do clause\/}
+\end{tabbing}
+\end{itemize}
+The {\em then\/}, {\em else\/}, and {\em do\/} clauses
+are ordinary \LaTeX\ input; {\em test\/} is one of the following:
+\begin{itemize}
+ \item A relation between two numbers formed with {\tt <}, {\tt >},
+or {\tt =}; for example, \hbox{\verb|\value{page}>3|}.
+ \item \verb|\equal{|{\em string1\/}\verb|}{|%
+{\em string2\/}\verb|}|, which evaluates to {\em true\/} if {\em
+string1\/} and {\em string2\/} are the same strings of characters after
+all commands have been replaced by their definitions.  (Upper- and
+lowercase letters are unequal.)
+ \item A logical combination of the above two kinds of tests
+    using the operators \hbox{\verb|\or|}, \hbox{\verb|\and|},
+    and \hbox{\verb|\not|} and the parentheses \hbox{\verb|\(|}
+    and \hbox{\verb|\)|}---for example:
+\begin{verbatim}
+\not \( \value{section} = 1  \and  \equal{Jones}{\myname} \)
+\end{verbatim}
+\end{itemize}
+The {\em test\/} argument is a violently moving argument, which means
+that not only fragile commands but even some commands that are not
+normally fragile will break, causing \TeX\ to enter an infinite loop.
+The \verb|\protect| command works in these situations.
+
+These commands, together with \hbox{\verb|\renewcommand|} and the
+commands of Section~C.7.4 for manipulating counters, open up a whole
+new world of hacking.
+
 
 \subsubsection{Letters} \label{sec:letters}
 
@@ -293,6 +401,15 @@ ISU letterhead, use the \mbox{\tt isuletter} style.
 There have been problems in the past printing this;
 you may have to adjust the margins.
 See the manual page for {\tt dvips}.
+
+\subsubsection{The {\tt showidx} Style Option}
+
+This style option, for use with the {\tt report} or {\tt book} document
+styles, causes index entries to be printed in the outer margin.  It
+does not change the effect of \verb|\makeindex|, which controls
+whether or not an {\tt .idx} file is written.  No attempt is made to
+avoid overprinting marginal notes.  This option issues a 
+\verb|\flushbottom| declaration.
 
 \subsubsection{The {\tt isuthes} Style Option}
 
@@ -311,6 +428,27 @@ All \LaTeX\ files mentioned in the manual, including the {\tt sty} and
 {\tt doc} files, are in the directory \mbox{\tt /usr/local/lib/tex/inputs}
 on HP-UX.  They are in the  \mbox{\tt /home/tex/lib/tex/macros} directory
 on Project Vincent.
+
+\subsection{Running {\tt lablst.tex} and {\tt idx.tex}}
+
+A list of labels and citations in an input file is printed
+by running \LaTeX\ on the input file \mbox{\tt lablst.tex},
+which is done by typing
+\begin{verbatim}
+     latex /usr/local/lib/tex/inputs/lablst
+\end{verbatim}
+\LaTeX\ will then ask for the name of the input file, which should be
+typed without an extension, and for the name of the main document style
+(e.g., \mbox{\tt article}), used by that file.
+
+The index entries on an {\tt idx} file are printed by running \LaTeX\
+on the file \mbox{\tt idx.tex}, which is done by typing
+\begin{verbatim}
+     latex /usr/local/lib/tex/inputs/idx
+\end{verbatim}
+\LaTeX\ will ask for the name of the {\tt idx} file, which is typed
+without an extension.
+
 
 
 \subsection{Differences from the Manual}
@@ -396,11 +534,124 @@ following abbreviations are defined by the bibliography styles:
 
 % Note: All styles should share the same set of abbreviations.
 
+\subsection{Using \SLiTeX}
+
+\SLiTeX\ is a version of \LaTeX\ for making slides.
+To run \SLiTeX\  with a root file \mbox{\tt myroot.tex}, you type
+\begin{verbatim}
+     slitex myroot
+\end{verbatim}
+(You should be connected to the directory containing \mbox{\tt
+myroot.tex}.) Refer to Section~\ref{sec:op-system} if you want slide
+files or \hbox{\verb|\input|} files to be in a different directory from
+your root file.
+
 \subsection{Using {\em makeindex\/}} \label{sec:makeindex}
 
 The {\em makeindex\/} program helps in making an index.  It is 
 described in the manual page.
 
+\subsection{Fonts}
+
+Almost all the symbols available on our fonts can be generated by
+ordinary \LaTeX\ commands.  However, there are type sizes not
+obtainable by \LaTeX's size-changing commands with the ordinary
+document styles.  Consult a local \TeX\ expert to find the
+\TeX\ name for such a font.
+
+Tables~\ref{tab:styles} and \ref{tab:fonts} allow you
+to determine if the font for a type style at a particular
+size is preloaded, loaded on demand, or unavailable.
+(The following may be obsolete, we haven't checked it!)
+\begin{table}
+\centering
+\begin{tabular}{l|r|r|r|}
+\multicolumn{1}{l}{size} & 
+\multicolumn{1}{c}{default (10pt)} &
+        \multicolumn{1}{c}{11pt option}  &
+        \multicolumn{1}{c}{12pt option}\\
+\cline{2-4}
+\verb|\tiny|       & 5pt  & 6pt & 6pt\\
+\cline{2-4}
+\verb|\scriptsize| & 7pt  & 8pt & 8pt\\
+\cline{2-4}
+\verb|\footnotesize| & 8pt & 9pt & 10pt \\
+\cline{2-4}
+\verb|\small|        & 9pt & 10pt & 11pt \\
+\cline{2-4}
+\verb|\normalsize| & 10pt & 11pt & 12pt \\
+\cline{2-4}
+\verb|\large|      & 12pt & 12pt & 14pt \\
+\cline{2-4}
+\verb|\Large|      & 14pt & 14pt & 17pt \\
+\cline{2-4}
+\verb|\LARGE|      & 17pt & 17pt & 20pt\\
+\cline{2-4}
+\verb|\huge|       & 20pt & 20pt & 25pt\\
+\cline{2-4}
+\verb|\Huge|       & 25pt & 25pt & 25pt\\
+\cline{2-4}
+\end{tabular}
+\caption{Type sizes for \LaTeX\ size-changing commands.}\label{tab:styles}
+\end{table}
+\begin{table}
+\centering
+\begin{tabular}{l|c|c|c|c|c|c|}
+\multicolumn{1}{l}{}& 
+\multicolumn{1}{c}{\tt \bs it} &
+\multicolumn{1}{c}{\tt \bs bf} &
+\multicolumn{1}{c}{\tt \bs sl} &
+\multicolumn{1}{c}{\tt \bs sf} &
+\multicolumn{1}{c}{\tt \bs sc} &
+\multicolumn{1}{c}{\tt \bs tt} \\
+\cline{2-7}
+5pt  & D & D & X & X & X & X \\
+\cline{2-7}
+6pt  & X & D & X & X & X & X \\
+\cline{2-7}
+7pt  & P & D & X & X & X & X \\
+\cline{2-7}
+8pt  & P & D & D & D & D & D \\
+\cline{2-7}
+9pt  & P & P & D & D & D & P \\
+\cline{2-7}
+10pt & P & P & P & P & D & P \\
+\cline{2-7}
+11pt & P & P & P & P & D & P \\
+\cline{2-7}
+12pt & P & P & P & P & D & P \\
+\cline{2-7}
+14pt & D & P & D & D & D & D \\
+\cline{2-7}
+17pt & D & P & D & D & D & D \\
+\cline{2-7}
+20pt & D & D & D & D & D & D \\
+\cline{2-7}
+25pt & X & D & X & X & X & X \\
+\cline{2-7}
+\end{tabular}
+\caption{Font classes: P = preloaded, D = loaded on demand, 
+         X = unavailable.}\label{tab:fonts}
+\end{table}
+Table~\ref{tab:styles} tells you what size of type is used for each
+\LaTeX\ type-size command in the various document-style options.  For
+example, with the {\tt 12pt} option, the \hbox{\verb|\large|}
+declaration causes \LaTeX\ to use 14pt type.  Table~\ref{tab:fonts}
+tells, for every type size, to which class of fonts each type style
+belongs.  For example, in 14pt type, \verb|\bf| uses a preloaded
+font and the other five type-style commands use load-on-demand fonts.
+Roman (\verb|\rm|) and math italic (\verb|\mit|) fonts are all
+preloaded; the \hbox{\verb|\em|} declaration uses either italic
+(\verb|\it|) or roman.
+
+%Describe any special fonts available here.
+
+%Tell where to find a font manual, listing the character numbers of
+%the symbols on different fonts.
+
+%Include a table telling which fonts are preloaded, loaded on demand,
+%and unavailable.  
+  
 \subsection{Special Versions}
 
 No foreign-language or other special versions of \LaTeX\
@@ -454,4 +705,45 @@ its original size, the line
 \end{verbatim}
 will do the trick.
 
+\section{Bugs}
+
+There are a few known bugs in \LaTeX\ that occur very seldom and
+cause the user little trouble, but would be very difficult to fix.
+Moreover, given the nature of complex systems, it is not unlikely that
+the corrections would lead to even worse problems.  Therefore, these
+bugs will probably not be fixed.  
+
+The bugs and ways to get around them are listed below.  Do not worry
+about any of them until you are preparing the final draft, since
+changes to the text are very likely to cause the problem to disappear.
+\begin{itemize}
+\item In rare instances, a figure or table will be printed on the page
+preceding the text where the {\tt figure} or {\tt table} environment
+appears.  This can be fixed by either moving the environment further
+towards the end of the document. 
+
+\item A marginal note at the top of a page may appear in the wrong
+margin.  This can be fixed by inserting a redundant \verb|\pagebreak|
+command to force a page break exactly where \LaTeX\ started the new
+page anyway.
+
+\item A footnote can be broken across two pages when it should fit on a
+single page.  This happens when there is one or more figures or tables
+on the page.  The problem is corrected by moving, towards the end of the
+file, the last {\tt figure} or {\tt table} environment that produces a
+figure or table on the page where the footnote starts.
+\end{itemize}
+
+
+%\section{Errata and Additions to the Manual}
+
+\input{addendum}
 \end{document}
+
+%&c&@i*\hbox{* 2@s\|\ @i|}|#&
+%&i&\index{#}&
+%&m&\mbox#&
+%&t&{\tt #}&
+%&v&\hbox{\verb|#|}&
+%&b&\verb|#|&
+%&h&\hbox#&

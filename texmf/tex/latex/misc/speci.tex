@@ -1,0 +1,10 @@
+\newcommand{\inputdirectory}{}
+\newcommand{\verbi}[1]{\begin{verbatim} \input{\inputdirectory#1}}
+\newcommand{\speci}[1]{\begin{spec}\input\inputdirectory#1}
+
+% Typical usage:
+%    
+% \speci{sqrt.lcl}\end{spec}
+% \verbi{sqrt.c}\end{verbatim}
+% 
+% Leslie says: "You don't want to know why this works."

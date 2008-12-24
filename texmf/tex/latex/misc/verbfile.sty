@@ -1,0 +1,41 @@
+%% FILE:   verbfile.sty in SYS2.TEX.PUB.ISULATEX.STYLES
+%% AUTHOR: Erica M. S. Harris
+%% DATE:   Nov 1989
+%% DESCR:  Style option for use with any style. Allows a file to be input in
+%%         verbatim mode rather than having to physically include the file and
+%%         bracket it with \begin{verbatim} ... \end{verbatim}.
+%%         The default size for the verbatim text is 10pt. The user can set the
+%%         size with the command \setvbsize{ptsize} eg \setvbsize{11}. Valid
+%%         sizes are 10, 11 and 12. Any other size will default to 10.
+%%         Usage:   \verbfile{filename}
+%%         If the file is in a style library then use the extension .sty on the
+%%         filename, otherwise the extension will default to .tex.
+%%         Note: Derived from an entry in TeXhax 1988, No 67 by
+%%               Harald Hanche-Olsen.
+%% MODS:
+%%
+\newcount\linenumber
+\let\vbinfont\tentt
+\def\setvbsize#1{\ifnum#1=11
+                    \def\vbinsize{\@setsize\vbinsize{13.6pt}\xipt\@xipt}
+                    \let\vbinfont\elvtt
+                 \else\ifnum#1=12
+                    \def\vbinsize{\@setsize\vbinsize{14.5pt}\xiipt\@xiipt}
+                    \let\vbinfont\twltt
+                 \else
+                    \def\vbinsize{\@setsize\vbinsize{12pt}\xpt\@xpt}
+                    \let\vbinfont\tentt
+                 \fi\fi}
+\def\vbinsize{\@setsize\vbinsize{12pt}\xpt\@xpt}
+\def\@verbfile{\bgroup\trivlist\item[]\if@minipage\else\vskip\parskip\fi
+               \leftskip\@totalleftmargin \rightskip\z@
+               \parindent\z@ \parfillskip\@flushglue \parskip\z@
+               \@tempswafalse\def\par{\if@tempswa\hbox{}\fi\@tempswatrue\@@par}
+               \obeylines \catcode`\`=\active \@noligs%
+               \let\do\@makeother \dospecials%
+               \frenchspacing \@vobeyspaces%
+               \def\baselinestretch{1}\vbinsize\vbinfont}
+
+\def\@endverbfile{\endtrivlist\egroup\@doendpe}
+
+\def\verbfile#1{\@verbfile\input{#1}\@endverbfile}

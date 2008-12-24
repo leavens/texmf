@@ -1,0 +1,287 @@
+%%% Save file as: index                       Source: FILESERV@SHSU.BITNET
+%%% The following checksum includes the SHSU-generated headers above.
+%%% checksum = "11915 287 1945 14125"
+%% /usr/spool/ftp/pub/tex/bibtex/index, Tue Jun 30 10:53:12 1992
+%% Edit by Nelson H. F. Beebe <beebe@plot79.math.utah.edu>
+
+This directory, ~ftp/pub/tex/bibtex (from tuglib: tex/bibtex), contains
+collected BibTeX style files.  These have been collected from our local
+archives, plus a scan on [27-Jun-1992] of about 900 Internet ftp sites
+indexed by archie, plus the contents on [27-Jun-1992] of the UK Aston
+TeX archive on tex.aston.ac.uk in disk$tex:[tex-archive.bibtex.styles.contrib].
+
+00dir.cmd			-- alphabetical verbose directory as FTP
+				   commands
+00dir.lst			-- alphabetical verbose directory listing
+00tdir.cmd			-- reverse time-ordered verbose directory as
+                        	   FTP commands
+00tdir.lst			-- reverse time-ordered verbose directory
+				   listing
+
+aaai-named.bst			-- aaai (????) style
+abbrv.bst			-- abbrev BibTeX style
+abstract.bst			-- modified alpha style with `abstract' keyword
+acm.bst				-- ACM BibTeX style
+agsm.bst			-- Australian Government publications
+alpha.bst			-- alphanumeric BibTeX style
+amsalpha.bst			-- alphanumeric BibTeX style for AmSTeX;
+				   this is a copy of the file
+				   tex/ams/amslatex/inputs/amsalpha.bst
+				   from the AmSTeX 2.0 distribution tree
+amsplain.bst			-- Plain BibTeX style for AmSTeX
+				   this is a copy of the file
+				   tex/ams/amslatex/inputs/amsplain.bst
+				   from the AmSTeX 2.0 distribution tree
+annotate.bst			-- modified alpha style with `annote' keyword
+annotation.bst			-- modified plain style with `annote' keyword
+apa.bst				-- American Psychology Association:
+				   This is the same as apalike, but has
+				   been modified a la astron.bst to use
+				   \cite* for producing references like
+				   "Rogers (1992)".
+apalike.bst			-- APA-like BibTeX style
+apalike.doc			-- LaTeX doc style file
+apalike.sty			-- LaTeX sty style file (doc minus comments)
+apalike.tex			-- test file describing APA-like style
+apalike2.bst			-- variant of apalike
+astron				-- subdirectory with Sake Hogeveen's astronomy
+				   style and documentation
+astron.bst			-- Astronomy BibTeX style
+authordate.readme		-- remarks on David Rhead's authordate styles
+authordate1.bst			-- authordate style variant 1
+authordate1.ltx			-- LaTeX test for authordate style variant 1
+authordate1-4.sty		-- LaTeX option for authordate style variants
+authordate2.bst			-- authordate style variant 2
+authordate2.ltx			-- LaTeX test for authordate style variant 2
+authordate3.bst			-- authordate style variant 3
+authordate3.ltx			-- LaTeX test for authordate style variant 3
+authordate4.bst			-- authordate style variant 4
+authordate4.ltx			-- LaTeX test for authordate style variant 4
+
+bbs.bst				-- Behavioral and Brain Sciences style
+bibtex.cms-changes		-- BibTeX change file for IBM VM/CMS
+bibtex.hosek-vms-changes	-- BibTeX change file for VAX VMS
+bibtex.ins			-- installation notes
+bibtex.pool			-- Web pool file
+bibtex.tops20-changes		-- BibTeX change file for
+bibtex.vms-changes		-- BibTeX change file for
+bibtex.web			-- Web source code for BibTeX
+big				-- subdrirectory with bibtex change files et al
+bstfiles.tar-lst		-- contents of bstfiles.tar.z
+bstfiles.tar.z			-- compressed UNIX tar archive with
+				   Makefile, index, *.bib, *.bst, *.doc,
+				   *.lst, *.sty, and *.readme
+bstfiles.zip			-- Info-ZIP archive with
+				   Makefile, index, *.bib, *.bst, *.doc,
+				   *.lst, *.sty, and *.readme
+bstfiles.zip-lst		-- contents of bstfiles.zip
+bstfiles.zoo			-- zoo archive with
+				   Makefile, index, *.bib, *.bst, *.doc,
+				   *.lst, *.sty, and *.readme
+bstfiles.zoo-lst		-- contents of bstfiles.zoo
+btxbst.doc			-- BibTeX doc style file
+btxdoc.bbl			-- bibliography for btxdoc.tex
+btxdoc.bib			-- bibliography data base for btxdoc.tex
+btxdoc.tex			-- LaTeX file describing BibTeX
+btxdoc.xua			-- backup of .aux file
+btxhak.bbl			-- bibliography for btxhak.tex
+btxhak.tex			-- LaTeX file describing BibTeX styles
+btxmac.tex			-- TeX macros for using BibTeX with plain TeX
+
+cbe.bst				-- Council of Biology Editors style
+				   (includes such journals as American
+				   Naturalist, Evolution, etc)
+cell.bst			-- modification of jmb style
+cover.ltx			-- cover page for btxdoc.tex
+cover2.ltx			-- cover page for btxhak.tex
+
+dcu.bst				-- style from Design Computing Unit,
+				   Department of Architectural and
+				   Design Science, University of Sydney
+
+harvard.bib			-- bibliography for harvard.tex
+harvard.tex			-- description of Harvard Bibliography Style
+				   Family (agsm, dcu, kluwer)
+harvard.sty			-- LaTeX style file needed with Harvard
+				   styles
+humanbio.bst			-- Human Biology style
+humannat.bst			-- For journals Human Nature and
+				   American Anthropologist
+
+ieeetr.bst			-- IEEE transactions BibTeX style
+index				-- this file
+is-abbrv.bst			-- abbrev style with ISSN and ISBN keywords
+is-alpha.bst			-- alpha style with ISSN and ISBN keywords
+is-plain.bst			-- plain style with ISSN and ISBN keywords
+is-unsrt.bst			-- unsrt style with ISSN and ISBN keywords
+
+jbact.bst			-- modification of jmb.sty
+jmb.bst				-- Journal of Molecular Biology style
+jmb.sty				-- LaTeX option for use with jmb.bst
+jtb.bst				-- Journal of Theoretical Biology
+
+kluwer.bst			-- Kluwer Academic Publishers style
+
+mac				-- Apple Macintosh BibTeX implementation
+Makefile			-- same as makefile
+makefile			-- UNIX makefile; this contains rules to
+				   create and typeset all of the test-*.ltx
+				   and xampl-*.ltx files listed below
+makefile.tops20			-- old TOPS-20 makefile (for BibTeX 0.98)
+makefile.tops20-new		-- old TOPS-20 makefile (for BibTeX 0.99)
+makefile.vms			-- old VAX VMS makefile
+
+named.bst			-- named style
+named.sty			-- LaTEX option for use with named.bst
+namunsrt.bst			-- modification of unsrt style
+nar.bst				-- Nucleic Acid Research style
+nar.sty				-- LaTeX option for use with nar.bst
+nature.bst			-- Nature style
+nature.sty			-- LaTEX option for use with nature.bst
+newapa.bst			-- modification of apalike.sty
+newapa.sty			-- LaTEX option for use with newapa.bst
+
+phaip.bst			-- American Institute of Physics
+				   journals
+phapalik.bst			-- American Psychological Association style
+phcpc.bst			-- Computer Physics Communications style
+phiaea.bst			-- IAEA Conferences style
+phjcp.bst			-- Journal of Computational Physics
+phnf.bst			-- Nuclear Fusion style
+phnflet.bst			-- Nuclear Fusion Letters style
+phpf.bst			-- Physics of Fluids
+phppcf.bst			-- Physics version of apalike
+phreport.bst			-- internal physics reports
+phrmp.bst			-- Reviews of Modern Physics
+phyjabb.btx			-- Physics journal abbreviations
+phyjfull.btx			-- Physics journal full names
+				   (included by physics.btx)
+physics.btx			-- Physics journal master file from
+				   which other ph*.bst files are derived
+				   using the C preprocessor (automated
+				   in makefile)
+plain.bst			-- Plain BibTeX style
+plainyr.bst			-- Plain BibTeX style with primary sort by year
+
+siam.bst			-- SIAM BibTeX style
+
+test.bib			-- test bibliography data base file
+				   (used by authordate*.* files)
+test.ltx			-- sample LaTeX file for making test-*.ltx
+				   files (automated in makefile)
+test-aaai-named.ltx		-- sample LaTeX file: bib in aaai-named format
+test-abbrv.ltx			-- sample LaTeX file: bib in abbrv format
+test-abstract.ltx		-- sample LaTeX file: bib in abstract format
+test-acm.ltx			-- sample LaTeX file: bib in acm format
+test-agsm.ltx			-- sample LaTeX file: bib in agsm format
+test-alpha.ltx			-- sample LaTeX file: bib in alpha format
+test-amsalpha.ltx		-- sample LaTeX file: bib in amsalpha format
+test-amsplain.ltx		-- sample LaTeX file: bib in amsplain format
+test-annotate.ltx		-- sample LaTeX file: bib in annotate format
+test-annotation.ltx		-- sample LaTeX file: bib in annotation format
+test-apa.ltx			-- sample LaTeX file: bib in apa format
+test-apalike.ltx		-- sample LaTeX file: bib in apalike format
+test-apalike2.ltx		-- sample LaTeX file: bib in apalike2 format
+test-astron.ltx			-- sample LaTeX file: bib in astron format
+test-authordate1.ltx		-- sample LaTeX file: bib in authordate1 format
+test-authordate2.ltx		-- sample LaTeX file: bib in authordate2 format
+test-authordate3.ltx		-- sample LaTeX file: bib in authordate3 format
+test-authordate4.ltx		-- sample LaTeX file: bib in authordate4 format
+test-bbs.ltx			-- sample LaTeX file: bib in bbs format
+test-cbe.ltx			-- sample LaTeX file: bib in cbe format
+test-cell.ltx			-- sample LaTeX file: bib in cell format
+test-dcu.ltx			-- sample LaTeX file: bib in dcu format
+test-humanbio.ltx		-- sample LaTeX file: bib in humanbio format
+test-humannat.ltx		-- sample LaTeX file: bib in humannat format
+test-ieeetr.ltx			-- sample LaTeX file: bib in ieeetr format
+test-is-abbrv.ltx		-- sample LaTeX file: bib in is-abbrv format
+test-is-alpha.ltx		-- sample LaTeX file: bib in is-alpha format
+test-is-plain.ltx		-- sample LaTeX file: bib in is-plain format
+test-is-unsrt.ltx		-- sample LaTeX file: bib in is-unsrt format
+test-jbact.ltx			-- sample LaTeX file: bib in jbact format
+test-jmb.ltx			-- sample LaTeX file: bib in jmb format
+test-jtb.ltx			-- sample LaTeX file: bib in jtb format
+test-kluwer.ltx			-- sample LaTeX file: bib in kluwer format
+test-named.ltx			-- sample LaTeX file: bib in named format
+test-namunsrt.ltx		-- sample LaTeX file: bib in namunsrt format
+test-nar.ltx			-- sample LaTeX file: bib in nar format
+test-nature.ltx			-- sample LaTeX file: bib in nature format
+test-newapa.ltx			-- sample LaTeX file: bib in newapa format
+test-phaip.ltx			-- sample LaTeX file: bib in phaip format
+test-phapalik.ltx		-- sample LaTeX file: bib in phapalik format
+test-phcpc.ltx			-- sample LaTeX file: bib in phcpc format
+test-phiaea.ltx			-- sample LaTeX file: bib in phiaea format
+test-phjcp.ltx			-- sample LaTeX file: bib in phjcp format
+test-phnf.ltx			-- sample LaTeX file: bib in phnf format
+test-phnflet.ltx		-- sample LaTeX file: bib in phnflet format
+test-phpf.ltx			-- sample LaTeX file: bib in phpf format
+test-phppcf.ltx			-- sample LaTeX file: bib in phppcf format
+test-phreport.ltx		-- sample LaTeX file: bib in phreport format
+test-phrmp.ltx			-- sample LaTeX file: bib in phrmp format
+test-plain.ltx			-- sample LaTeX file: bib in plain format
+test-plainyr.ltx		-- sample LaTeX file: bib in plainyr format
+test-siam.ltx			-- sample LaTeX file: bib in siam format
+test-unsrt.ltx			-- sample LaTeX file: bib in unsrt format
+testadb.ltx			-- include file for authordate*.ltx files
+
+unsrt.bst			-- Unsorted BibTeX style
+
+xampl.bib			-- sample bibliography data base file
+xampl.ltx			-- sample LaTeX file for making xampl-*.ltx
+				   files (automated in makefile)
+xampl-aaai-named.ltx		-- sample LaTeX file: bib in aaai-named format
+xampl-abbrv.ltx			-- sample LaTeX file: bib in abbrv format
+xampl-abstract.ltx		-- sample LaTeX file: bib in abstract format
+xampl-acm.ltx			-- sample LaTeX file: bib in acm format
+xampl-agsm.ltx			-- sample LaTeX file: bib in agsm format
+xampl-alpha.ltx			-- sample LaTeX file: bib in alpha format
+xampl-amsalpha.ltx		-- sample LaTeX file: bib in amsalpha format
+xampl-amsplain.ltx		-- sample LaTeX file: bib in amsplain format
+xampl-annotate.ltx		-- sample LaTeX file: bib in annotate format
+xampl-annotation.ltx		-- sample LaTeX file: bib in annotation format
+xampl-apa.ltx			-- sample LaTeX file: bib in apa format
+xampl-apalike.ltx		-- sample LaTeX file: bib in apalike format
+xampl-apalike2.ltx		-- sample LaTeX file: bib in apalike2 format
+xampl-astron.ltx		-- sample LaTeX file: bib in astron format
+xampl-authordate1.ltx		-- sample LaTeX file: bib in authordate1 format
+xampl-authordate2.ltx		-- sample LaTeX file: bib in authordate2 format
+xampl-authordate3.ltx		-- sample LaTeX file: bib in authordate3 format
+xampl-authordate4.ltx		-- sample LaTeX file: bib in authordate4 format
+xampl-bbs.ltx			-- sample LaTeX file: bib in bbs format
+xampl-cbe.ltx			-- sample LaTeX file: bib in cbe format
+xampl-cell.ltx			-- sample LaTeX file: bib in cell format
+xampl-dcu.ltx			-- sample LaTeX file: bib in dcu format
+xampl-humanbio.ltx		-- sample LaTeX file: bib in humanbio format
+xampl-humannat.ltx		-- sample LaTeX file: bib in humannat format
+xampl-ieeetr.ltx		-- sample LaTeX file: bib in ieeetr format
+xampl-is-abbrv.ltx		-- sample LaTeX file: bib in is-abbrv format
+xampl-is-alpha.ltx		-- sample LaTeX file: bib in is-alpha format
+xampl-is-plain.ltx		-- sample LaTeX file: bib in is-plain format
+xampl-is-unsrt.ltx		-- sample LaTeX file: bib in is-unsrt format
+xampl-jbact.ltx			-- sample LaTeX file: bib in jbact format
+xampl-jmb.ltx			-- sample LaTeX file: bib in jmb format
+xampl-jtb.ltx			-- sample LaTeX file: bib in jtb format
+xampl-kluwer.ltx		-- sample LaTeX file: bib in kluwer format
+xampl-named.ltx			-- sample LaTeX file: bib in named format
+xampl-namunsrt.ltx		-- sample LaTeX file: bib in namunsrt format
+xampl-nar.ltx			-- sample LaTeX file: bib in nar format
+xampl-nature.ltx		-- sample LaTeX file: bib in nature format
+xampl-newapa.ltx		-- sample LaTeX file: bib in newapa format
+xampl-phaip.ltx			-- sample LaTeX file: bib in phaip format
+xampl-phapalik.ltx		-- sample LaTeX file: bib in phapalik format
+xampl-phcpc.ltx			-- sample LaTeX file: bib in phcpc format
+xampl-phiaea.ltx		-- sample LaTeX file: bib in phiaea format
+xampl-phjcp.ltx			-- sample LaTeX file: bib in phjcp format
+xampl-phnf.ltx			-- sample LaTeX file: bib in phnf format
+xampl-phnflet.ltx		-- sample LaTeX file: bib in phnflet format
+xampl-phpf.ltx			-- sample LaTeX file: bib in phpf format
+xampl-phppcf.ltx		-- sample LaTeX file: bib in phppcf format
+xampl-phreport.ltx		-- sample LaTeX file: bib in phreport format
+xampl-phrmp.ltx			-- sample LaTeX file: bib in phrmp format
+xampl-plain.ltx			-- sample LaTeX file: bib in plain format
+xampl-plainyr.ltx		-- sample LaTeX file: bib in plainyr format
+xampl-siam.ltx			-- sample LaTeX file: bib in siam format
+xampl-unsrt.ltx			-- sample LaTeX file: bib in unsrt format
+xbtxbst.doc			-- master file from which is-*.bst files
+				   are automatically generated by steps
+				   in the Makefile
