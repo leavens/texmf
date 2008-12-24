@@ -14,11 +14,18 @@
 <p>
 To use the LaTeX macros, styles and bibliography styles and databases,
 you have to tell your TeX distribution about this tree.
+But often you can just use the command <kbd>texconf conf</kbd> and look in
+the "kpathsea variables" section for the variable <kbd>TEXMFDBS</kbd>.  In this path there is usually some directory like <kbd>/home/You/texmf</kbd> that will be the logical place to put the root of this directory tree.
 </p>
 
-<h3>Mac with TeX Live</h3>
+<h3>Mac OS/X with TeX Live</h3>
 <p>
-On an Apple Macintosh I just put the root of this directory tree in <kbd>$HOME/Library</kbd> with the root named <kbd>texmf</kbd>, and the
+On an Apple Macintosh with OS/X I just put the root of this directory tree in <kbd>$HOME/Library</kbd> with the root named <kbd>texmf</kbd>, and the
+it finds everything.</p>
+
+<h3>Windows with Cygwin's TeTeX</h3>
+<p>
+On a Windows machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and the
 it finds everything.</p>
 
 <h2>Contents</h2>
