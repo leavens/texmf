@@ -32,7 +32,6 @@ web garys-web: $(HOME)/WWW/biblio.bib.Z
 	for f in all.bib $(REALBIBS) ; do php -q bibidx.php $$f; done
 
 $(HOME)/WWW/biblio.bib.Z: $(BIBS) leavens.bib Makefile
-	cvs commit -m"updated"
 	$(MAKE) all.bib
 	cp -f all.bib biblio.bib
 	rm -f biblio.bib.Z
