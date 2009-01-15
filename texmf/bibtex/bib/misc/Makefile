@@ -28,8 +28,10 @@ names:
 
 # The follow is for Gary's use, most people won't be able to use it
 web garys-web: $(HOME)/WWW/biblio.bib.Z
-	cd $(HOME)/WWW; \
-	for f in all.bib $(REALBIBS) ; do php -q bibidx.php $$f; done
+
+# goes with web, but the PHP scripting is currently broken.
+#	cd $(HOME)/WWW; \
+#	for f in all.bib $(REALBIBS) ; do php -q bibidx.php $$f; done
 
 $(HOME)/WWW/biblio.bib.Z: $(BIBS) leavens.bib Makefile
 	$(MAKE) all.bib
