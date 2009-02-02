@@ -1,0 +1,58 @@
+% Based on marnote.sty
+% Hacked together by Mark C. Carroll
+
+\typeout{Draftcp <18-Feb-92>}	% identity
+%
+\def\draftcp{
+   \typeout{Draft copy}
+   \special{!userdict begin 
+	 /bop-hook{gsave 25 600 translate 90 rotate
+         /Times-Roman findfont 11 scalefont setfont
+         0 0 moveto (DRAFT: \today )
+         show 
+         grestore
+         gsave
+         200 700 translate
+         /Times-Roman findfont 100 scalefont setfont
+         0 0 moveto 0.99 setgray (DRAFT) show          
+         grestore}def end
+   }
+}
+
+% left side  margin note with right bottom at  25pts and 10 in
+\def\marginnote#1{
+   \typeout{Margin note: #1}
+   \special{!userdict begin 
+	 /bop-hook{gsave 25 720 translate 90 rotate
+         /Times-Roman findfont 11 scalefont setfont
+         0 0 moveto 
+         (#1) dup stringwidth pop neg 0 rmoveto 
+         show 
+         grestore}def end
+   }
+}
+
+% top nargin note with left bottom at 1 in 10.5 in 
+\def\topmarginnote#1{
+   \typeout{Top margin note: #1}
+   \special{!userdict begin 
+	 /bop-hook{gsave 72 756 translate
+         /Times-Roman findfont 8 scalefont setfont
+         0 0 moveto (#1)
+         show 
+         grestore}def end
+   }
+}
+
+% bottom nargin note with left bottom at 1 in 1 in 
+\def\botmarginnote#1{
+   \typeout{Bottom margin note: #1}
+   \special{!userdict begin 
+	 /bop-hook{gsave 72 36 translate
+         /Times-Roman findfont 8 scalefont setfont
+         0 0 moveto (#1)
+         show 
+         grestore}def end
+   }
+}
+%

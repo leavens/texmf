@@ -1,0 +1,141 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% UCF thesis Dissertation Formatting on Latex 2e
+% Sample paper.tex file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\documentclass [PhD] {ucfthes}
+%\documentclass [PhD,single,twoside] {ucfthes}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\documentclass[12pt,leqno,openright]{book}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\bibliographystyle {thesis}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+%\bibliographystyle {agsm}
+%\usepackage{harvard}
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+%\usepackage{epsfig}
+%\usepackage{rotating}
+%\usepackage{oldlfont}
+%\usepackage{latexsym}
+%\usepackage{tableau}
+%%%%%%%%%%%%%%%\usepackage{draftnote}
+%\input{newsection}
+%\input{macros}
+%\input{schartmac}
+%\input{trmacros}
+%\input {mymacros}                        
+%mathematical macros
+%\input{macros/macros}
+%\input{macros/ALSSmacros}
+\usepackage{amssymb} 	% Need this for the hat!
+%\usepackage{amsmath,amssymb,amsfonts} 	% Typical math packages
+%\usepackage{graphics}			% To include graphs
+\usepackage{epsfig}
+%\usepackage{psfrag}
+
+%\usepackage[ps2pdf,bookmarks=true,breaklinks=true]{hyperref}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%I.G. Feb,2005
+%This is to produce the PDF links to be comply with UCF 
+%PDF rules.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[dvipdfm, breaklinks=true]{hyperref}
+\hypersetup{
+ pdfauthor = {Ivan Garibay},
+ pdftitle = {The proteomic approach to evolutionary computation},
+ pdfsubject = {Phd Dissertation, Fall 2004, Univ. of Central Florida},
+ pdfkeywords = {Proteomic Approach to Evolutionary Computation, Proportional Genetic Algorithm},
+ pdfcreator = {LaTeX with hyperref package},
+% pdfproducer = {dvips + ps2pdf}
+ citebordercolor=none,
+ linkbordercolor=none,
+ menubordercolor={1 1 1},
+ filebordercolor={1 1 1},
+ urlbordercolor={1 1 1},
+ }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PRELIMINARY PAGES, ACKNOWLEDGMENTS, AND ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                      %
+%                          PRELIMINARY PAGES                           %
+%                                                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title          {The Proteomics Approach to
+		Evolutionary Computation:\\
+		An Analysis of Proteome-Based Location Independent Representations based 
+on the Proportional Genetic Algorithm}
+
+\author         {Ivan Ibarg\"{u}en Garibay}
+
+\prevdegreei 	{B.S. Ricardo Palma University, 1994}
+\prevdegreeii 	{Professional Degree of Electronics Engineer, 1995}
+\prevdegreeiii	{M.S. University of Central Florida, 2000}
+
+\department	{Computer Science}
+\school         {Computer Science}
+\college	{Engineering and Computer Science}
+\term		{Fall}
+% Note:  degreeyear should be optional, but as of  5-Feb-96
+% it seems required or you get a year of ``2''.   -johnh
+\degreeyear     {2004}
+
+\professor	{Annie S. Wu}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chair          {Annie S.\ Wu}
+\member         {Oleg\ Favorov}
+\member         {Sheau-Dong \ Lang}
+\member 	{Ratan K.\ Guha}
+\member 	{Avelino J.\ Gonzalez}
+\member 	{Kenneth A.\ De Jong}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\dedication     {\textsl{To my parents, etc., etc}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgments {Here acks if any :) }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\abstract{Here your abstract}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin {document}
+
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\makeintropages
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CHAPTERS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Introduction}
+
+\chapter{Conclusions}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix
+
+\chapter{Additional Figures and Tables}
+
+\bibliography{Dissertation}    % bibliography references
+
+\end {document}
