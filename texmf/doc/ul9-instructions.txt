@@ -1,0 +1,23 @@
+To install luximono on cygwin with tetex (already works under Miktex)
+you unzip ul9.zip into /usr/share/texmf (preserving directories).
+(I found it didn't work to put it in ~/.texmf.)
+Then you need to add the following lines to the (end of)
+/usr/share/texmf/web2c/updmap.cfg:
+
+  # Luximono
+  Map ul9.map
+
+You also have to move the file that lands in
+/usr/share/texmf/dvips/config/ul9.map to /usr/share/texmf/fonts/map/dvips/
+
+mv /usr/share/texmf/dvips/config/ul9.map /usr/share/texmf/fonts/map/dvips/
+
+I also copied the files from my miktex/fonts/type1/public/luxi
+directory to /usr/share/texmf/fonts/type1/public/luxi/
+  mkdir /usr/share/texmf/fonts/type1/public/luxi/
+
+  cd $HOME/miktex/fonts/type1/public/luxi
+  cp * /usr/share/texmf/fonts/type1/public/luxi/
+
+I think then you just rebuild the systems files (texhash and then
+updmap) and it should work. 
