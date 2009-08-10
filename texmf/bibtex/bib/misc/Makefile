@@ -28,8 +28,8 @@ all-with-std.bib: $(BIBS) journal-abbrevs-std.bib
 names:
 	@echo $(BIBS)
 
-# The follow is for Gary's use, most people won't be able to use it
-web garys-web: $(HOME)/WWW/biblio.bib.Z
+# The following is for Gary's use, most people won't be able to use it
+web garys-web: $(HOME)/WWW/biblio.bib.Z send-to-iastate
 
 # goes with web, but the PHP scripting is currently broken.
 #	cd $(HOME)/WWW; \
@@ -41,4 +41,6 @@ $(HOME)/WWW/biblio.bib.Z: $(BIBS) leavens.bib Makefile
 	rm -f biblio.bib.Z
 	$(COMPRESS) biblio.bib
 	mv -f biblio.bib.Z $(HOME)/WWW/
+
+send-to-iastate: leavens.bib
 	scp -p leavens.bib pyrite.cs.iastate.edu:/auto/ftp/pub/leavens/
