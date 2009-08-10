@@ -1,5 +1,7 @@
 # $Id$
 
+COMPRESS = gzip -S ".Z"
+
 REALBIBS = datatypes.bib old-datatypes.bib distrib.bib \
 	languages.bib se.bib etc.bib
 # In bibtex, cross references come after entries that reference it,
@@ -37,6 +39,6 @@ $(HOME)/WWW/biblio.bib.Z: $(BIBS) leavens.bib Makefile
 	$(MAKE) all.bib
 	cp -f all.bib biblio.bib
 	rm -f biblio.bib.Z
-	compress biblio.bib
+	$(COMPRESS) biblio.bib
 	mv -f biblio.bib.Z $(HOME)/WWW/
-	scp -p leavens.bib larch.cs.iastate.edu:/home/ftp/pub/leavens/
+	scp -p leavens.bib pyrite.cs.iastate.edu:/auto/ftp/pub/leavens/
