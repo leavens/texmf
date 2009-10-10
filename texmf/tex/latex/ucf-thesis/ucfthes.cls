@@ -358,6 +358,7 @@
 %
 
 \def\thepart          {\Roman{part}}
+%\def\thechapter       {\arabic{chapter}}
 \def\thechapter       {\arabic{chapter}}
 \def\thesection       {\thechapter.\arabic{section}}
 \def\thesubsection    {\thesection.\arabic{subsection}}
@@ -442,7 +443,7 @@
      \parfillskip -\@pnumwidth
      \bfseries                  % Boldface.
      \leavevmode          % TeX command to enter horizontal mode.
-    CHAPTER #1\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hfill
+     #1\leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hfill
      \hbox to\@pnumwidth{\hfil #2}\par
    \endgroup}
 
@@ -489,6 +490,7 @@
    {LIST OF TABLES}{LIST OF TABLES}}\addcontentsline{toc}{frontmatter}{LIST OF TABLES}\@starttoc{lot}\fi}
 
 \let\l@table\l@figure
+
 
 
 %    ****************************************

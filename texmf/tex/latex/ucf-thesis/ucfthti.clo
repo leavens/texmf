@@ -129,8 +129,8 @@
 \newcommand\@makecopyrightpage{
    \ColumnSave
    \pagenumbering{roman}
-   \setcounter{page}{0}
-   \thispagestyle{empty}
+   \setcounter{page}{2}
+   %\thispagestyle{empty}
    \null
    \vfill
    \if@copyright
@@ -242,7 +242,8 @@
       \ColumnSave
       \par\pagestyle{plain}
       \renewcommand\baselinestretch{\@spacing}\@normalsize\normalfont
-      \vspace*{0pt}                % force spacing at top of page
+       \pdfbookmark[0]{DECICATION}{dedication}
+     \vspace*{0pt}                % force spacing at top of page
       \vfill
       \begin{center}
          \@dedication
@@ -264,6 +265,8 @@
 
 \newcommand\@makeacknowledgmentsheading{
   {
+         \pdfbookmark[0]{ACKNOWLEDGMENTS}{acknowledgments}
+
     \centering
 \vspace*{45pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
     \textsc{\large Acknowledgments}
@@ -498,6 +501,7 @@
 
         \begin{center}
 %        \textbf{\@titlesize Abstract}\\[12pt]
+         \pdfbookmark[0]{ABSTRACT}{abstract}
         \textsc{\large Abstract}
         \end{center}
 
@@ -572,6 +576,7 @@
   \@makeacknowledgments
 
 %\topmargin 1.15in
+         \pdfbookmark[0]{TABLE OF CONTENTS}{tableofcontents}
   \tableofcontents
 
   \listoftables

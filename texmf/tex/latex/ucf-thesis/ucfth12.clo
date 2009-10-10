@@ -249,12 +249,14 @@
   \vspace*{30pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
   { \parindent 0pt \raggedright
     \ifnum \c@secnumdepth >\m@ne     % IF secnumdepth > -1 THEN
-      \centering \Large\bfseries \@chapapp{} \thechapter % Print 'CHAPTER' and number.
-      \par
-      \vskip 10pt                    % Space between number and title.
-      \fi
-    \centering \Large\bfseries                        % Title.
+      \centering \Large\bfseries \@chapapp{} \thechapter{: }% Print 'CHAPTER' and number.
+      %\par
+      %\vskip 10pt                    % Space between number and title.
+      %\fi
+    %\centering \Large\bfseries                        % Title.
     #1\par
+      \fi % added
+      
     \nobreak                         % TeX penalty to prevent page break.
     \vskip 20pt                      % Space between title and text.
   } }
@@ -286,9 +288,13 @@
 
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
         \refstepcounter{chapter}
-        \typeout{\@chapapp\space\thechapter.}
-        \addcontentsline{toc}{chapter}{\protect
-        \numberline{\thechapter}#1}\else
+        \typeout{\space\thechapter.}
+        \addcontentsline{toc}{chapter}{\@chapapp{} \thechapter{: } 
+        %\protect
+        %\numberline{\thechapter:} 
+        #1
+        }
+        \else
       \addcontentsline{toc}{chapter}{#1}\fi
    \chaptermark{#1}
    \addtocontents{lof}{\protect\addvspace{10pt}} % Adds between-chapter space
