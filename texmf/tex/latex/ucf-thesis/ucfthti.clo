@@ -579,7 +579,7 @@
          \pdfbookmark[0]{TABLE OF CONTENTS}{tableofcontents}
   \tableofcontents
 
-  \listoftables
+%  \listoftables
 
   \listoffigures
 
