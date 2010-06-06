@@ -6,7 +6,7 @@ REALBIBS = datatypes.bib old-datatypes.bib distrib.bib \
 	languages.bib se.bib etc.bib
 # In bibtex, cross references come after entries that reference it,
 # so it's important to have proceedings.bib be *last*.
-BIBS = journal-abbrevs.bib $(REALBIBS) proceedings.bib 
+BIBS = journal-abbrevs.bib $(REALBIBS) proceedings.bib jajml.bib
 
 all: all.bib
 
