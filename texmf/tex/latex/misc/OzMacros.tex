@@ -1,0 +1,94 @@
+% $Id: macros.tex,v 1.4 2009/04/12 19:43:43 leavens Exp leavens $
+\raggedright
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[scaled=0.81]{luximono}
+\usepackage{varioref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp} %required to set upquote flag %FH
+\input{mozart-listings}
+\lstset{showstringspaces=false}
+\lstset{language=[Mozart]Oz,basicstyle=\ttfamily,morekeywords={for,lazy}}
+\lstset{upquote=true} %FH
+% getting files for figures
+\newcommand{\LSTFILE}[1]{
+\lstinputlisting[basicstyle=\small\ttfamily]{#1}
+}
+\newcommand{\LSTCFILE}[1]{
+\lstinputlisting[language=C,basicstyle=\small\ttfamily]{#1}
+}
+\newcommand{\LSTJAVAFILE}[1]{
+\lstinputlisting[language=Java,basicstyle=\small\ttfamily]{#1}
+}
+\newcommand{\LSTFILESLICE}[2]{
+\lstinputlisting[basicstyle=\small\ttfamily,linerange={#1}]{#2}
+}
+\usepackage[bookmarks=false]{hyperref}
+\input{obey}
+\input{grammar}
+\renewcommand{\nonterm}[1]{\mbox{$\langle$\textrm{#1}$\rangle$}}
+\renewcommand{\arbno}[1]{\{#1\}}
+\newcommand{\gramquote}[1]{\textrm{`}#1\textrm{'}}
+%\input{use-full-height}
+%\input{use-medium-width}
+%\input{continuedenum}
+% answers
+\newcommand{\IGNOREANSWER}[1]{\relax}
+\newcommand{\PRINTANSWER}{\par Answer:~~}
+\newcommand{\PRINTANSWERTEXT}{\relax}
+\newcommand{\PRINTDIRECTIONS}{\relax}
+\newcommand{\IGNOREANSWERTEXT}[1]{\relax}
+\newcommand{\IGNOREDIRECTIONS}[1]{\relax}
+% the following asks whether you want answers when you run latex...
+\typein[\USEANSWERS]{Do you want answers included (y/n)?}
+\if n\USEANSWERS \noprintanswers
+    \newcommand{\ANSWER}[1]{\IGNOREANSWER{#1}}
+    \newcommand{\ANSWERTEXT}[1]{\IGNOREANSWERTEXT{#1}}
+    \newcommand{\DIRECTIONS}{\PRINTDIRECTIONS}
+\else \printanswers
+    \newcommand{\ANSWER}{\PRINTANSWER}
+    \newcommand{\ANSWERTEXT}{\PRINTANSWERTEXT}
+    \newcommand{\DIRECTIONS}[1]{\IGNOREDIRECTIONS{#1}}
+\fi
+
+% Extra credit answers?
+\newcommand{\EXANSWER}{\ANSWER}
+% \newcommand{\EXANSWER}[1]{\IGNOREANSWER{#1}}
+
+% the following commands use the verbfile style
+% so there must be \documentstyle[verbfile]{article} at the top of the latex
+% file.
+\input{grading}
+
+% Customization of exam class
+\bonuspointpoints{point; extra credit}{points; extra credit}
+\renewcommand{\solutiontitle}{\noindent Answer:~}
+\shadedsolutions
+\pagestyle{head}
+\footer{}{}{}
+\runningheader{}{\thepage}{}
+
+\newcommand{\citeOutcome}[1]{\href{http://www.eecs.ucf.edu/~leavens/COP4020/about.shtml\#Out#1}{[#1]}}
+
+
+\newcommand{\figref}[1]{Figure~\vref{#1}}  % vref from varioref
+\newcommand{\fignref}[1]{Figure~\ref{#1}}  % doesn't use varioref
+\newcommand{\exref}[1]{Problem~\vref{#1}}  % vref from varioref
+\newcommand{\exnref}[1]{Problem~\ref{#1}}  % doesn't use varioref
+
+% notation for configurations
+\newcommand{\nil}{\textbf{\texttt{nil}}}
+\newcommand{\TTSREASON}[1]{\REASON{\rightarrow}{#1}}
+\newcommand{\TTSFIXEDWIDTHREASON}[1]{\FIXEDWIDTHREASON{\rightarrow}{#1}}
+\newcommand{\TTSLONGREASON}[1]{\LONGREASON{\rightarrow}{#1}}
+\newcommand{\ENVMAPSTO}[2]{\texttt{#1} \rightarrow #2}
+\newcommand{\EXTENDENV}[3]{\ensuremath{#1 + \{\ENVMAPSTO{#2}{#3}\}}}
+\newcommand{\NEXT}{\textit{next}}
+\newcommand{\ALLOC}{\textit{alloc}}
+\newcommand{\BIND}{\textit{bind}}
+\newcommand{\UNIFY}{\textit{unify}}
+
+\newcommand{\KW}[1]{\textbf{\texttt{#1}}}
+
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
