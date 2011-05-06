@@ -29,7 +29,7 @@ names:
 	@echo $(BIBS)
 
 # The following is for Gary's use, most people won't be able to use it
-web garys-web: $(HOME)/WWW/biblio.bib.Z send-to-iastate
+web garys-web: $(HOME)/WWW/biblio.bib.Z
 
 # goes with web, but the PHP scripting is currently broken.
 #	cd $(HOME)/WWW; \
