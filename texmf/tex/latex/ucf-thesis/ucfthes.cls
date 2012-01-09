@@ -156,7 +156,6 @@
 \input{ucfthma.clo}
 
 \DeclareOption{PhD}{}                        % default -- nothing more to do
-\DeclareOption{PhDProp}{\dissertationprop{Doctor of Philosophy}}                    
 \DeclareOption{MA}{\thesis{Master of Arts}}
 \DeclareOption{MS}{\thesis{Master of Science}}
 \DeclareOption{EdD}{\dissertation{Doctor of Education}\@departmentfalse}
@@ -176,6 +175,10 @@
 \DeclareOption{double}{\let\@spacing=\@doublespacing}
 
 \DeclareOption{draft}{\overfullrule 5pt}  % Causes overfull hboxes to be marked.
+\DeclareOption{letterpaper} %pdflatex defaults to A4 if not forced to letter size
+   {\setlength\paperheight {11in}%
+    \setlength\paperwidth  {8.5in}}
+
 
 %
 % Optional title hyphenation added 14-Jun-95 by johnh.
@@ -358,7 +361,6 @@
 %
 
 \def\thepart          {\Roman{part}}
-%\def\thechapter       {\arabic{chapter}}
 \def\thechapter       {\arabic{chapter}}
 \def\thesection       {\thechapter.\arabic{section}}
 \def\thesubsection    {\thesection.\arabic{subsection}}
@@ -369,6 +371,8 @@
 % \@chapapp is initially defined to be 'CHAPTER'.  The \appendix
 % command redefines it to be 'APPENDIX'.
 \def\@chapapp{CHAPTER}
+\def\@chapappA{CHAPTER}
+\def\@chapappB{APPENDIX}
 
 
 %    ****************************************
@@ -461,8 +465,34 @@
      \hbox to\@pnumwidth{\hfil #2}\par
    \endgroup}
 
-\def\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
-\def\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
+\def\l@section#1#2{\pagebreak[3]
+   \vskip 1.0em plus 1pt  % space above chapter line
+   \@tempdima 2.3em       % width of box holding chapter number
+   \begingroup
+     %\parindent \z@ \rightskip \@pnumwidth
+    \parindent 1.5em \rightskip \@pnumwidth
+     \parfillskip -\@pnumwidth
+     \bfseries                  % Boldface.
+     \leavevmode          % TeX command to enter horizontal mode.
+    	   #1  \leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hfill
+     \hbox to\@pnumwidth{\hfil #2}\par
+   \endgroup}
+
+\def\l@subsection#1#2{\pagebreak[3]
+   \vskip 1.0em plus 1pt  % space above chapter line
+   \@tempdima 3.2em       % width of box holding chapter number
+   \begingroup
+     %\parindent \z@ \rightskip \@pnumwidth
+    \parindent 3.8em \rightskip \@pnumwidth
+     \parfillskip -\@pnumwidth
+     \bfseries                  % Boldface.
+     \leavevmode          % TeX command to enter horizontal mode.
+    	   #1  \leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hfill
+     \hbox to\@pnumwidth{\hfil #2}\par
+   \endgroup}
+
+%\def\l@section{\@dottedtocline{1}{1.5em}{2.3em}}
+%\def\l@subsection{\@dottedtocline{2}{3.8em}{3.2em}}
 \def\l@subsubsection{\@dottedtocline{3}{7.0em}{4.1em}}
 \def\l@paragraph{\@dottedtocline{4}{10em}{5em}}
 \def\l@subparagraph{\@dottedtocline{5}{12em}{6em}}
@@ -477,7 +507,21 @@
   \if@figures\chapter*{LIST OF FIGURES\markboth
    {LIST OF FIGURES}{LIST OF FIGURES}}\addcontentsline{toc}{frontmatter}{LIST OF FIGURES}\@starttoc{lof}\fi}
 
-\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+
+\def\l@figure#1#2{\pagebreak[3]
+   \vskip 1.0em plus 1pt  % space above chapter line
+   \@tempdima 2.3em       % width of box holding chapter number
+   \begingroup
+     %\parindent \z@ \rightskip \@pnumwidth
+    \parindent 1.5em \rightskip \@pnumwidth
+     \parfillskip -\@pnumwidth
+     \bfseries                  % Boldface.
+     \leavevmode          % TeX command to enter horizontal mode.
+    	   #1  \leaders\hbox{$\m@th \mkern \@dotsep mu.\mkern \@dotsep mu$}\hfill
+     \hbox to\@pnumwidth{\hfil #2}\par
+   \endgroup}
+
+%\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
 
 % LIST OF TABLES
 %
@@ -490,7 +534,6 @@
    {LIST OF TABLES}{LIST OF TABLES}}\addcontentsline{toc}{frontmatter}{LIST OF TABLES}\@starttoc{lot}\fi}
 
 \let\l@table\l@figure
-
 
 
 %    ****************************************

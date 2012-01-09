@@ -102,12 +102,7 @@
     \def\@Thesisname{Dissertation}
     \def\@degreename{#1}
    }
-\newcommand{\dissertationprop}[1]
-   {\def\@thesisname{dissertation proposal}
-    \def\@Thesisname{Dissertation proposal}
-    \def\@degreename{#1}
-   }
-\dissertation{Doctor of Philosophy} % default
+\dissertation{Doctor of Philosophy}	% default
 
 % The following commands set the year in which the degree will be
 % awarded, as well as the year of copyright.

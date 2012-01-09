@@ -84,10 +84,10 @@
          \textsc{\large \@author} \\
           \if@prevdegreei\ \@prevdegreei \fi\\
          \if@prevdegreeii\ \@prevdegreeii \fi\\
-%         \if@prevdegreeiii\ \@prevdegreeiii \fi\\
+         %\if@prevdegreeiii\ \@prevdegreeiii \fi\\
 
          \vskip 24pt plus0pt minus6pt
-         A \@thesisname \hspace{1pt} submitted in fulfillment of the requirements\\
+         A \@thesisname \hspace{1pt} submitted in partial fulfillment of the requirements\\
          for the degree of \@degreename \\
          %\if@department\ in the Department of \@department \fi\\
          \if@school\ in the School of \@school \fi\\
@@ -242,8 +242,7 @@
       \ColumnSave
       \par\pagestyle{plain}
       \renewcommand\baselinestretch{\@spacing}\@normalsize\normalfont
-       \pdfbookmark[0]{DECICATION}{dedication}
-     \vspace*{0pt}                % force spacing at top of page
+      \vspace*{0pt}                % force spacing at top of page
       \vfill
       \begin{center}
          \@dedication
@@ -265,11 +264,10 @@
 
 \newcommand\@makeacknowledgmentsheading{
   {
-         \pdfbookmark[0]{ACKNOWLEDGMENTS}{acknowledgments}
-
     \centering
-\vspace*{45pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
-    \textsc{\large Acknowledgments}
+    \pdfbookmark[0]{ACKNOWLEDGMENTS}{Acknowledgments}       % Sets a PDF bookmark for the ACKS. (UCF: to add pdf bookmark)
+%\vspace*{45pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+    \textbf{\large ACKNOWLEDGMENTS} %UCF requires all titles to be FULLCAPS (David Ellis Jan2011)
     \vskip 0pt
   }
 }
@@ -495,14 +493,14 @@
    \if@abstract
       \ColumnSave
       \par\pagestyle{plain}
-              \vspace*{30pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
-           \pagenumbering{roman}
-           \setcounter{page}{3}
-
+              %\vspace*{30pt}                     % Space at top of text page. (UCF:to add up to 2-inches)
+           %\pagenumbering{roman}
+           %\setcounter{page}{3}
+	
         \begin{center}
+	\pdfbookmark[0]{ABSTRACT}{abstract}       % Sets a PDF bookmark for the abstract. (UCF: to add pdf bookmark)
 %        \textbf{\@titlesize Abstract}\\[12pt]
-         \pdfbookmark[0]{ABSTRACT}{abstract}
-        \textsc{\large Abstract}
+        \textbf{\large ABSTRACT} %UCF Requires all titles to be FULLCAPS (David Ellis Jan2011)
         \end{center}
 
 %      \begin{center}
@@ -576,12 +574,18 @@
   \@makeacknowledgments
 
 %\topmargin 1.15in
-         \pdfbookmark[0]{TABLE OF CONTENTS}{tableofcontents}
-  \tableofcontents
-
-  \listoftables
+%  \pdfbookmark[0]{TABLE OF CONTENTS}{table of contents} % Sets a PDF bookmark for the TOC (UCF)
+%  \tableofcontents
+% David Ellis - Jan 2011
+% Change to make the TOC page number in the PDF bookmarks match the actual first page of TOC
+% Based on and simplified code found here: http://tex.stackexchange.com/questions/8427/creating-a-pdf-bookmark-that-goes-straight-to-a-section-heading-not-above-or-bel#8433
+  \makeatletter
+  {\tableofcontents\Hy@writebookmark{Table of Contents}{TABLE OF CONTENTS}{\@currentHref}{0}{toc}}
+  \makeatother
 
   \listoffigures
+
+  \listoftables
 
 %\topmargin 0.15in
 
