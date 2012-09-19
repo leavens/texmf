@@ -38,7 +38,9 @@
 
 %% PART I: Typesetting maths in paragraphe mode
 
-\newdimen \mpr@tmpdim
+%% \newdimen \mpr@tmpdim
+%% Dimens are a precious ressource. Uses seems to be local.
+\let \mpr@tmpdim \@tempdima
 
 % To ensure hevea \hva compatibility, \hva should expands to nothing 
 % in mathpar or in inferrule
@@ -85,6 +87,21 @@
      \noindent $\displaystyle\fi
      \MathparBindings}
   {\unskip \ifmmode $\fi\egroup $$\ignorespacesafterend}
+
+\newenvironment{mathparpagebreakable}[1][]
+  {\begingroup 
+   \par
+   \mpr@savepar \parskip 0em \hsize \linewidth \centering
+      \mpr@prebindings \mpr@paroptions #1%
+      \vskip \abovedisplayskip \vskip -\lineskip%
+     \ifmmode  \else  $\displaystyle\fi
+     \MathparBindings
+  }
+  {\unskip
+   \ifmmode $\fi \par\endgroup
+   \vskip \belowdisplayskip
+   \noindent
+  \ignorespacesafterend}
 
 % \def \math@mathpar #1{\setbox0 \hbox {$\displaystyle #1$}\ifnum
 %     \wd0 < \hsize  $$\box0$$\else \bmathpar #1\emathpar \fi}
@@ -231,6 +248,9 @@
 
 \def \mpr@@fraction #1#2{\hbox {\advance \hsize by -0.5em
     $\displaystyle {#1\mpr@over #2}$}}
+\def \mpr@@nofraction #1#2{\hbox {\advance \hsize by -0.5em
+    $\displaystyle {#1\@@atop #2}$}}
+
 \let \mpr@fraction \mpr@@fraction
 
 %% A generic solution to arrow
@@ -253,6 +273,8 @@
      $}}}
 
 %% Old stuff should be removed in next version
+\def \mpr@@nothing #1#2
+    {$\lower 0.01pt \mpr@@nofraction {#1}{#2}$}
 \def \mpr@@reduce #1#2{\hbox
     {$\lower 0.01pt \mpr@@fraction {#1}{#2}\mkern -15mu\rightarrow$}}
 \def \mpr@@rewrite #1#2#3{\hbox
@@ -330,11 +352,16 @@
 
 %% Keys that make sence in all kinds of rules
 \def \mprset #1{\setkeys{mprset}{#1}}
+\define@key {mprset}{andskip}[]{\mpr@andskip=#1}
+\define@key {mprset}{lineskip}[]{\lineskip=#1}
+\define@key {mprset}{lessskip}[]{\lineskip=0.5\lineskip}
 \define@key {mprset}{flushleft}[]{\mpr@centerfalse}
 \define@key {mprset}{center}[]{\mpr@centertrue}
 \define@key {mprset}{rewrite}[]{\let \mpr@fraction \mpr@@rewrite}
+\define@key {mprset}{atop}[]{\let \mpr@fraction \mpr@@nofraction}
 \define@key {mprset}{myfraction}[]{\let \mpr@fraction #1}
 \define@key {mprset}{fraction}[]{\def \mpr@fraction {\mpr@make@fraction #1}}
+\define@key {mprset}{sep}{\def\mpr@sep{#1}}
 
 \newbox \mpr@right
 \define@key {mpr}{flushleft}[]{\mpr@centerfalse}
@@ -370,7 +397,6 @@
 \define@key {mpr}{vdots}{\def \mpr@vdots {\@@atop \mpr@vdotfil{#1}}}
 \define@key {mpr}{after}{\edef \mpr@after {\mpr@after #1}}
 
-\newdimen \rule@dimen
 \newcommand \mpr@inferstar@ [3][]{\setbox0
   \hbox {\let \mpr@rulename \mpr@empty \let \mpr@vdots \relax
          \setbox \mpr@right \hbox{}%
@@ -379,8 +405,8 @@
           \mpr@inferrule [{\mpr@rulename}]{#2}{#3}\fi
           \box \mpr@right \mpr@vdots$}
   \setbox1 \hbox {\strut}
-  \rule@dimen \dp0 \advance \rule@dimen by -\dp1
-  \raise \rule@dimen \box0}
+  \@tempdima \dp0 \advance \@tempdima by -\dp1
+  \raise \@tempdima \box0}
 
 \def \mpr@infer {\@ifnextchar *{\mpr@inferstar}{\mpr@inferrule}}
 \newcommand \mpr@err@skipargs[3][]{}

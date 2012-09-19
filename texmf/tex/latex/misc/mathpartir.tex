@@ -321,8 +321,7 @@ $$\mprset
   \inferrule {a \\ bbb} {cc}$$ 
 \\
 \begin{lstlisting}{Ocaml}
-$$\mprset
-  {fraction={\cdot\cdots\cdot}
+$$\mprset {fraction={\cdot\cdots\cdot}}
  \inferrule {a \\ bbb} {cc}$$ 
 \end{lstlisting}
 &
@@ -343,13 +342,62 @@ $$\mprset{myfraction=\Over}
 \def \Over #1#2{\hbox{$#1 \over #2$}}
 $$\mprset{myfraction=\Over}
   \inferrule {a \\ bbb} {cc}$$ 
-
 \\
 \end{tabular}
 
+\paragraph{Customizing the horizontal skip between premisses}
+(default value is 2em).
+\begin{quote}
+\begin{lstlisting}{Ocaml}
+$$\mprset {sep=6em}
+ \inferrule {a \\ bbb} {cc}$$ 
+\end{lstlisting}
+$$\mprset {sep=6em}
+  \inferrule {a \\ bbb} {cc}$$ 
+\end{quote}
 
 
 
+\subsection {Tabulars in inference rules}
+
+Although you probably do not want to do that, you may still use tabular
+or minipages inside inference rules, but between braces, as follows:
+$$
+\begin{tabular}{m{0.50\hsize}m{0.50\hsize}}
+\begin{lstlisting}{Ocaml}
+\infer [Tabular-Rule]
+{some \\ math \\ and \\
+ {\begin{tabular}[b]{|l|r|}
+ \hline Ugly & and
+  \\[1ex]\hline 
+  table & text
+  \\\hline
+ \end{tabular}} \\
+ {\begin{minipage}[b]{6em}
+  Do you really wish
+  to do that? 
+  \end{minipage}} \\ 
+}
+{some \\ conclusions}
+\end{lstlisting}
+&
+\infer [Tabular-Rule]
+{some \\ math \\ and \\
+ {\begin{tabular}[b]{|l|r|}
+ \hline Ugly & and
+  \\[1ex]\hline
+  table & text
+  \\\hline
+ \end{tabular}} \\
+ {\begin{minipage}[b]{6em}
+  Do you really wish
+  to do that? 
+  \end{minipage}} \\ 
+}
+{some \\ conclusions}
+\\
+\end{tabular}
+$$
 
 
 \subsection {Derivation trees}
@@ -403,6 +451,8 @@ leftskip & Cheat by (skip negative space) {\val} on the left side.
 \\\hline
 rightskip & Cheat by {\val} on the right side of the rule.
 \\\hline
+sep & Set the premise skip between rules to  {\val}. 
+\\\hline
 vdots & Raise the rule by {\val} and insert vertical dots. 
 \\\hline
 \end{tabular}
@@ -418,7 +468,7 @@ $$
        \\ ff \\ gg}
      {hh}
   \\
-  \inferrule* [lab=XX]{uu \\ vv}{ww}}
+  \inferrule* [lab=XX,sep=4em]{uu \\ vv}{ww}}
   {(1)}
 $$
 and its code
