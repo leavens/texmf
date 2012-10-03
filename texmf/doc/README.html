@@ -25,8 +25,24 @@ it finds everything.</p>
 
 <h3>Windows with Cygwin's TeTeX</h3>
 <p>
-On a Windows machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and
-it finds everything.</p>
+In prior years, on a Windows machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and 
+it would find everything.  That still seems to work with MikTeX.</p>
+
+<p>With TeTeX under Cygwin on a Windows machine, it seemed to work to do the commend <kbd>kpsewhich -var-value TEXMFHOME</kbd>, and then to make a symbolic link from that place to <kbd>$HOME/texmf</kbd>.  That is:</p>
+
+<pre>
+$ kpsewhich -var-value TEXMFHOME
+/home/You/.local/share/texmf
+$ ls /home/You/.local/share/texmf
+ls: cannot access /home/You/.local/share/texmf: No such file or directory
+$ cd 
+$ mkdir .local
+$ mkdir .local/share
+$ ln -s ~/texmf .local/share/
+</pre>
+
+<p>See also <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst">
+http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst</a> for more about this topic.</p>
 
 <h3>Linux with TeTeX</h3>
 <p>
