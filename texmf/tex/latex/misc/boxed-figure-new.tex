@@ -51,6 +51,26 @@
 \end{figure}
 }
 
+%% figures at the bottom of the page
+\newenvironment{BFIGUREB}{
+\begin{figure}[b!]
+\BFIGURELINE
+}{%
+\par\vskip-\parskip
+\BFIGURELINE%
+\end{figure}
+}
+
+%% figures here
+\newenvironment{BFIGUREH}{
+\begin{figure}[h!]
+\BFIGURELINE
+}{%
+\par\vskip-\parskip
+\BFIGURELINE%
+\end{figure}
+}
+
 %% A line, with not raised
 \newcommand{\BFULLFIGURELINE}{
 {\rule{\textwidth}{\BFIGURELINEHEIGHT}}
