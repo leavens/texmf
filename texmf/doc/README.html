@@ -41,6 +41,8 @@ $ mkdir .local/share
 $ ln -s ~/texmf .local/share/
 </pre>
 
+<p>It also seems to work to edit the value of whatever file name is shown to you by executing the command <kbd>kpsewhich texmf.cnf</kbd>, and adding the full (unix-style) path name to your texmf directory to the end of the path in that file's definition of TEXMF. However, I believe that this solution will cease to work when you update cygwin's TeX install. Thus the previous solution is best.</p>
+
 <p>See also <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst">
 http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst</a> for more about this topic.</p>
 
