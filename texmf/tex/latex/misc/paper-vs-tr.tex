@@ -1,0 +1,18 @@
+% Macros for producing technical reports and papers from the same
+% source.
+% Use \PaperOnly{text} for text that should only appear in the paper
+% version, but not the TR, and
+% use \TROnly{text} for text that should appear only in the TR
+% version, but not in the paper version.
+
+\newcommand{\IGNORE}[1]{\relax}
+\newcommand{\PRINT}[1]{#1}
+
+% The following asks whether you want to produce the TR
+\typein[\USEANSWERS]{Are you producing the TR version (y/n)?}
+\if n\USEANSWERS \newcommand{\PaperOnly}[1]{\PRINT{#1}}
+    \newcommand{\TROnly}[1]{\IGNORE{#1}}
+\else \newcommand{\PaperOnly}[1]{\IGNORE{#1}}
+    \newcommand{\TROnly}[1]{\PRINT{#1}}
+\fi
+
