@@ -4,6 +4,9 @@
 % Analysis, by Flemming Nielson, Hanne Riis Nielson, and Chris Hankin
 % (Springer-Verlag, 1999).
 
+% assumes math-notations (for the commented out math notations below)
+% assumes obey (for the myobeycr macros, etc.)
+
 % Chapter 1
 
 % Section 1.2
@@ -67,13 +70,13 @@
 \newcommand{\LFN}[3]{\texttt{fn #1 => } \LEXP{#2}{#3}}
 \newcommand{\FN}[2]{\LFN{#1}{#2}{\NEXTLABEL}}
 
-% math definitions
-\newcommand{\implies}{\ensuremath{\Rightarrow}}
+% math definitions (the renewed ones are already in math-notations)
+\renewcommand{\implies}{\ensuremath{\Rightarrow}}
 \newcommand{\impliedby}{\ensuremath{\Leftarrow}}
-\newcommand{\IFF}{\Leftrightarrow}
+\renewcommand{\IFF}{\Leftrightarrow}
 \newcommand{\arr}{\ensuremath{\rightarrow}}
-\newcommand{\DOM}{\ANALYSIS{DOM}}
-\newcommand{\POWERSET}[1]{\ensuremath{{\cal P}}(#1)}
+\renewcommand{\DOM}{\ANALYSIS{DOM}}
+\renewcommand{\POWERSET}[1]{\ensuremath{{\cal P}}(#1)}
 
 % abstract interpretation, section 1.5
 \newcommand{\CS}{\ANALYSIS{CS}}
@@ -137,7 +140,7 @@
 \newcommand{\ud}{\textsl{ud}}
 \newcommand{\CLEAR}{\textsl{clear}}
 \newcommand{\USE}{\textsl{use}}
-\newcommand{\DEF}{\textsl{def}}
+\newcommand{\DEFINES}{\textsl{def}}
 \newcommand{\du}{\textsl{du}}
 \newcommand{\UD}{\ANALYSIS{UD}}
 \newcommand{\DU}{\ANALYSIS{DU}}
@@ -147,9 +150,9 @@
 \newcommand{\s}{\ensuremath{\sigma}}
 \newcommand{\CONFIG}[1]{\ensuremath{\langle #1 \rangle}}
 \newcommand{\REDUCESTO}{\rightarrow}
-\newcommand{\WITHFOR}[3]{\ensuremath{#1[#2\mapsto #3]}} % subst #2 for #3 in #1
+\renewcommand{\WITHFOR}[3]{\ensuremath{#1[#2\mapsto #3]}} % subst #2 for #3 in #1
 % brackets that surround syntax (as in denotational semantics)
-\newcommand{\synbracket}[1]{[\![#1]\!]}
+\renewcommand{\synbracket}[1]{[\![#1]\!]}
 \newcommand{\MEANING}[2]{\ensuremath{{\cal #1}}\synbracket{#2}}
 \newcommand{\DENAEXP}[1]{\MEANING{A}{#1}}
 \newcommand{\DENBEXP}[1]{\MEANING{B}{#1}}
@@ -186,7 +189,9 @@
 %  \renewcommand{\bigmeet}{\bigsqcap}
 \newcommand{\bigjoin}{\bigsqcup}
 
-\newcommand{\LAMBDA}[1]{\lambda{#1}\:.\:}
+% Lambda Calculus
+\renewcommand{\LAMBDA}[1]{\lambda{#1}\:.\:}
+\newcommand{\LETHEAD}[2]{\mbox{{\bf let} }{#1} = {#2}\mbox{ {\bf in} }}
 
 % 2.3 Monotone frameworks
 \newcommand{\FUNS}{{\cal F}}
@@ -251,7 +256,7 @@
 \newcommand{\p}{\textit{p}}
 \newcommand{\PExp}{\textbf{PExp}}
 % \loc and \Loc are above
-\newcommand{\nil}{\textbf{\diamond}}
+\newcommand{\NIL}{\textbf{\diamond}}
 \newcommand{\Heap}{\textbf{Heap}}
 \newcommand{\h}{{\cal \scriptstyle H}}
 \newcommand{\DENP}[1]{\MEANING{P}{#1}}
