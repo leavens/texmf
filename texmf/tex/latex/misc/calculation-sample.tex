@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\input{math-notations}
+\input{calculation}
+\newcommand{\impliedby}{\ensuremath{\Leftarrow}}
+\newcommand{\QED}{\rule{0.4em}{0.65em}}
+\newcommand{\Lab}{\mbox{\textbf{Lab}}}
+\begin{document}
+\title{Example of Calculation Macros}
+\author{Gary T. Leavens}
+\maketitle
+\begin{abstract}
+This document is used to demonstrate and test the calculation macros.
+\end{abstract}
+\section{Calculational Proofs}
+For a description of what calculational proofs are about, see
+David Gries, 
+``Teaching Calculation and Discrimination: A More Effective Curriculum,'' 
+\emph{CACM} \textbf{34}(3):44--55, Mar. 1991.
+and
+Ralph-Johan Back and Joakim von Wright,
+\emph{Refinement Calculus: A Systematic Introduction},
+Springer-Verlag, 1998.
+
+\section{A simple example}
+The following is a very simple example.
+\begin{calculation}
+\FORMULA{f.P \implies f.Q}
+\EQREASON{predicate calculus}
+\FORMULA{(f.P \wedge f.Q) = f.P}
+\REASON{$f$ is conjunctive}
+\FORMULA{ f.(P \wedge Q) = f.P }
+\REASON{\impliedby}{Leibniz}
+\FORMULA{(P \wedge Q) = P}
+\EQREASON{predicate calculus}
+\LASTFORMULA{P \implies Q}
+\end{calculation}
+
+\section{A Slightly More Advanced Example}
+The following is a slightly more advanced example.
+
+\begin{calculation}
+\FORMULA{F(\vec{RD'}) \sqsubseteq \FOCUS{F^n(\vec{\emptyset})}}
+\EQREASON{assumption $F^n(\vec{\emptyset}) = F^{n+1}(\vec{\emptyset})$}
+\FORMULA{F(\vec{RD'}) \sqsubseteq \FOCUS{F^{n+1}(\vec{\emptyset})}}
+\EQREASON{definition of iteration of a function}
+\FORMULA{F(\vec{RD'}) \sqsubseteq F(F^n(\vec{\emptyset}))}
+\REASON{\impliedby}{monotonicity of $F$}
+\FORMULA{\vec{RD'} \sqsubseteq F^n(\vec{\emptyset})}
+\REASON{\impliedby}{transitivity}
+\FORMULA{\vec{RD'} \sqsubseteq F(\vec{RD})
+        \wedge F(\vec{RD}) \sqsubseteq F^n(\vec{\emptyset})}
+\EQREASON{assumption $F(\vec{RD}) \sqsubseteq F^n(\vec{\emptyset})$}
+\FORMULA{\vec{RD'} \sqsubseteq F(\vec{RD})}
+\REASON{\impliedby}{Lemma~7}
+\QEDFORMULA{\vec{RD} \sqsubseteq F(\vec{RD})}
+\end{calculation}
+
+\section{A More Sophisticated Example, with Subdeductions}
+
+An much more sophisticated example, with subdeductions a la Back and
+von Wright is the following.
+
+\begin{calculation}
+\FORMULA{\alpha(\{tr: (z, \ell') \mid tr \in \gamma(RD_k)\}) }
+\EQREASON{definition of $\alpha$}
+\FORMULA{\{(x, SRD(tr')(x))
+             \mid x \in \textrm{dom}(tr')
+                  \wedge tr' \in \{tr: (z, \ell') \mid tr \in \gamma(RD_k)\} \} }
+\EQREASON{set theory
+         ($tr'$ ranges over $tr: (z, \ell')$ for $tr \in \gamma(RD_k)$)}
+\FORMULA{\{(x, SRD(tr: (z, \ell'))(x))
+             \mid x \in \textrm{dom}(tr: (z, \ell')),
+                   \FOCUS{tr \in \gamma(RD_k)} \} }
+\EQREASON{definition of $\gamma$}
+\FORMULA{\{(x, SRD(tr: (z, \ell'))(x))
+             \mid x \in \textrm{dom}(tr: (z, \ell')),
+               (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}}
+\EQREASON{set theory}
+\FORMULA{
+    \begin{array}{rl}
+        \{(x, SRD(tr: (z, \ell'))(x)) &
+             \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+             & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} \\
+        \cup \:
+        \{(x, SRD(tr: (z, \ell'))(x)) &
+             \mid x = z, x \in \textrm{dom}(tr: (z, \ell')), \\
+             & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+    \end{array}
+        }
+\EQREASON{focusing on the second set}
+\SUBDEDUCTION{
+     \begin{array}{rl}
+        \{(x, SRD(tr: (z, \ell'))(x)) &
+             \mid x = z, x \in \textrm{dom}(tr: (z, \ell')), \\
+             & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+     \end{array}
+       }
+  \EQREASON{set theory}
+  \FORMULA{\{(z, \FOCUS{SRD(tr: (z, \ell'))(z)}) 
+             \mid z \in \textrm{dom}(tr: (z, \ell')),
+               (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} }
+  \EQREASON{definition of $SRD$}
+  \FORMULA{\{(z, \ell') 
+             \mid \FOCUS{z \in \textrm{dom}(tr: (z, \ell'))},
+               (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k)
+             \} }
+  \EQREASON{definition of $\textrm{dom}$}
+  \FORMULA{\{(z, \ell') 
+             \mid (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} }
+  \EQREASON{definition of $\gamma$}
+  \FORMULA{\{(z, \ell') \mid tr \in \gamma(RD_k) \} }
+  \EQREASON{$tr$ can be constructed by writing the pairs of
+             $\gamma(RD_k)$ in some order}
+  \FORMULA{\{(z, \ell') \} }
+\CONCLUDE{
+   \begin{array}{l}
+    \begin{array}{rl}
+        \{(x, SRD(tr: (z, \ell'))(x)) &
+             \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+             & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+    \end{array} \\
+    \cup \: \{(z, \ell')\}
+   \end{array}
+    }
+\EQREASON{focusing on the first set}
+\SUBDEDUCTION{
+    \begin{array}{rl}
+        \{(x, SRD(tr: (z, \ell'))(x)) &
+             \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+             & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+     \end{array}
+       }
+  \EQREASON{definition of $SRD$}
+  \FORMULA{\{(x, SRD(tr)(x))
+             \mid x \neq z, x \in \textrm{dom}(tr), 
+              (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}}
+  \EQREASON{set theory and the range of $SRD$}
+  \FORMULA{\begin{array}{l}
+             \{(x, SRD(tr)(x))
+                      \mid x \in \textrm{dom}(tr), 
+              (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} \\
+           \setminus \: \{(z, \ell) \mid \ell \in \Lab\}
+           \end{array}
+          }
+  \EQREASON{Lemma 3}
+  \FORMULA{RD_k \setminus \{(z, \ell) \mid \ell \in \Lab\}}
+\LASTCONCLUDE{(RD_k \setminus \{(z, \ell) \mid \ell \in \Lab\})
+           \cup \{(z, \ell')\}}
+\end{calculation}
+\end{document}
