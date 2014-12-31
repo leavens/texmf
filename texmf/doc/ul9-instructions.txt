@@ -24,7 +24,7 @@ I also copied the files from my miktex/fonts/type1/public/luxi
 directory to /usr/share/texmf/fonts/type1/public/luxi/
   mkdir /usr/share/texmf/fonts/type1/public/luxi/
 
-  cd $HOME/miktex/fonts/type1/public/luxi
+  cd /usr/local/miktex/fonts/type1/public/luxi
   cp * /usr/share/texmf/fonts/type1/public/luxi/
 
 I think then you just rebuild the systems files (texhash and then
