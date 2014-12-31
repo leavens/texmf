@@ -23,16 +23,20 @@ the "kpathsea variables" section for the variable <kbd>TEXMFDBS</kbd>.  In this 
 On an Apple Macintosh with OS/X I just put the root of this directory tree in <kbd>$HOME/Library</kbd> with the root named <kbd>texmf</kbd>, and
 it finds everything.</p>
 
+<h3>Windows with MikTeX</h3>
+<p>You have to add this directory structure as a new TeX "root" using the miktex settings tool. This is available from the start menu (under MikTeX) on Windows 7. However, on Windows 8, you will find the tool as an executable only under the miktex/miktex/bin/x64/ directory in a file named mo.exe. Run that file.</p>
+
+<p>Regardless of how you find the MikTeX settings program, you need to add this directory as a root. Use the "Roots" tab, push the "Add" button, and follow the prompts.</p>
+
 <h3>Windows with Cygwin's TeTeX</h3>
 <p>
 In prior years, on a Windows machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and 
-it would find everything.  That still seems to work with MikTeX.</p>
+it would find everything.  That still seems to work.</p>
 
 <p>With TeTeX under Cygwin on a Windows machine, it seemed to work to do the commend <kbd>kpsewhich -var-value TEXMFHOME</kbd>, and then to make a symbolic link from that place to <kbd>$HOME/texmf</kbd>.  That is:</p>
 
 <pre>
-$ kpsewhich -var-value TEXMFHOME
-/home/You/.local/share/texmf
+$ kpsewhich -var-value TEXMFHOME /home/You/.local/share/texmf
 $ ls /home/You/.local/share/texmf
 ls: cannot access /home/You/.local/share/texmf: No such file or directory
 $ cd 
