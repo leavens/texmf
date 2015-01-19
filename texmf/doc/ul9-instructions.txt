@@ -9,12 +9,13 @@ which installs this and many other fonts.
 On a Windows machine with Miktex, it works out of the box.
 However, to use this directory structure here, requires you to add
 this texmf directory structure to MikTeX as a new root, using the
-MikTeX settings program (which is miktex/miktex/bin/x64/mo.exe on a
-Windows 8 machinee).
+MikTeX settings program (which on a Windows 8 machinee you can find as
+"Miktex Setting (Admin)" in the list of Windows programs after
+installing MikTeX, or directly as .../miktex/miktex/bin/x64/mo.exe).
 
 On cygwin with tetex you should download the extra fonts that cygwin provides.
 Then you need to add the following lines to the (end of)
-/usr/share/texmf/web2c/updmap.cfg:
+/usr/share/texmf-site/web2c/updmap.cfg:
 
   # Luximono
   Map ul9.map
