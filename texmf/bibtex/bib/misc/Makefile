@@ -41,6 +41,3 @@ $(HOME)/WWW/biblio.bib.Z: $(BIBS) leavens.bib Makefile
 	rm -f biblio.bib.Z
 	$(COMPRESS) biblio.bib
 	mv -f biblio.bib.Z $(HOME)/WWW/
-
-send-to-iastate: leavens.bib
-	scp -p leavens.bib pyrite.cs.iastate.edu:/auto/ftp/pub/leavens/
