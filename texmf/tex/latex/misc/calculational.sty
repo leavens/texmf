@@ -1,0 +1,244 @@
+% $Id$
+%
+% Calculational proofs, a la Dijkstra, Gries, Back and von Wright, etc.
+% See: David Gries, "Teaching Calculation and Discrimination:
+%      A More Effective Curriculum", CACM 34(3):44-55, Mar. 1991.
+% and
+%      Ralph-Johan Back and Joakim von Wright,
+%      "Refinement Calculus: A Systematic Introduction",
+%      Springer-Verlag, 1998.
+%
+% AUTHOR: Gary T. Leavens
+
+% EXAMPLES
+%
+% A simple example of the use of these macros is as follows.
+%
+% \begin{calculation}
+% \FORMULA{\vec{RD}}
+% \EQREASON{definition of $\vec{RD}$}
+% \FORMULA{(RD_1, \ldots, RD_j, \ldots, RD_{12})}
+% \REASON{\sqsubseteq}{$F_j$ is monotonic}
+% \FORMULA{(RD_1, \ldots, F_j(\vec{RD}), \ldots, RD_{12})}
+% \EQREASON{definition of $\vec{RD'}$}
+% \LASTFORMULA{\vec{RD'}}
+% \end{calculation}
+%
+% The following is a slightly more advanced example.
+%
+% \begin{calculation}
+% \FORMULA{F(\vec{RD'}) \sqsubseteq \FOCUS{F^n(\vec{\emptyset})}}
+% \EQREASON{assumption $F^n(\vec{\emptyset}) = F^{n+1}(\vec{\emptyset})$}
+% \FORMULA{F(\vec{RD'}) \sqsubseteq \FOCUS{F^{n+1}(\vec{\emptyset})}}
+% \EQREASON{definition of iteration of a function}
+% \FORMULA{F(\vec{RD'}) \sqsubseteq F(F^n(\vec{\emptyset}))}
+% \REASON{\impliedby}{monotonicity of $F$}
+% \FORMULA{\vec{RD'} \sqsubseteq F^n(\vec{\emptyset})}
+% \REASON{\impliedby}{transitivity}
+% \FORMULA{\vec{RD'} \sqsubseteq F(\vec{RD})
+%         \wedge F(\vec{RD}) \sqsubseteq F^n(\vec{\emptyset})}
+% \EQREASON{assumption $F(\vec{RD}) \sqsubseteq F^n(\vec{\emptyset})$}
+% \FORMULA{\vec{RD'} \sqsubseteq F(\vec{RD})}
+% \REASON{\impliedby}{Lemma~7}
+% \QEDFORMULA{\vec{RD} \sqsubseteq F(\vec{RD})}
+% \end{calculation}
+%
+% An much more sophisticated example, with subdeductions a la Back and
+% von Wright is the following.
+%
+% \begin{calculation}
+% \FORMULA{\alpha(\{tr: (z, \ell') \mid tr \in \gamma(RD_k)\}) }
+% \EQREASON{definition of $\alpha$}
+% \FORMULA{\{(x, SRD(tr')(x))
+%              \mid x \in \textrm{dom}(tr')
+%                   \wedge tr' \in \{tr: (z, \ell') \mid tr \in \gamma(RD_k)\} \} }
+% \EQREASON{set theory
+%          ($tr'$ ranges over $tr: (z, \ell')$ for $tr \in \gamma(RD_k)$)}
+% \FORMULA{\{(x, SRD(tr: (z, \ell'))(x))
+%              \mid x \in \textrm{dom}(tr: (z, \ell')),
+%                    \FOCUS{tr \in \gamma(RD_k)} \} }
+% \EQREASON{definition of $\gamma$}
+% \FORMULA{\{(x, SRD(tr: (z, \ell'))(x))
+%              \mid x \in \textrm{dom}(tr: (z, \ell')),
+%                (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}}
+% \EQREASON{set theory}
+% \FORMULA{
+%     \begin{array}{rl}
+%         \{(x, SRD(tr: (z, \ell'))(x)) &
+%              \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+%              & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} \\
+%         \cup \:
+%         \{(x, SRD(tr: (z, \ell'))(x)) &
+%              \mid x = z, x \in \textrm{dom}(tr: (z, \ell')), \\
+%              & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+%     \end{array}
+%         }
+% \EQREASON{focusing on the second set}
+% \SUBDEDUCTION{
+%      \begin{array}{rl}
+%         \{(x, SRD(tr: (z, \ell'))(x)) &
+%              \mid x = z, x \in \textrm{dom}(tr: (z, \ell')), \\
+%              & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+%      \end{array}
+%        }
+%   \EQREASON{set theory}
+%   \FORMULA{\{(z, \FOCUS{SRD(tr: (z, \ell'))(z)}) 
+%              \mid z \in \textrm{dom}(tr: (z, \ell')),
+%                (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} }
+%   \EQREASON{definition of $SRD$}
+%   \FORMULA{\{(z, \ell') 
+%              \mid \FOCUS{z \in \textrm{dom}(tr: (z, \ell'))},
+%                (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k)
+%              \} }
+%   \EQREASON{definition of $\textrm{dom}$}
+%   \FORMULA{\{(z, \ell') 
+%              \mid (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} }
+%   \EQREASON{definition of $\gamma$}
+%   \FORMULA{\{(z, \ell') \mid tr \in \gamma(RD_k) \} }
+%   \EQREASON{$tr$ can be constructed by writing the pairs of
+%              $\gamma(RD_k)$ in some order}
+%   \FORMULA{\{(z, \ell') \} }
+% \CONCLUDE{
+%    \begin{array}{l}
+%     \begin{array}{rl}
+%         \{(x, SRD(tr: (z, \ell'))(x)) &
+%              \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+%              & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+%     \end{array} \\
+%     \cup \: \{(z, \ell')\}
+%    \end{array}
+%     }
+% \EQREASON{focusing on the first set}
+% \SUBDEDUCTION{
+%     \begin{array}{rl}
+%         \{(x, SRD(tr: (z, \ell'))(x)) &
+%              \mid x \neq z, x \in \textrm{dom}(tr: (z, \ell')), \\
+%              & ~ (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}
+%      \end{array}
+%        }
+%   \EQREASON{definition of $SRD$}
+%   \FORMULA{\{(x, SRD(tr)(x))
+%              \mid x \neq z, x \in \textrm{dom}(tr), 
+%               (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \}}
+%   \EQREASON{set theory and the range of $SRD$}
+%   \FORMULA{\begin{array}{l}
+%              \{(x, SRD(tr)(x))
+%                       \mid x \in \textrm{dom}(tr), 
+%               (\forall y \in \textrm{dom}(tr) :: (y, SRD(tr)(y)) \in RD_k) \} \\
+%            \setminus \: \{(z, \ell) \mid \ell \in \Lab\}
+%            \end{array}
+%           }
+%   \EQREASON{Lemma \ref{lemma:simplifyToRD}}
+%   \FORMULA{RD_k \setminus \{(z, \ell) \mid \ell \in \Lab\}}
+% \LASTCONCLUDE{(RD_k \setminus \{(z, \ell) \mid \ell \in \Lab\})
+%            \cup \{(z, \ell')\}}
+% \end{calculation}
+
+
+%%%%%%% The macros themselves follow %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{calculational}[2015/12/02 Aids in producing calculational style proofs]
+
+
+%%% You may want to define the following with \renewcommand...
+
+% Brackets around normal and fixed width reasons
+\newcommand{\LEFTREASONBRACKET}{\langle}
+\newcommand{\RIGHTREASONBRACKET}{\rangle}
+% Brackets for long reasons
+\newcommand{\LONGLEFTREASONBRACKET}{\left\LEFTREASONBRACKET}
+\newcommand{\LONGRIGHTREASONBRACKET}{\right\RIGHTREASONBRACKET}
+% width of long and fixed width reasons
+\newcommand{\LONGREASONWIDTH}{5.4in}
+\newcommand{\FIXEDWIDTHREASONWIDTH}{\LONGREASONWIDTH}
+% The phrase that starts each reason
+\newcommand{\BYPHRASE}{by~}
+% Provability symbol
+\newcommand{\PROVABILITYSYMBOL}{\vdash}
+% Has type symbol
+\newcommand{\CALCULATIONHASTYPE}{:}
+% Subdeduction symbols a la Back and von Wright
+\newcommand{\SUBDEDUCTIONMARKER}{\bullet}
+\newcommand{\CONCLUDEMARKER}{\cdot}
+
+% The macros below assume that you have defined \QED,
+% e.g., as \newcommand{\QED}{q.e.d.}
+
+
+%%% The rest shouldn't usually need to be redefined
+
+% The main environment
+\newenvironment{calculation}{
+\samepage
+\begin{tabbing}
+mm \= n \= mm \= n \= mm \= n \= mm \= n \= mm \= n \= mm \= n \= \kill
+}{
+\end{tabbing}
+}
+
+% Use for the last formula (to avoid extra vertical space)
+\newcommand{\LASTFORMULA}[1]{\> \ensuremath{#1}}
+% Use for the last formula in a proof that concluses the proof
+\newcommand{\QEDATEND}{~~\QED}
+\newcommand{\QEDFORMULA}[1]{\LASTFORMULA{#1\QEDATEND}}
+
+% All other formulas in a calculation
+\newcommand{\FORMULA}[1]{\LASTFORMULA{#1} \\}
+
+% Generic reason, with connective and the justification
+\newcommand{\REASON}[2]{%
+    \ensuremath{#1}\> \>
+       \mbox{\ensuremath{\LEFTREASONBRACKET}{\BYPHRASE}#2\ensuremath{\RIGHTREASONBRACKET}} \\}
+
+% Reasons with longer justifications, with the right bracket at the end
+\newcommand{\FIXEDWIDTHREASON}[2]{%
+     \ensuremath{#1}\> \>
+       \ensuremath{\LEFTREASONBRACKET}{\BYPHRASE}%
+       \parbox[t]{\FIXEDWIDTHREASONWIDTH}{#2\ensuremath{\RIGHTREASONBRACKET}}
+       \\
+     }
+
+% Reasons with longer justifications, with big brackets around the reason
+\newcommand{\LONGREASON}[2]{%
+    \ensuremath{#1}\> \>
+      \ensuremath{\LONGLEFTREASONBRACKET
+                  \parbox[c]{\LONGREASONWIDTH}{{\BYPHRASE}#2}
+                  \LONGRIGHTREASONBRACKET
+                 }
+      \\
+    }
+
+% Specialization of reasons to equality
+\newcommand{\EQREASON}[1]{\REASON{=}{#1}}
+\newcommand{\EQLONGREASON}[1]{\LONGREASON{=}{#1}}
+\newcommand{\EQFIXEDWIDTHREASON}[1]{\FIXEDWIDTHREASON{=}{#1}}
+
+% Use \FOCUS{E} to say that subformula E will be changed in the following step
+\newcommand{\FOCUS}[1]{\mbox{``}#1\mbox{''}}
+
+
+%% The following are for Back and von Wright style calculations.
+%% First time users may want to ignore these.
+
+% Use for assumptions in a type-deduction style proof
+\newcommand{\GIVEN}[1]{\FORMULA{#1}}
+% Use \PROVETHAT to start the body of a type-deduction style proof.
+\newcommand{\PROOFLINE}[2]{\ensuremath{#1} \> \ensuremath{#2} \\}
+\newcommand{\PROVETHAT}[1]{\PROOFLINE{\PROVABILITYSYMBOL}{#1}}
+%% Subdeductions
+% Use to start a subdeduction
+\newcommand{\SUBDEDUCTION}[1]{\+\+\kill\PROOFLINE{\SUBDEDUCTIONMARKER}{#1}}
+% Use to separate one subdeduction from another
+\newcommand{\ANDALSO}{\-\-\kill}
+% Use to start the next subdeduction after \ANDALSO
+\newcommand{\NEXTDEDUCTION}[1]{\PROOFLINE{\SUBDEDUCTIONMARKER}{#1}}
+% Use to conclude a subdeduction 
+\newcommand{\CONCLUDE}[1]{\-\-\kill\PROOFLINE{\CONCLUDEMARKER}{#1}}
+% Use when the last formula is also a conclusion
+\newcommand{\LASTCONCLUDE}[1]{\-\-\kill\ensuremath{\CONCLUDEMARKER} \> \ensuremath{#1}}
+% Use in a type-deduction proof instead of \REASON, to give the rule name
+\newcommand{\TYPINGRULE}[1]{\ensuremath{\CALCULATIONHASTYPE} \> ~~~ #1 \\}
+
+% end of calculation.tex
+
