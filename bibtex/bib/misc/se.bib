@@ -5336,6 +5336,40 @@ annote={Refinement calculus tool made by a shallow embedding in Isabelle/HOL.}
   URL = 	 {http://www.disi.unige.it/person/AnconaD/FTfJP06/paper04.pdf},
   annote =       {The native in the title refers to the language of a theorem prover.  15 references.}
 }
+
+@inproceedings{Chatterjee-etal20,
+author = {Krishnendu Chatterjee and Hongfei Fu and Amir Kafshdar Goharshady and Ehsan Kafshdar Goharshady},
+title = {Polynomial Invariant Generation for Non-Deterministic Recursive Programs},
+year = {2020},
+isbn = {9781450376136},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3385412.3385969},
+doi = {10.1145/3385412.3385969},
+abstract = {We consider the classical problem of invariant generation for programs with polynomial
+assignments and focus on synthesizing invariants that are a conjunction of strict
+polynomial inequalities. We present a sound and semi-complete method based on positivstellensaetze,
+i.e. theorems in semi-algebraic geometry that characterize positive polynomials over
+a semi-algebraic set. On the theoretical side, the worst-case complexity of our approach
+is subexponential, whereas the worst-case complexity of the previous complete method
+(Kapur, ACA 2004) is doubly-exponential. Even when restricted to linear invariants,
+the best previous complexity for complete invariant generation is exponential (Colon
+et al, CAV 2003). On the practical side, we reduce the invariant generation problem
+to quadratic programming (QCLP), which is a classical optimization problem with many
+industrial solvers. We demonstrate the applicability of our approach by providing
+experimental results on several academic benchmarks. To the best of our knowledge,
+the only previous invariant generation method that provides completeness guarantees
+for invariants consisting of polynomial inequalities is (Kapur, ACA 2004), which relies
+on quantifier elimination and cannot even handle toy programs such as our running
+example.},
+booktitle = {Proceedings of the 41st ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {672–687},
+numpages = {16},
+keywords = {Polynomial programs, Positivstellensaetze, Invariant generation},
+location = {London, UK},
+series = {PLDI 2020}
+}
+
                   
 @article{Chaudhuri-Gulwani-Lublinerman12,
  author = {Swarat Chaudhuri and Sumit Gulwani and Roberto Lublinerman},
@@ -8180,6 +8214,36 @@ Following \citet{Walker-Zdancewic-Ligatti03}, they give a simple object-oriented
   Publisher =	 "Wiley",
   Year =	 1990
 }
+
+@inproceedings{Dillig-etal13,
+author = {Isil Dillig and Thomas Dillig and Boyang Li and Ken McMillan},
+title = {Inductive Invariant Generation via Abductive Inference},
+year = {2013},
+isbn = {9781450323741},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2509136.2509511},
+doi = {10.1145/2509136.2509511},
+abstract = {This paper presents a new method for generating inductive loop invariants that are
+expressible as boolean combinations of linear integer constraints. The key idea underlying
+our technique is to perform a backtracking search that combines Hoare-style verification
+condition generation with a logical abduction procedure based on quantifier elimination
+to speculate candidate invariants. Starting with true, our method iteratively strengthens
+loop invariants until they are inductive and strong enough to verify the program.
+A key feature of our technique is that it is lazy: It only infers those invariants
+that are necessary for verifying program correctness. Furthermore, our technique can
+infer arbitrary boolean combinations (including disjunctions) of linear invariants.
+We have implemented the proposed approach in a tool called HOLA. Our experiments demonstrate
+that HOLA can infer interesting invariants that are beyond the reach of existing state-of-the-art
+invariant generation tools.},
+booktitle = {Proceedings of the 2013 ACM SIGPLAN International Conference on Object Oriented Programming Systems Languages & Applications},
+pages = {443–456},
+numpages = {14},
+keywords = {invariant generation, static analysis, abductive inference},
+location = {Indianapolis, Indiana, USA},
+series = {OOPSLA '13}
+}
+
 
 @Article{Dingel-etal98,
   author =	 {J. Dingel and D. Garlan and S. Jha and D. Notkin},
@@ -13722,6 +13786,20 @@ pages = {44--62},
 file = {jowua-v5n3-4.pdf:files/74/jowua-v5n3-4.pdf:application/pdf}
 }
 
+@InProceedings{Hoder-Kovacs-Voronkov11,
+author="Kry{\v{s}}tof Hoder and Laura Kov{\'a}cs and Andrei Voronkov",
+editor="Parosh Aziz Abdulla and Leino, K. Rustan M.",
+title="Invariant Generation in Vampire",
+booktitle="Tools and Algorithms for the Construction and Analysis of Systems",
+year="2011",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="60--64",
+abstract="This paper describes a loop invariant generator implemented in the theorem prover Vampire. It is based on the symbol elimination method proposed by two authors of this paper. The generator accepts a program written in a subset of C, finds loops in it, analyses the loops, generates and outputs invariants. It also uses a special consequence removal mode added to Vampire to remove invariants implied by other invariants. The generator is implemented as a standalone tool, thus no knowledge of theorem proving is required from its users.",
+isbn="978-3-642-19835-9"
+}
+               
+
 @Book{Hoffman-Krieg93,
   Author =	 "Berthold Hoffman and Bernd Krieg-Bruckner",
   Title =	 "Program Development by Specification and
@@ -17237,6 +17315,19 @@ url		= {http://pubs.doc.ic.ac.uk/concurrency-models-java-2nd-ed/}
   year =	 2003,
   month =	 mar,
   note =	 {\url{http://tinyurl.com/26onl4}}
+}
+
+@InProceedings{Larraz-etal13,
+author="Daniel Larraz and Enric Rodr{\'i}guez-Carbonell and Albert Rubio",
+editor="Roberto Giacobazzi and Josh Berdine and Isabella Mastroeni",
+title="{SMT-Based} Array Invariant Generation",
+booktitle="Verification, Model Checking, and Abstract Interpretation",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="169--188",
+abstract="This paper presents a constraint-based method for generating universally quantified loop invariants over array and scalar variables. Constraints are solved by means of an SMT solver, thus leveraging recent advances in SMT solving for the theory of non-linear arithmetic. The method has been implemented in a prototype program analyzer, and a wide sample of examples illustrating its power is shown.",
+isbn="978-3-642-35873-9"
 }
 
 @Article{Larsen-Fitzgerald-Brookes96,
@@ -26055,7 +26146,33 @@ url="http://dx.doi.org/10.1007/11817963_38"
   url =          {http://www.eecs.ucf.edu/SAVCBS/2008/papers/Shaner-Rajan-Leavens.pdf}
 }
 
-
+@inproceedings{Sankaranarayanan-etal04,
+author = {Sriram Sankaranarayanan and Henny B. and Manna, Zohar},
+title = {Non-Linear Loop Invariant Generation Using Gr\"{o}Bner Bases},
+year = {2004},
+isbn = {158113729X},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/964001.964028},
+doi = {10.1145/964001.964028},
+abstract = {We present a new technique for the generation of non-linear (algebraic) invariants
+of a program. Our technique uses the theory of ideals over polynomial rings to reduce
+the non-linear invariant generation problem to a numerical constraint solving problem.
+So far, the literature on invariant generation has been focussed on the construction
+of linear invariants for linear programs. Consequently, there has been little progress
+toward non-linear invariant generation. In this paper, we demonstrate a technique
+that encodes the conditions for a given template assertion being an invariant into
+a set of constraints, such that all the solutions to these constraints correspond
+to non-linear (algebraic) loop invariants of the program. We discuss some trade-offs
+between the completeness of the technique and the tractability of the constraint-solving
+problem generated. The application of the technique is demonstrated on a few examples.},
+booktitle = {Proceedings of the 31st ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages},
+pages = {318–329},
+numpages = {12},
+keywords = {program analysis, Gr\"{o}bner bases, symbolic computation, ideals, constraint programming, verification, invariant generation},
+location = {Venice, Italy},
+series = {POPL '04}
+}
 
 @TechReport{Shaner09,
   author =	 {Steve M. Shaner},
@@ -26081,6 +26198,32 @@ url="http://dx.doi.org/10.1007/11817963_38"
   Address =	 "Washington, DC",
   Month =	 may,
   Annote =	 "12 references."
+}
+
+@inproceedings{Sharma-etal11,
+author = {Rahul Sharma and Isil Dillig and Thomas Dillig and Alex Aiken},
+title = {Simplifying Loop Invariant Generation Using Splitter Predicates},
+year = {2011},
+isbn = {9783642221095},
+publisher = {Springer-Verlag},
+address = {Berlin, Heidelberg},
+abstract = {We present a novel static analysis technique that substantially improves the quality
+of invariants inferred by standard loop invariant generation techniques. Our technique
+decomposes multi-phase loops, which require disjunctive invariants, into a semantically
+equivalent sequence of single-phase loops, each of which requires simple, conjunctive
+invariants. We define splitter predicates which are used to identify phase transitions
+in loops, and we present an algorithm to find useful splitter predicates that enable
+the phase-reducing transformation. We show experimentally on a set of representative
+benchmarks from the literature and real code examples that our technique substantially
+increases the quality of invariants inferred by standard invariant generation techniques.
+Our technique is conceptually simple, easy to implement, and can be integrated into
+any automatic loop invariant generator.},
+booktitle = {Proceedings of the 23rd International Conference on Computer Aided Verification},
+pages = {703–719},
+numpages = {17},
+keywords = {invariant generation, decomposition of multi-phase loops, static analysis},
+location = {Snowbird, UT},
+series = {CAV'11}
 }
 
 @Book{Shaw-Garlan96,
