@@ -1,0 +1,177 @@
+# texmf
+<h1>README for tex-include LaTeX/BibTeX tree</h1>
+
+<h2>Configuration</h2>
+<p>
+To use the LaTeX macros, styles and bibliography styles and databases,
+you have to tell your TeX distribution about this tree.
+But often you can just use the command <kbd>texconf conf</kbd> and look in
+the "kpathsea variables" section for the variable <kbd>TEXMFDBS</kbd>.  In this path there is usually some directory like <kbd>/home/You/texmf</kbd> that will be the logical place to put the root of this directory tree.
+</p>
+
+<h3>Mac OS/X with TeX Live</h3>
+<p>
+On an Apple Macintosh with OS/X I just put the root of this directory tree in <kbd>$HOME/Library</kbd> with the root named <kbd>texmf</kbd>, and
+it finds everything.</p>
+
+<h3>Windows with MikTeX</h3>
+<p>You have to add this directory structure as a new TeX "root" using the miktex settings tool. This is available from the start menu (under MikTeX) on Windows 7. However, on Windows 8, you will find the tool as an executable only under the miktex/miktex/bin/x64/ directory in a file named mo.exe. Run that file.</p>
+
+<p>Regardless of how you find the MikTeX settings program, you need to add this directory as a root. Use the "Roots" tab, push the "Add" button, and follow the prompts.</p>
+
+<h3>Windows with Cygwin's TeTeX</h3>
+<p>
+In prior years, on a Windows machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and 
+it would find everything.  That still seems to work.</p>
+
+<p>With TeTeX under Cygwin on a Windows machine, it seemed to work to do the commend <kbd>kpsewhich -var-value TEXMFHOME</kbd>, and then to make a symbolic link from that place to <kbd>$HOME/texmf</kbd>.  That is:</p>
+
+<pre>
+$ kpsewhich -var-value TEXMFHOME /home/You/.local/share/texmf
+$ ls /home/You/.local/share/texmf
+ls: cannot access /home/You/.local/share/texmf: No such file or directory
+$ cd 
+$ mkdir .local
+$ mkdir .local/share
+$ ln -s ~/texmf .local/share/
+</pre>
+
+<p>It also seems to work to edit the value of whatever file name is shown to you by executing the command <kbd>kpsewhich texmf.cnf</kbd>, and adding the full (unix-style) path name to your texmf directory to the end of the path in that file's definition of TEXMF. However, I believe that this solution will cease to work when you update cygwin's TeX install. Thus the previous solution is best.</p>
+
+<p>See also <a href="http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst">
+http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst</a> for more about this topic.</p>
+
+<h3>Linux with TeTeX</h3>
+<p>
+On a Linux machine running TeTeX I just put the root of this directory tree in <kbd>$HOME/</kbd> with the root named <kbd>texmf</kbd>, and
+it finds everything.</p>
+
+<h2>Contents</h2>
+<p>
+This directory tree contains bibliography files, bibliography styles,
+latex macros and styles designed by our research group (with some input from collaborators, especially for bibliography items).
+</p>
+
+<h3>Bibliography Support</h3>
+
+<h4>Bibliography Databases</h4>
+
+<p>In the directory <kbd>bibtex/bib/misc/</kbd>
+there are several bibliography databases (<kbd>.bib</kbd> files).
+The main ones are the following:
+</p>
+
+<ul>
+<li>
+ <code>Makefile</code>, which has as its default target the production
+ of a file, <code>all.bib</code> (the concatenation of the .bib files
+ below), which is useful in Framemaker and other such tools.
+</li>
+<li>
+ <code>journal-abbrevs.bib</code>, which contains abbreviations for
+ journal names; this is needed to use the other files.
+</li>
+<li>
+ <code>datatypes.bib</code>, which has references on type theory,
+ abstract data types, subtyping, types in programming languages
+</li>
+<li>
+ <code>old-datatypes.bib</code>, which has 1970s and
+ older references on datatypes, type theory, etc.
+</li>
+<li>
+ <code>distrib.bib</code>, which has references on distributed and
+ parallel processing, except language definitions.
+</li>
+<li>
+ <code>languages.bib</code>, which has references on programming
+ language issues, semantics, implementation, except types,
+ distributed/parallel stuff, and aspect-oriented software development.
+ All language definitions go here.
+</li>
+<li>
+ <code>se.bib</code>, which has references on software engineering,
+ specification, verification.
+</li>
+<li>
+  <code>videos.bib</code>, which has references to videos (e.g., on YouTube).
+  </li>
+<li>
+ <code>etc.bib</code>, which has references on math and general stuff
+ that doesn't go elsewhere.
+</li>
+<li>
+ <code>proceedings.bib</code>, which has various proceedings used by cross-reference in the other bib files.
+</li>
+</ul>
+
+<H3>Bibtex Database Conventions</H3>
+<P>
+If you change the bibtex database files, don't change <code>all.bib</code> as
+that is automatically generated.  Please instead change one of the
+other files that is used to create it (see the Makefile).
+<P>
+If you change add or change these bibliography files, please also
+follow our conventions.  The main ones are as follows. 
+<ul>
+<li>Categorize the contribution into the appropriate bibliography file
+as best you can.</li>
+<li>For citation keys, use the full names of up to 3 authors,
+separated by hyphens, followed by the last two digits of the year.
+For example, <code>Leavens-Baker-Ruby02</code>.  For more authors, use
+<code>-etal</code> after the first author's name, followed by the last
+two digits of the year.</li>
+<li>If you have physically laid hands on the paper or checked the information from a publsher's site, such as the ACM Digital Library, then put in an
+<code>Annote</code> key with the number of references, e.g.,
+<code>Annote="23 references."</code>.  You can have more text in the
+annote entry, but put the number of references last.  If there are
+hundreds of references, then you can just say something like
+<code>Annote="Hundreds of references."</code> instead of counting
+them.</li>
+<li>
+Use single letters after the year if the same group of authors has more
+than one paper in the given year.  For example, 
+<code>Clifton-Leavens02a</code>.</li>
+<li>
+Keep the bibliography files sorted.</li>
+<li>
+Use 3 letter abbreviations of months, without quotes or brackets, for example
+<code>nov</code> or <code>may</code>.  These are
+bibtex macros which are expanded or contracted by the style sheet; if
+you quote or bracket them they aren't macros anymore.</li>
+<li>
+Don't put quote marks or brackets around numbers for years, and only
+put in quote marks or brackets around other numbers if needed.</li>
+</ul>
+
+<P>If a paper's entry gets replaced by a better version, it's probably safest
+to make a new entry.  However, for one of our own papers, it would be
+more usual to replace the entry with an entry for the published
+version, and to rename the technical report version.  For example,
+change the technical report entry of 
+<code>Clifton-Leavens02</code>
+to have the key <code>Clifton-Leavens02a</code>
+when the publication appears, and put the publication under the key
+<code>Clifton-Leavens02</code>.
+
+<p>
+If you make an entry for a paper with Leavens as a coauthor, please
+also place a copy of the entry in the file <code>leavens.bib</code>.
+You are welcome to make your own personal bibliography file also.
+
+
+<h3>LaTeX Styles</h3>
+<p>
+There are also many latex macro and style files in the directory <kbd>tex/latex/misc/</kbd>.
+All are unsupported, so use at your own risk.
+</p>
+
+<h4>Conventions for the Latex Macro Files</h4>
+<p>
+If you channge the latex macro files, please make any changes upward
+compatible, so that old papers still can be formatted.  The easiest
+way is to always use new names.  Usually we use upper case for macro names.
+</p>
+
+<p>If the
+<kbd>tex/latex/misc/</kbd> directory contains duplicates or old versions of files in the standard tex distributions in, then these should be removed.</p>
