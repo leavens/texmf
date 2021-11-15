@@ -5399,6 +5399,24 @@ annote={Refinement calculus tool made by a shallow embedding in Isabelle/HOL.}
   annote =	 {22 references.}
 }
 
+% doi = {10.1145/1542476.1542517},
+@inproceedings{Chandra-Fink-Sridharan09,
+author = {Satish Chandra and Stephen J. Fink and Manu Sridharan},
+title = {Snugglebug: A Powerful Approach to Weakest Preconditions},
+year = {2009},
+isbn = {9781605583921},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1542476.1542517},
+abstract = {Symbolic analysis shows promise as a foundation for bug-finding, specification inference, verification, and test generation. This paper addresses demand-driven symbolic analysis for object-oriented programs and frameworks. Many such codes comprise large, partial programs with highly dynamic behaviors--polymorphism, reflection, and so on--posing significant scalability challenges for any static analysis.We present an approach based on interprocedural backwards propagation of weakest preconditions. We present several novel techniques to improve the efficiency of such analysis. First, we present directed call graph construction, where call graph construction and symbolic analysis are interleaved. With this technique, call graph construction is guided by constraints discovered during symbolic analysis, obviating the need for exhaustively exploring a large, conservative call graph. Second, we describe generalization, a technique that greatly increases the reusability of procedure summaries computed during interprocedural analysis. Instead of tabulating how a procedure transforms a symbolic state in its entirety, our technique tabulates how the procedure transforms only the pertinent portion of the symbolic state. Additionally, we show how integrating an inexpensive, custom logic simplifier with weakest precondition computation dramatically improves performance.We have implemented the analysis in a tool called Snugglebug and evaluated it as a bug-report feasibility checker. Our results show that the algorithmic techniques were critical for successfully analyzing large Java applications.},
+booktitle = {Proceedings of the 30th ACM SIGPLAN Conference on Programming Language Design and Implementation},
+pages = {363–374},
+numpages = {12},
+keywords = {weakest preconditions, interprocedural analysis, symbolic analysis},
+location = {Dublin, Ireland},
+series = {PLDI '09}
+}
+
 @InProceedings{Chang-Richardson99,
   author =       {Juei Chang and Debra J. Richardson},
   title =        "Structural Specification-based Testing: Automated Support and Experimental Evaluation",
