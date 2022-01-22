@@ -31038,6 +31038,22 @@ keywords = {dynamic checking, Software changes, static checking}
   annote =	 {7 references.}
 }
 
+@inproceedings{Zemin-etal17,
+author = {Luciano Zem\'{\i}n and Sim\'{o}n Guti\'{e}rrez Brida and Ariel Godio and C\'{e}sar Cornejo and Renzo Degiovanni and Germ\'{a}n Regis and Nazareno Aguirre and Marcelo Frias},
+title = {An Analysis of the Suitability of Test-Based Patch Acceptance Criteria},
+year = 2017,
+isbn = 9781538627891,
+publisher = IEEE,
+address="Los Altos",
+abstract = {Program repair techniques attempt to fix programs by looking for patches within a search space of fix candidates. These techniques require a specification of the program to be repaired, used as an acceptance criterion for fix candidates, that often also plays an important role in guiding some search processes. Most tools use tests as specifications, which constitutes a risk, since the incompleteness of tests as specifications may lead one to obtain spurious repairs, that pass all tests but are in fact incorrect. This problem has been identified by various researchers, raising concerns about the validity of program fixes. More thorough studies have been proposed using different sets of tests for fix validation, and resorting to manual inspection, showing that while tools reduce their program fixing rate, they are still able to repair a significant number of cases.In this paper, we perform a different analysis of the suitability of tests as acceptance criteria for automated program fixes, by checking patches produced by automated repair tools using a bug-finding tool, as opposed to previous works that used tests or manual inspections. We develop a number of experiments in which faulty programs from a known benchmark are fed to the program repair tools GenProg, Angelix, AutoFix and Nopol, using test suites of varying quality and extension, including those accompanying the benchmark. We then check the produced patches against formal specifications using a bug-finding tool. Our results show that, in general, automated program repair tools are significantly more likely to accept a spurious program fix than producing an actual one, in the studied scenarios.},
+booktitle = {Proceedings of the 10th International Workshop on Search-Based Software Testing},
+pages = {14–20},
+numpages = 7,
+location = {Buenos Aires, Argentina},
+series = {SBST '17},
+annote="25 references."
+}
+
 @TechReport{Zhang88,
   Author =	 "Hantao Zhang",
   Title =	 "Reduction, Superposition and Induction: Automated
