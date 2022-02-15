@@ -12371,6 +12371,25 @@ annote="42 references."
   publisher = SV
 }
 
+@article{Grossman-etal17,
+author = {Shelly Grossman and Ittai Abraham and Guy Golan-Gueta and Yan Michalevsky and Noam Rinetzky and Mooly Sagiv and Yoni Zohar},
+title = {Online Detection of Effectively Callback Free Objects with Applications to Smart Contracts},
+year = 2017,
+issue_date = {January 2018},
+publisher = ACM,
+address = NY,
+volume = 2,
+number = {POPL},
+url = {https://doi.org/10.1145/3158136},
+doi = {10.1145/3158136},
+abstract = {Callbacks are essential in many programming environments, but drastically complicate program understanding and reasoning because they allow to mutate object's local states by external objects in unexpected fashions, thus breaking modularity. The famous DAO bug in the cryptocurrency framework Ethereum, employed callbacks to steal \$150M. We define the notion of Effectively Callback Free (ECF) objects in order to allow callbacks without preventing modular reasoning. An object is ECF in a given execution trace if there exists an equivalent execution trace without callbacks to this object. An object is ECF if it is ECF in every possible execution trace. We study the decidability of dynamically checking ECF in a given execution trace and statically checking if an object is ECF. We also show that dynamically checking ECF in Ethereum is feasible and can be done online. By running the history of all execution traces in Ethereum, we were able to verify that virtually all existing contract executions, excluding these of the DAO or of contracts with similar known vulnerabilities, are ECF. Finally, we show that ECF, whether it is verified dynamically or statically, enables modular reasoning about objects with encapsulated state.},
+journal = {Proc. ACM Program. Lang.},
+month = {dec},
+articleno = 48,
+numpages = 28,
+keywords = {Modular reasoning, Smart contracts, Program analysis}
+}
+
 @InProceedings{Grothoff-Palsberg-Vitek01,
   Author =	 {Christian Grothoff and Jens Palsberg and Jan Vitek},
   Title =	 {Encapsulating Objects with Confined Types},
